@@ -4,17 +4,19 @@ using UnityEngine.InputSystem;
 public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] private Camera cam;
+
     [SerializeField] private Transform holdingPoint;
     public Transform HoldingPoint => holdingPoint;
+
     [SerializeField] private float raycastDist;
     [SerializeField] private LayerMask interactableMask;
+
     private Pickable heldItem;
     private InputAction interactAction;
 
     // Returns true if successfully dropped item, false otherwise.
     public bool DropHeldItem(string dropItemId, Transform dropPoint)
     {
-        Debug.Log("Dropping!");
         if (heldItem == null || heldItem.Id != dropItemId) return false;
         heldItem.Drop(dropPoint);
         heldItem = null;
@@ -26,19 +28,9 @@ public class PlayerInteractor : MonoBehaviour
         interactAction = InputSystem.actions.FindAction("Interact");
     }
 
-    void OnEnable()
-    {
-        interactAction.Enable();
-    }
-
-    void OnDisable()
-    {
-        interactAction.Disable();
-    }
-
     void Update()
     {
-        if (interactAction.WasPressedThisFrame())
+        if (PlayerStateManager.State == PlayerState.Normal && interactAction.WasPressedThisFrame())
         {
             TryInteract();
         }
@@ -50,7 +42,8 @@ public class PlayerInteractor : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, raycastDist, interactableMask))
         {
-            IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
+            var interactable = hit.collider.GetComponentInParent<IInteractable>();
+            var inspectable = hit.collider.GetComponentInParent<Inspectable>();
 
             if (interactable != null && interactable.IsInteractable)
             {
@@ -59,6 +52,10 @@ public class PlayerInteractor : MonoBehaviour
                 {
                     heldItem = pickableObj;
                 }
+            }
+            else if (inspectable != null)
+            {
+                PlayerInspector.BeginInspection(hit.collider.gameObject);
             }
         }
     }

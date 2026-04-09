@@ -9,19 +9,18 @@ public class Pickable : MonoBehaviour, IInteractable
     private bool isIteractable = true;
     public bool IsInteractable => isIteractable;
 
-    private Collider coll;
+    private Collider col;
 
     void Awake()
     {
-        coll = GetComponent<Collider>();
+        col = GetComponent<Collider>();
     }
 
     public void Interact(PlayerInteractor player)
     {
         transform.position = player.HoldingPoint.position;
-        transform.rotation = Quaternion.identity;
-        coll.enabled = false;
-
+        transform.rotation = player.HoldingPoint.rotation;
+        col.enabled = false;
         isIteractable = false;
     }
 
@@ -29,6 +28,6 @@ public class Pickable : MonoBehaviour, IInteractable
     {
         transform.position = dropPoint.position;
         transform.rotation = dropPoint.rotation;
-        coll.enabled = true;
+        col.enabled = true;
     }
 }
