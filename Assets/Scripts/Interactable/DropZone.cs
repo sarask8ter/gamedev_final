@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DropZone : MonoBehaviour, IInteractable
 {
-    private string itemId = "box";
+    [SerializeField] private ItemName item;
     private bool isIteractable = true;
     public bool IsInteractable { get => isIteractable; }
 
@@ -10,6 +10,10 @@ public class DropZone : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
-        if (player.DropHeldItem(itemId, dropPoint)) isIteractable = false;
+        if (player.DropHeldItem(item, dropPoint)) {
+            isIteractable = false;
+            TasksEvents.OnItemPlace?.Invoke(item);
+            gameObject.SetActive(false);
+        }
     }
 }

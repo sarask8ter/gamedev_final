@@ -15,9 +15,9 @@ public class PlayerInteractor : MonoBehaviour
     private InputAction interactAction;
 
     // Returns true if successfully dropped item, false otherwise.
-    public bool DropHeldItem(string dropItemId, Transform dropPoint)
+    public bool DropHeldItem(ItemName dropItem, Transform dropPoint)
     {
-        if (heldItem == null || heldItem.Id != dropItemId) return false;
+        if (heldItem == null || heldItem.Item != dropItem) return false;
         heldItem.Drop(dropPoint);
         heldItem = null;
         return true;
@@ -47,10 +47,17 @@ public class PlayerInteractor : MonoBehaviour
 
             if (interactable != null && interactable.IsInteractable)
             {
-                interactable.Interact(this);
                 if (interactable is Pickable pickableObj)
                 {
-                    heldItem = pickableObj;
+                    if (heldItem == null) 
+                    {
+                        pickableObj.Interact(this);
+                        heldItem = pickableObj;
+                    }
+                } 
+                else
+                {
+                    interactable.Interact(this);
                 }
             }
             else if (inspectable != null)

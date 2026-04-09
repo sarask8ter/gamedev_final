@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Pickable : MonoBehaviour, IInteractable
 {
-    private string id = "box";
-    public string Id => id;
+    [SerializeField] private ItemName item;
+    public ItemName Item => item;
 
     private bool isIteractable = true;
     public bool IsInteractable => isIteractable;
