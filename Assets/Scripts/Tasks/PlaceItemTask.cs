@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PlaceItemTask", menuName = "Tasks/Place Item")]
 public class PlaceItemTask : Task
 {
     [SerializeField] private ItemName item;
@@ -34,5 +35,10 @@ public class PlaceItemTask : Task
     void UpdateProgressText()
     {
        progressText = "(" + count + "/" + targetCount + ")";  
+    }
+
+    void OnDisable()
+    {
+        TasksEvents.OnItemPlace -= HandleProgress;
     }
 }

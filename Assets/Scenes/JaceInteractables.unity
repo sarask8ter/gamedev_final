@@ -318,7 +318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Complete this task <b>(0/1)</b>
+  m_text: Move in to your new house
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cef73df61a04309982e0a94e9f13cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrentTaskUI
-  currentTaskText: {fileID: 207197276}
 --- !u!1 &243762780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3457cd9c8eff4c38a3c146b77e10307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TasksManager
+  taskDelay: 1
+  tasks:
+  - {fileID: 11400000, guid: 555892cb6e61f471caebb183a822b594, type: 2}
+  - {fileID: 11400000, guid: 775376c463b0f400289a87d5a08c0de6, type: 2}
 --- !u!4 &748870862
 Transform:
   m_ObjectHideFlags: 0
@@ -1213,6 +1216,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 512
+  pickedUpLayerName: PickedUpItem
 --- !u!4 &835692097
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,7 +1429,7 @@ Camera:
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1619,10 +1623,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f1ec6f51d249c7804852df83866f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaceItemTask
-  Description: Place boxes
-  ProgressText: 
+  description: Place boxes
+  progressText: 
+  taskId: place_boxes_1
   item: 0
   targetCount: 2
+  count: 0
 --- !u!4 &1244410568
 Transform:
   m_ObjectHideFlags: 0
@@ -2354,6 +2360,7 @@ MonoBehaviour:
   inspectPoint: {fileID: 2051360164}
   inspectCam: {fileID: 932251219}
   inspectRotateSpeed: 300
+  inspectItemLayer: InspectedItem
 --- !u!4 &1854420356
 Transform:
   m_ObjectHideFlags: 0

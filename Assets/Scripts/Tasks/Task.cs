@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Task : MonoBehaviour
+public abstract class Task : ScriptableObject
 {
     [SerializeField] protected string description;
     [SerializeField] protected string progressText;
@@ -12,10 +12,5 @@ public abstract class Task : MonoBehaviour
     protected TaskData CompileTaskData()
     {
         return new TaskData(taskId, description, progressText);
-    }
-
-    void Start()
-    {
-        StartTask();
     }
 }
