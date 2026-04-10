@@ -11,7 +11,7 @@ public class PlaceItemTask : Task
     {
         count = 0;
         UpdateProgressText();
-        TasksEvents.OnTaskStart?.Invoke(this);
+        TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
         TasksEvents.OnItemPlace += HandleProgress;
     }
 
@@ -21,18 +21,18 @@ public class PlaceItemTask : Task
 
         count++;
         UpdateProgressText();
-        TasksEvents.OnTaskProgress?.Invoke(this);
+        TasksEvents.OnTaskProgress?.Invoke(CompileTaskData());
         if (count >= targetCount) CompleteTask();
     }
 
     void CompleteTask()
     {
-        TasksEvents.OnTaskComplete?.Invoke(this);
+        TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
         TasksEvents.OnItemPlace -= HandleProgress;
     }
 
     void UpdateProgressText()
     {
-       ProgressText = "(" + count + "/" + targetCount + ")";  
+       progressText = "(" + count + "/" + targetCount + ")";  
     }
 }

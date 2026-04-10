@@ -19,12 +19,12 @@ public class CurrentTaskUI : MonoBehaviour
         TasksEvents.OnTaskComplete -= CompleteTask;
     }
 
-    void UpdateTaskText(Task task)
+    void UpdateTaskText(TaskData task)
     {
-        currentTaskText.text = task.Description + " <b>" + task.ProgressText + "</b>";
+        currentTaskText.text = task.Description + " <b>" + task.Progress + "</b>";
     }
 
-    void CompleteTask(Task task)
+    void CompleteTask(TaskData _)
     {
         currentTaskText.text = "<s>" + currentTaskText.text + "</s>";
     }
