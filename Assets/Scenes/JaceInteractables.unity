@@ -873,6 +873,148 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &403220509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403220510}
+  m_Layer: 0
+  m_Name: Phone Lowered Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403220510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403220509}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.082863435, y: 0.049340606, z: 0.38922915, w: 0.91607857}
+  m_LocalPosition: {x: -0.185, y: -0.36, z: -0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1309662095}
+  m_LocalEulerAnglesHint: {x: -10.966, y: 1.511, z: 45.895}
+--- !u!1 &441176739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441176740}
+  m_Layer: 0
+  m_Name: Phone Raised Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441176740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441176739}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.082863435, y: 0.049340606, z: 0.38922915, w: 0.91607857}
+  m_LocalPosition: {x: -0.185, y: 0.012, z: -0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1309662095}
+  m_LocalEulerAnglesHint: {x: -10.966, y: 1.511, z: 45.895}
+--- !u!1001 &552911220
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4000005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4000003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.365912
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4299168
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.2599318
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.008642703
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.38321543
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9173657
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.10729224
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -10.966
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1.511
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45.895
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_Name
+      value: Phone
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1579643383}
+  m_SourcePrefab: {fileID: 100100000, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
 --- !u!1 &646775438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,7 +1893,9 @@ Transform:
   m_LocalPosition: {x: 0.45, y: -0.17, z: 0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 441176740}
+  - {fileID: 403220510}
   m_Father: {fileID: 27785112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327939137
@@ -1992,6 +2136,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1455452430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1579643382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+  m_PrefabInstance: {fileID: 552911220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579643383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579643382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177be3f6dd6c34f82884b9986ee30ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Phone
+  raisedPoint: {fileID: 441176740}
+  loweredPoint: {fileID: 403220510}
+  raiseAndLowerDuration: 1
 --- !u!1 &1580446629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,6 +2893,7 @@ SceneRoots:
   - {fileID: 243762786}
   - {fileID: 303387119}
   - {fileID: 1148807382}
+  - {fileID: 552911220}
   - {fileID: 1247559968}
   - {fileID: 1811275584}
   - {fileID: 1455452430}
