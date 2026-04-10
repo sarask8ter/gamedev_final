@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TasksEvents : MonoBehaviour
 {
-    // Invoked by external objects to update tasks.
+    // Invoked by external objects that will progress tasks.
     public static Action<ItemName> OnItemPlace;
 
     // Invoked by Task.

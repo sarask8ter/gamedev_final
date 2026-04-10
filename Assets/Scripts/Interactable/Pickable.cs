@@ -18,6 +18,8 @@ public class Pickable : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
+        if (!player.PickUpItem(this)) return;
+
         transform.position = player.HoldingPoint.position;
         transform.rotation = player.HoldingPoint.rotation;
         col.enabled = false;

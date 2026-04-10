@@ -11,7 +11,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private float raycastDist;
     [SerializeField] private LayerMask interactableMask;
 
-    private Pickable heldItem;
+    public Pickable heldItem;
     private InputAction interactAction;
 
     // Returns true if successfully dropped item, false otherwise.
@@ -20,6 +20,14 @@ public class PlayerInteractor : MonoBehaviour
         if (heldItem == null || heldItem.Item != dropItem) return false;
         heldItem.Drop(dropPoint);
         heldItem = null;
+        return true;
+    }
+
+    // Returns true if holding nothing originally, and now picked up item, false otherwise.
+    public bool PickUpItem(Pickable item)
+    {
+        if (heldItem != null) return false;
+        heldItem = item;
         return true;
     }
 
@@ -43,26 +51,10 @@ public class PlayerInteractor : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, raycastDist, interactableMask))
         {
             var interactable = hit.collider.GetComponentInParent<IInteractable>();
-            var inspectable = hit.collider.GetComponentInParent<Inspectable>();
 
             if (interactable != null && interactable.IsInteractable)
             {
-                if (interactable is Pickable pickableObj)
-                {
-                    if (heldItem == null) 
-                    {
-                        pickableObj.Interact(this);
-                        heldItem = pickableObj;
-                    }
-                } 
-                else
-                {
-                    interactable.Interact(this);
-                }
-            }
-            else if (inspectable != null)
-            {
-                PlayerInspector.BeginInspection(hit.collider.gameObject);
+                interactable.Interact(this);
             }
         }
     }
