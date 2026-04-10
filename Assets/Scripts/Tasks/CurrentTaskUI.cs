@@ -43,31 +43,32 @@ public class CurrentTaskUI : MonoBehaviour
 
     IEnumerator AnimateStrikethrough(string description, string progress)
     {
-        int endTagIdx = 1;
         const string beginningTag = "<s>";
         const string endTag = "</s>";
         string newDescription = description;
+        string newProgress = progress;
 
         float delay = strikethroughTime / (description.Length + progress.Length);
+        bool isDesc = true;
 
-        while (endTagIdx <= description.Length)
+        foreach (var str in new string[]{description, progress})
         {
-            newDescription = beginningTag + description.Insert(endTagIdx, endTag);
-            SetTaskText(newDescription, progress);
-            yield return new WaitForSeconds(delay);
+            int endTagIdx = 1;
 
-            endTagIdx++;
-        }
+            while (endTagIdx <= str.Length)
+            {
+                string strWithTags = beginningTag + str.Insert(endTagIdx, endTag);
 
-        endTagIdx = 1;
+                if (isDesc) newDescription = strWithTags;
+                else newProgress = strWithTags;
 
-        while (endTagIdx <= progress.Length)
-        {
-            string newProgress = beginningTag + progress.Insert(endTagIdx, endTag);
-            SetTaskText(newDescription, newProgress);
-            yield return new WaitForSeconds(delay);
+                SetTaskText(newDescription, newProgress);
+                yield return new WaitForSeconds(delay);
 
-            endTagIdx++;
+                endTagIdx++;
+            }
+
+            isDesc = false;
         }
     }
 }
