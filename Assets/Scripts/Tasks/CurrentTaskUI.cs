@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class CurrentTaskUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI currentTaskText;
+    private TextMeshProUGUI currentTaskText;
+
+    void Awake()
+    {
+        currentTaskText = GetComponent<TextMeshProUGUI>();
+    }
 
     void OnEnable()
     {

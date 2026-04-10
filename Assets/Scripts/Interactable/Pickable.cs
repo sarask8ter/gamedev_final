@@ -10,6 +10,7 @@ public class Pickable : MonoBehaviour, IInteractable
     public bool IsInteractable => isIteractable;
 
     private Collider col;
+    private string oldLayerName;
 
     void Awake()
     {
@@ -19,17 +20,14 @@ public class Pickable : MonoBehaviour, IInteractable
     public void Interact(PlayerInteractor player)
     {
         if (!player.PickUpItem(this)) return;
-
-        transform.position = player.HoldingPoint.position;
-        transform.rotation = player.HoldingPoint.rotation;
-        col.enabled = false;
+        oldLayerName = LayerMask.LayerToName(gameObject.layer);
+        MoveAndChangePhysicsMethods.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint);
         isIteractable = false;
     }
 
     public void Drop(Transform dropPoint)
     {
-        transform.position = dropPoint.position;
-        transform.rotation = dropPoint.rotation;
-        col.enabled = true;
+        if (oldLayerName == "") throw new System.Exception("Did not interact previously with object before dropping");
+        MoveAndChangePhysicsMethods.MoveAndEnable(gameObject, oldLayerName, dropPoint);
     }
 }

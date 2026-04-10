@@ -36,7 +36,7 @@ public class TasksEvents : MonoBehaviour
     void Start()
     {
         OnItemPlace += (item) => { Debug.Log("Item placed: " + item); };
-        OnTaskStart += (task) => { Debug.Log("Task started: " + task.Id); };
+        OnTaskStart += (task) => { Debug.Log("Task started: " + task.Id + " : " + task.Description); };
         OnTaskProgress += (task) => { Debug.Log("Task progressed: " + task.Id + " | " + task.Progress); };
         OnTaskComplete += (task) => { Debug.Log("Task completed: " + task.Id); };
     }

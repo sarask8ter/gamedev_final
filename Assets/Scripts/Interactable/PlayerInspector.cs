@@ -9,8 +9,8 @@ public class PlayerInspector : MonoBehaviour
     [SerializeField] private Camera inspectCam;
     [SerializeField] private float inspectRotateSpeed;
 
+    [SerializeField] private string inspectItemLayer;
     private GameObject inspectedItem;
-    private string inspectItemLayer = "InspectedItem";
     private InputAction cancelAction;
     private InputAction lookAction;
     private InputAction clickAction;
@@ -44,9 +44,8 @@ public class PlayerInspector : MonoBehaviour
     public static void BeginInspection(GameObject objToInspect)
     {
         PlayerStateManager.State = PlayerState.Inspecting;
-        _instance.inspectedItem = Instantiate(objToInspect, _instance.inspectPoint.position, _instance.inspectPoint.rotation);
-        _instance.SetLayerRecursively(_instance.inspectedItem, LayerMask.NameToLayer(_instance.inspectItemLayer));
-        _instance.DisablePhysics(_instance.inspectedItem);
+        _instance.inspectedItem = Instantiate(objToInspect);
+        MoveAndChangePhysicsMethods.MoveAndDisable(_instance.inspectedItem, _instance.inspectItemLayer, _instance.inspectPoint);
     }
 
     public static void EndInspection()
@@ -54,23 +53,6 @@ public class PlayerInspector : MonoBehaviour
         Destroy(_instance.inspectedItem);
         _instance.inspectedItem = null;
         PlayerStateManager.State = PlayerState.Normal;
-    }
-
-    void SetLayerRecursively(GameObject obj, int layer)
-    {
-        obj.layer = layer;
-        foreach (Transform child in obj.transform)
-        {
-            child.gameObject.layer = layer;
-        }
-    }
-
-    void DisablePhysics(GameObject obj)
-    {
-        foreach (var col in obj.GetComponentsInChildren<Collider>())
-        {
-            col.enabled = false;
-        }
     }
 
     void RotateInspectedObj()

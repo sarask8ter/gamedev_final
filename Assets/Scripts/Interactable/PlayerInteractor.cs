@@ -10,9 +10,14 @@ public class PlayerInteractor : MonoBehaviour
 
     [SerializeField] private float raycastDist;
     [SerializeField] private LayerMask interactableMask;
+    [SerializeField] private string pickedUpLayerName;
+    public string PickedUpLayerName => pickedUpLayerName;
 
-    public Pickable heldItem;
+    private Pickable heldItem;
     private InputAction interactAction;
+    private static PlayerInteractor _instance;
+
+    public static bool IsHoldingItem => _instance.heldItem != null;
 
     // Returns true if successfully dropped item, false otherwise.
     public bool DropHeldItem(ItemName dropItem, Transform dropPoint)
@@ -34,6 +39,15 @@ public class PlayerInteractor : MonoBehaviour
     void Awake()
     {
         interactAction = InputSystem.actions.FindAction("Interact");
+
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 
     void Update()
@@ -41,6 +55,11 @@ public class PlayerInteractor : MonoBehaviour
         if (PlayerStateManager.State == PlayerState.Normal && interactAction.WasPressedThisFrame())
         {
             TryInteract();
+        }
+
+        if (heldItem != null)
+        {
+            MoveAndChangePhysicsMethods.MoveToPoint(heldItem.gameObject, holdingPoint);
         }
     }
 
