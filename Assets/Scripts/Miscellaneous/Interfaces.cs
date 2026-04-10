@@ -1,4 +1,5 @@
 interface IInteractable
 {
-    void Interact();
+    public bool IsInteractable { get; }
+    public void Interact(PlayerInteractor player);
 }
