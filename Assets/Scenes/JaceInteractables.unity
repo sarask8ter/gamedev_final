@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cef73df61a04309982e0a94e9f13cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrentTaskUI
+  strikethroughTime: 0.3
 --- !u!1 &243762780
 GameObject:
   m_ObjectHideFlags: 0
