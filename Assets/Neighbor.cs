@@ -113,6 +113,7 @@ public class Neighbor : MonoBehaviour, IInteractable
 
     void DisplayCurrentLine()
     {
+        CancelAllAutoDialogue();
         StopAllCoroutines();
         StartCoroutine(TypeLine());
     }
@@ -140,6 +141,15 @@ public class Neighbor : MonoBehaviour, IInteractable
 
     void ChooseOption(int nextIndex)
     {
+        CancelInvoke(nameof(NextLine));
+
+        if (nextIndex < 0 || nextIndex >= dialogueData.dialogueLines.Length)
+        {
+            Debug.LogWarning("Invalid nextIndex: " + nextIndex);
+            EndDialogue();
+            return;
+        }
+
         dialogueIndex = nextIndex;
         dialogueUI.ClearChoices();
         DisplayCurrentLine();
@@ -197,5 +207,10 @@ public class Neighbor : MonoBehaviour, IInteractable
         {
             Invoke(nameof(NextLine), dialogueData.autoProgressDelay);
         }
+    }
+
+    void CancelAllAutoDialogue()
+    {
+        CancelInvoke(nameof(NextLine));
     }
 }
