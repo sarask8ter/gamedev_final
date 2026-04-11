@@ -16,6 +16,16 @@ MonoBehaviour:
   dialogueLines:
   - "Hey\u2026 just checking"
   - You got in okay?
-  autoProgressLines: 0100
+  - "This place can feel\u2026 strange at night. But you're safe here."
+  - '[...] Okay! I guess you''re busy.'
+  autoProgressLines: 01000000
+  endDialogueLines: 00000101
   typingSpeed: 0.05
   autoProgressDelay: 1
+  choices:
+  - dialogueIndex: 1
+    choices:
+    - Open door
+    - Ignore
+    - Look through peephole/window
+    nextDialogueIndexes: 0200000003000000

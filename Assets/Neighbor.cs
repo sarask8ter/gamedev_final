@@ -6,11 +6,17 @@ using System.Collections;
 public class Neighbor : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
-    public GameObject dialoguePanel;
-    public TMP_Text dialogueText, nameText;
+    private DialogueController dialogueUI;
+
     private int dialogueIndex;
-    private bool isTyping, isDialogueActive;
+    private bool isTyping;
+    private bool isDialogueActive;
     private bool canStartDialogue = true;
+
+    private void Start()
+    {
+        dialogueUI = DialogueController.Instance;
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -44,14 +50,19 @@ public class Neighbor : MonoBehaviour, IInteractable
 
     void StartDialogue()
     {
+        Debug.Log(dialogueData);
+        Debug.Log("START DIALOGUE");
+
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.npcName);
-        dialoguePanel.SetActive(true);
+        dialogueUI.ShowDialogueUI(true);
+        dialogueUI.SetNPCInfo(dialogueData.npcName);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        StartCoroutine(TypeLine());
+
+        DisplayCurrentLine();
     }
 
     void NextLine()
@@ -59,46 +70,89 @@ public class Neighbor : MonoBehaviour, IInteractable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
             isTyping = false;
+
+            dialogueUI.SetDialogueText(dialogueData.dialogueLines[dialogueIndex]);
+            TryShowChoicesOrContinue();
+            return;
         }
-        else if(++dialogueIndex < dialogueData.dialogueLines.Length)
-        {
-            StartCoroutine(TypeLine());
-        }
-        else
+
+        dialogueUI.ClearChoices();
+
+        dialogueIndex++;
+
+        if (dialogueIndex >= dialogueData.dialogueLines.Length)
         {
             EndDialogue();
+            return;
         }
+
+        DisplayCurrentLine();
     }
 
     IEnumerator TypeLine()
     {
         isTyping = true;
-        dialogueText.SetText("");
 
-        foreach(char letter in dialogueData.dialogueLines[dialogueIndex])
+        string line = dialogueData.dialogueLines[dialogueIndex];
+        dialogueUI.SetDialogueText("");
+
+        Debug.Log("TYPELINE STARTED");
+
+        for (int i = 0; i < line.Length; i++)
         {
-            dialogueText.text += letter;
+            dialogueUI.SetDialogueText(line.Substring(0, i + 1));
             yield return new WaitForSeconds(dialogueData.typingSpeed);
         }
 
         isTyping = false;
 
-        if(dialogueData.autoProgressLines.Length > dialogueIndex && dialogueData.autoProgressLines[dialogueIndex])
+        // FORCE FLOW CONTINUATION HERE
+        TryShowChoicesOrContinue();
+    }
+
+    void DisplayCurrentLine()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TypeLine());
+    }
+
+    void DisplayChoices(DialogueChoice choice)
+    {
+        Debug.Log("DISPLAY CHOICES CALLED");
+
+        if (choice.choices == null || choice.nextDialogueIndexes == null)
         {
-            yield return new WaitForSeconds(dialogueData.autoProgressDelay);
-            NextLine();
+            Debug.LogError("Choice arrays are NULL");
+            return;
         }
+
+        int count = Mathf.Min(choice.choices.Length, choice.nextDialogueIndexes.Length);
+
+        for (int i = 0; i < count; i++)
+        {
+            int nextIndex = choice.nextDialogueIndexes[i];
+            string text = choice.choices[i];
+
+            dialogueUI.CreateChoiceButton(text, () => ChooseOption(nextIndex));
+        }
+    }
+
+    void ChooseOption(int nextIndex)
+    {
+        dialogueIndex = nextIndex;
+        dialogueUI.ClearChoices();
+        DisplayCurrentLine();
     }
 
     public void EndDialogue()
     {
-        Debug.Log("EXIT CLICKED");
         StopAllCoroutines();
         isDialogueActive = false;
-        dialogueText.SetText("");
-        dialoguePanel.SetActive(false);
+
+        dialogueUI.SetDialogueText("");
+        dialogueUI.ShowDialogueUI(false);
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -108,9 +162,40 @@ public class Neighbor : MonoBehaviour, IInteractable
 
     IEnumerator ResetDialogueCooldown()
     {
-        yield return new WaitForSeconds(1f); // adjust if needed
+        yield return new WaitForSeconds(1f);
         canStartDialogue = true;
     }
 
+    void TryShowChoicesOrContinue()
+    {
+        Debug.Log("CHECKING CHOICES AT INDEX: " + dialogueIndex);
 
+        if (dialogueIndex == 1)
+        {
+            Debug.Log("FORCING TEST CHOICE");
+            DisplayChoices(dialogueData.choices[0]);
+        }
+
+
+        dialogueUI.ClearChoices();
+
+        if (dialogueData.choices != null)
+        {
+            foreach (DialogueChoice dialogueChoice in dialogueData.choices)
+            {
+                if (dialogueChoice.dialogueIndex == dialogueIndex)
+                {
+                    DisplayChoices(dialogueChoice);
+                    return;
+                }
+            }
+        }
+
+        if (dialogueData.autoProgressLines != null &&
+            dialogueIndex < dialogueData.autoProgressLines.Length &&
+            dialogueData.autoProgressLines[dialogueIndex])
+        {
+            Invoke(nameof(NextLine), dialogueData.autoProgressDelay);
+        }
+    }
 }
