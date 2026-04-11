@@ -10,10 +10,11 @@ public class Neighbor : MonoBehaviour, IInteractable
     public TMP_Text dialogueText, nameText;
     private int dialogueIndex;
     private bool isTyping, isDialogueActive;
+    private bool canStartDialogue = true;
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canStartDialogue)
         {
             if (!isDialogueActive)
             {
@@ -48,7 +49,8 @@ public class Neighbor : MonoBehaviour, IInteractable
 
         nameText.SetText(dialogueData.npcName);
         dialoguePanel.SetActive(true);
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         StartCoroutine(TypeLine());
     }
 
@@ -92,10 +94,23 @@ public class Neighbor : MonoBehaviour, IInteractable
 
     public void EndDialogue()
     {
+        Debug.Log("EXIT CLICKED");
         StopAllCoroutines();
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        canStartDialogue = false;
+        StartCoroutine(ResetDialogueCooldown());
     }
+
+    IEnumerator ResetDialogueCooldown()
+    {
+        yield return new WaitForSeconds(1f); // adjust if needed
+        canStartDialogue = true;
+    }
+
 
 }
