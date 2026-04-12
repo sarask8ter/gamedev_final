@@ -5,7 +5,9 @@ public class LightSwitch : MonoBehaviour, IInteractable
     public Light lightSource;
     private bool isOn = true;
 
-    public void Interact()
+    public bool IsInteractable => true;
+
+    public void Interact(PlayerInteractor player)
     {
         ToggleLight();
     }

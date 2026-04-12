@@ -15,13 +15,17 @@ public class Door : MonoBehaviour, IInteractable
         openRot = Quaternion.Euler(0, openAngle, 0);
     }
 
-    public void Interact()
+    public bool IsInteractable => true;
+
+    public void Interact(PlayerInteractor player)
     {
         isOpen = !isOpen;
         StopAllCoroutines();
         StartCoroutine(RotateDoor());
         Debug.Log("Door rotating. isOpen = " + isOpen);
     }
+
+    
     public void Slam()
     {
         isOpen = false;
