@@ -22,7 +22,8 @@ public class PlayerInteractor : MonoBehaviour
     // Returns true if successfully dropped item, false otherwise.
     public bool DropHeldItem(ItemName dropItem, Transform dropPoint)
     {
-        if (heldItem == null || heldItem.Item != dropItem) return false;
+        Debug.Log("Dropping: " + heldItem + " expected: " + dropItem);
+        if (heldItem == null) return false;
         heldItem.Drop(dropPoint);
         heldItem = null;
         return true;
@@ -31,7 +32,10 @@ public class PlayerInteractor : MonoBehaviour
     // Returns true if holding nothing originally, and now picked up item, false otherwise.
     public bool PickUpItem(Pickable item)
     {
+        Debug.Log("Trying to pick up: " + item.name + " | Currently holding: " + heldItem);
+
         if (heldItem != null) return false;
+
         heldItem = item;
         return true;
     }
@@ -65,15 +69,23 @@ public class PlayerInteractor : MonoBehaviour
 
     void TryInteract()
     {
-        Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.forward * raycastDist, Color.red, 2f);
+        Debug.Log("Trying interact");
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, raycastDist, interactableMask))
         {
+            Debug.Log("Hit: " + hit.collider.name);
+
             var interactable = hit.collider.GetComponentInParent<IInteractable>();
 
-            if (interactable != null && interactable.IsInteractable)
+            if (interactable != null)
             {
-                interactable.Interact(this);
+                Debug.Log("Found interactable");
+
+                if (interactable.IsInteractable)
+                {
+                    Debug.Log("Interacting");
+                    interactable.Interact(this);
+                }
             }
         }
     }
