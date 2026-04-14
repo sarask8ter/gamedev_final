@@ -2,28 +2,37 @@ using UnityEngine;
 
 public class MoveAndChangePhysicsMethods
 {
-    public static void MoveAndDisable(GameObject obj, string layerName, Transform movePoint)
+    public static void MoveToPoint(GameObject obj, Transform movePoint, bool reparent)
     {
-        MoveAndSetLayer(obj, layerName, movePoint);
-        ChangePhysics(obj, true);
+        if (reparent)
+        {
+            obj.transform.SetParent(movePoint, false);
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
+        }
+        else 
+        {
+            obj.transform.position = movePoint.position;
+            obj.transform.rotation = movePoint.rotation;
+        }
     }
 
-    public static void MoveAndEnable(GameObject obj, string layerName, Transform movePoint)
+    static void MoveAndSetLayer(GameObject obj, string layerName, Transform movePoint, bool reparent)
     {
-        MoveAndSetLayer(obj, layerName, movePoint);
+        MoveToPoint(obj, movePoint, reparent);
+        SetLayerRecursively(obj, LayerMask.NameToLayer(layerName));
+    }
+
+    public static void MoveAndDisable(GameObject obj, string layerName, Transform movePoint, bool reparent)
+    {
+        MoveAndSetLayer(obj, layerName, movePoint, reparent);
         ChangePhysics(obj, false);
     }
 
-    public static void MoveToPoint(GameObject obj, Transform movePoint)
+    public static void MoveAndEnable(GameObject obj, string layerName, Transform movePoint, bool reparent)
     {
-        obj.transform.position = movePoint.position;
-        obj.transform.rotation = movePoint.rotation;
-    }
-
-    static void MoveAndSetLayer(GameObject obj, string layerName, Transform movePoint)
-    {
-        MoveToPoint(obj, movePoint);
-        SetLayerRecursively(obj, LayerMask.NameToLayer(layerName));
+        MoveAndSetLayer(obj, layerName, movePoint, reparent);
+        ChangePhysics(obj, true);
     }
 
     static void SetLayerRecursively(GameObject obj, int layer)
