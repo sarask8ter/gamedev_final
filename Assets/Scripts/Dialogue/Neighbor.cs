@@ -11,7 +11,7 @@ public class Neighbor : MonoBehaviour, IInteractable
     private bool isTyping;
     private bool isDialogueActive;
     private bool canStartDialogue = true;
-    public bool IsInteractable => canStartDialogue;
+    public bool IsInteractable => canStartDialogue && !isDialogueActive;
     
     private InteractionPrompt interactionPrompt;
 
