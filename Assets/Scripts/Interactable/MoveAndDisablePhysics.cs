@@ -26,13 +26,13 @@ public class MoveAndChangePhysicsMethods
     public static void MoveAndDisable(GameObject obj, string layerName, Transform movePoint, bool reparent)
     {
         MoveAndSetLayer(obj, layerName, movePoint, reparent);
-        ChangePhysics(obj, true);
+        ChangePhysics(obj, false);
     }
 
     public static void MoveAndEnable(GameObject obj, string layerName, Transform movePoint, bool reparent)
     {
         MoveAndSetLayer(obj, layerName, movePoint, reparent);
-        ChangePhysics(obj, false);
+        ChangePhysics(obj, true);
     }
 
     static void SetLayerRecursively(GameObject obj, int layer)
