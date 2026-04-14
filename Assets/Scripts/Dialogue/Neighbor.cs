@@ -1,6 +1,4 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.InputSystem;
 
@@ -13,32 +11,33 @@ public class Neighbor : MonoBehaviour, IInteractable
     private bool isTyping;
     private bool isDialogueActive;
     private bool canStartDialogue = true;
-    public bool IsInteractable => !isDialogueActive;
+    public bool IsInteractable => canStartDialogue;
+    
+    private InteractionPrompt interactionPrompt;
 
-    private void Start()
+    private InputAction nextLineAction;
+
+    void Awake()
+    {
+        nextLineAction = InputSystem.actions.FindAction("Click");
+        interactionPrompt = GetComponentInChildren<InteractionPrompt>();
+    }
+
+    void Start()
     {
         dialogueUI = DialogueController.Instance;
     }
 
     void Update()
     {
-        if (isDialogueActive && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            EndDialogue();
-        }
+        if (isDialogueActive && nextLineAction.WasPressedThisFrame()) NextLine();
     }
-
 
     public void Interact(PlayerInteractor player)
     {
-
         if (dialogueData == null) return;
 
-        if (isDialogueActive)
-        {
-            NextLine();
-        }
-        else
+        if (canStartDialogue && !isDialogueActive)
         {
             StartDialogue();
         }
@@ -47,6 +46,7 @@ public class Neighbor : MonoBehaviour, IInteractable
     public void StartDialogue()
     {
         PlayerStateManager.State = PlayerState.Dialogue;
+        interactionPrompt.HideEUI();
 
         Debug.Log(dialogueData);
         Debug.Log("START DIALOGUE");
@@ -75,11 +75,16 @@ public class Neighbor : MonoBehaviour, IInteractable
             return;
         }
 
+        if (GetDialogueChoice() != null) return;
+
         dialogueUI.ClearChoices();
 
         dialogueIndex++;
 
-        if (dialogueIndex >= dialogueData.dialogueLines.Length)
+        if (dialogueIndex >= dialogueData.dialogueLines.Length ||
+            (dialogueData.endDialogueLines != null &&
+            dialogueIndex < dialogueData.endDialogueLines.Length &&
+            dialogueData.endDialogueLines[dialogueIndex]))
         {
             EndDialogue();
             return;
@@ -104,6 +109,16 @@ public class Neighbor : MonoBehaviour, IInteractable
         }
 
         isTyping = false;
+
+        if (dialogueData.endDialogueLines != null &&
+            dialogueIndex < dialogueData.endDialogueLines.Length &&
+            dialogueData.endDialogueLines[dialogueIndex])
+        {
+            EndDialogue();
+            yield break;
+        }
+
+        TryShowChoicesOrContinue();
 
         // FORCE FLOW CONTINUATION HERE
         TryShowChoicesOrContinue();
@@ -182,17 +197,8 @@ public class Neighbor : MonoBehaviour, IInteractable
 
         dialogueUI.ClearChoices(); // ✅ MOVE THIS TO THE TOP
 
-        if (dialogueData.choices != null)
-        {
-            foreach (DialogueChoice dialogueChoice in dialogueData.choices)
-            {
-                if (dialogueChoice.dialogueIndex == dialogueIndex)
-                {
-                    DisplayChoices(dialogueChoice);
-                    return;
-                }
-            }
-        }
+        var choice = GetDialogueChoice();
+        if (choice != null) DisplayChoices(choice);
 
         if (dialogueData.autoProgressLines != null &&
             dialogueIndex < dialogueData.autoProgressLines.Length &&
@@ -200,6 +206,22 @@ public class Neighbor : MonoBehaviour, IInteractable
         {
             Invoke(nameof(NextLine), dialogueData.autoProgressDelay);
         }
+    }
+
+    DialogueChoice GetDialogueChoice()
+    {
+        if (dialogueData.choices != null)
+        {
+            foreach (DialogueChoice dialogueChoice in dialogueData.choices)
+            {
+                if (dialogueChoice.dialogueIndex == dialogueIndex)
+                {
+                    return dialogueChoice;
+                }
+            }
+        }
+
+        return null;
     }
 
     void CancelAllAutoDialogue()

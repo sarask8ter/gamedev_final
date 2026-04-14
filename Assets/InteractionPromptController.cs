@@ -1,40 +1,28 @@
 using UnityEngine;
-using TMPro;
 
 public class InteractionPrompt : MonoBehaviour
 {
     public GameObject pressEUI;
-    public float interactRange = 2.5f;
     public Transform player;
 
-    private bool playerInRange;
-
-    void Update()
+    public void HideEUI()
     {
-        // Don't show prompt during dialogue
-        if (PlayerStateManager.State == PlayerState.Dialogue)
+        pressEUI.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            pressEUI.SetActive(false);
-            return;
-        }
-
-        float distance = Vector3.Distance(player.position, transform.position);
-        playerInRange = distance <= interactRange;
-
-        pressEUI.SetActive(playerInRange);
-
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            BeginDialogue();
+            pressEUI.SetActive(true);
         }
     }
 
-    void BeginDialogue()
+    void OnTriggerExit(Collider other)
     {
-        pressEUI.SetActive(false);
-
-        Debug.Log("Dialogue started!");
-
-        GetComponent<Neighbor>()?.StartDialogue();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            pressEUI.SetActive(false);
+        }
     }
 }
