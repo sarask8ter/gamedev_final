@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: RotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
@@ -2482,7 +2486,7 @@ MonoBehaviour:
   lights:
   - {fileID: 2025192322}
   doors:
-  - {fileID: 0}
+  - {fileID: 1950818960}
   cabinets:
   - {fileID: 87593938}
 --- !u!4 &1240238782
