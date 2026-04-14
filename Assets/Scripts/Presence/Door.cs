@@ -34,6 +34,7 @@ public class Door : MonoBehaviour, IInteractable
     }
     System.Collections.IEnumerator RotateDoor()
     {
+        Debug.Log("Rotating door");
         Quaternion target = isOpen ? openRot : closedRot;
 
         while (Quaternion.Angle(transform.rotation, target) > 0.1f)
