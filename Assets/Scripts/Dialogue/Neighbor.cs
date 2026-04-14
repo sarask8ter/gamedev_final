@@ -28,24 +28,10 @@ public class Neighbor : MonoBehaviour, IInteractable
         }
     }
 
-    // void OnTriggerStay(Collider other)
-    // {
-    //     if (other.CompareTag("Player") && canStartDialogue)
-    //     {
-    //         if (!isDialogueActive)
-    //         {
-    //             StartDialogue();
-    //         }
-    //     }
-    // }
-
-    // public bool CanInteract()
-    // {
-    //     return !isDialogueActive;
-    // }
 
     public void Interact(PlayerInteractor player)
     {
+
         if (dialogueData == null) return;
 
         if (isDialogueActive)
@@ -58,7 +44,7 @@ public class Neighbor : MonoBehaviour, IInteractable
         }
     }
 
-    void StartDialogue()
+    public void StartDialogue()
     {
         PlayerStateManager.State = PlayerState.Dialogue;
 
