@@ -2482,7 +2482,7 @@ MonoBehaviour:
   lights:
   - {fileID: 2025192322}
   doors:
-  - {fileID: 1950818960}
+  - {fileID: 0}
   cabinets:
   - {fileID: 87593938}
 --- !u!4 &1240238782
@@ -3622,7 +3622,7 @@ GameObject:
   - component: {fileID: 1860277721}
   - component: {fileID: 1860277720}
   - component: {fileID: 1860277719}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3812,7 +3812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1950818961}
   - component: {fileID: 1950818960}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DoorPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
