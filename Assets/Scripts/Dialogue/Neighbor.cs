@@ -118,8 +118,6 @@ public class Neighbor : MonoBehaviour, IInteractable
             yield break;
         }
 
-        TryShowChoicesOrContinue();
-
         // FORCE FLOW CONTINUATION HERE
         TryShowChoicesOrContinue();
     }
