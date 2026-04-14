@@ -112,12 +112,9 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (PlayerStateManager.State == PlayerState.Normal)
-			{
-				JumpAndGravity();
-				GroundedCheck();
-				Move();
-			}
+			JumpAndGravity();
+			GroundedCheck();
+			Move();
 		}
 
 		private void LateUpdate()
@@ -156,6 +153,12 @@ namespace StarterAssets
 
 		private void Move()
 		{
+			if (PlayerStateManager.State != PlayerState.Normal)
+			{
+				_controller.Move(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+				return;
+			}
+
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
