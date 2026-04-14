@@ -45,7 +45,7 @@ public class PlayerInspector : MonoBehaviour
     {
         PlayerStateManager.State = PlayerState.Inspecting;
         _instance.inspectedItem = Instantiate(objToInspect);
-        MoveAndChangePhysicsMethods.MoveAndDisable(_instance.inspectedItem, _instance.inspectItemLayer, _instance.inspectPoint);
+        MoveAndChangePhysicsMethods.MoveAndDisable(_instance.inspectedItem, _instance.inspectItemLayer, _instance.inspectPoint, true);
     }
 
     public static void EndInspection()

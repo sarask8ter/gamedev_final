@@ -60,11 +60,6 @@ public class PlayerInteractor : MonoBehaviour
         {
             TryInteract();
         }
-
-        if (heldItem != null)
-        {
-            MoveAndChangePhysicsMethods.MoveToPoint(heldItem.gameObject, holdingPoint);
-        }
     }
 
     void TryInteract()
