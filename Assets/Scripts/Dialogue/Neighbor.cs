@@ -2,8 +2,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.InputSystem;
 
-public class Neighbor : MonoBehaviour, IDialogueInteractable
+public class Neighbor : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
     private DialogueController dialogueUI;
@@ -12,29 +13,38 @@ public class Neighbor : MonoBehaviour, IDialogueInteractable
     private bool isTyping;
     private bool isDialogueActive;
     private bool canStartDialogue = true;
+    public bool IsInteractable => !isDialogueActive;
 
     private void Start()
     {
         dialogueUI = DialogueController.Instance;
     }
 
-    void OnTriggerStay(Collider other)
+    void Update()
     {
-        if (other.CompareTag("Player") && canStartDialogue)
+        if (isDialogueActive && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (!isDialogueActive)
-            {
-                StartDialogue();
-            }
+            EndDialogue();
         }
     }
 
-    public bool CanInteract()
-    {
-        return !isDialogueActive;
-    }
+    // void OnTriggerStay(Collider other)
+    // {
+    //     if (other.CompareTag("Player") && canStartDialogue)
+    //     {
+    //         if (!isDialogueActive)
+    //         {
+    //             StartDialogue();
+    //         }
+    //     }
+    // }
 
-    public void Interact()
+    // public bool CanInteract()
+    // {
+    //     return !isDialogueActive;
+    // }
+
+    public void Interact(PlayerInteractor player)
     {
         if (dialogueData == null) return;
 
@@ -50,6 +60,8 @@ public class Neighbor : MonoBehaviour, IDialogueInteractable
 
     void StartDialogue()
     {
+        PlayerStateManager.State = PlayerState.Dialogue;
+
         Debug.Log(dialogueData);
         Debug.Log("START DIALOGUE");
 
@@ -157,6 +169,8 @@ public class Neighbor : MonoBehaviour, IDialogueInteractable
 
     public void EndDialogue()
     {
+        PlayerStateManager.State = PlayerState.Normal;
+        
         StopAllCoroutines();
         isDialogueActive = false;
 
@@ -180,14 +194,7 @@ public class Neighbor : MonoBehaviour, IDialogueInteractable
     {
         Debug.Log("CHECKING CHOICES AT INDEX: " + dialogueIndex);
 
-        if (dialogueIndex == 1)
-        {
-            Debug.Log("FORCING TEST CHOICE");
-            DisplayChoices(dialogueData.choices[0]);
-        }
-
-
-        dialogueUI.ClearChoices();
+        dialogueUI.ClearChoices(); // ✅ MOVE THIS TO THE TOP
 
         if (dialogueData.choices != null)
         {
