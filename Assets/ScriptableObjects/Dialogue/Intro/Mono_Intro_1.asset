@@ -10,17 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Start
+  m_Name: Mono_Intro_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  text: "Hey\u2026 you got in okay?"
-  next: {fileID: 0}
-  choices:
-  - text: Open door
-    nextNode: {fileID: 11400000, guid: ffab4dc37e0894bc594e014bd9eb17a4, type: 2}
-  - text: Ignore
-    nextNode: {fileID: 11400000, guid: 26593917fd733426c88e73063e24b774, type: 2}
-  - text: Look
-    nextNode: {fileID: 11400000, guid: 656734053bc5a45d492e614d3b4145ce, type: 2}
-  autoProgress: 1
+  text: Oh wow looks like a decent place for the $69 I paid
+  next: {fileID: 11400000, guid: e80b32fefc9a54692a13b36c9db5c319, type: 2}
+  choices: []
+  autoProgress: 0
   autoDelay: 1.5
   speakerName: 
