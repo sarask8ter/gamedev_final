@@ -4631,7 +4631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
-  dialogueData: {fileID: 11400000, guid: dda515a3007414db8a390771f0d5c173, type: 2}
+  npcName: Ted
+  startNode: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0
