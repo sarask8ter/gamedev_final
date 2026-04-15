@@ -46,7 +46,7 @@ public class Neighbor : MonoBehaviour, IInteractable
         StartDialogue();
     }
 
-    void StartDialogue()
+    public void StartDialogue()
     {
         isDialogueActive = true;
         currentNode = startNode;
@@ -54,6 +54,17 @@ public class Neighbor : MonoBehaviour, IInteractable
         interactionPrompt.HideEUI();
 
         dialogueUI.StartDialogue(npcName);
+        ShowNode();
+    }
+
+    public void StartDialogue(DialogueNode node, string speaker = "")
+    {
+        isDialogueActive = true;
+        currentNode = node;
+
+        interactionPrompt.HideEUI();
+
+        dialogueUI.StartDialogue(speaker);
         ShowNode();
     }
 

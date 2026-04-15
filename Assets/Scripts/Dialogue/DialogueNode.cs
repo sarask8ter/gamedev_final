@@ -12,4 +12,5 @@ public class DialogueNode : ScriptableObject
 
     public bool autoProgress;
     public float autoDelay = 1.5f;
+    public string speakerName;
 }
