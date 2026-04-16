@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable
+public class DoorPivot : MonoBehaviour, IInteractable
 {
-    public float openAngle = 90f;
-    public float speed = 2f;
+    [SerializeField] private float openAngle;
+    [SerializeField] private float speed;
 
     private bool isOpen = false;
     private Quaternion closedRot;

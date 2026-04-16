@@ -16,7 +16,7 @@ public class SpiritController : MonoBehaviour
     [SerializeField] private float randomEventRepeatDelay = 10f;
 
     public LightSwitch[] lights;
-    public Door[] doors;
+    public DoorPivot[] doors;
     public Cabinet[] cabinets;
 
     void Start()
