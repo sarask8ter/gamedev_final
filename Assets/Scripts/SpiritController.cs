@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpiritController : MonoBehaviour
 {
     public LightSwitch[] lights;
-    public Door[] doors;
+    public DoorPivot[] doors;
     public Cabinet[] cabinets;
 
     void Start()
