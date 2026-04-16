@@ -23,7 +23,7 @@ public class ProgressionAction
     [SerializeField] private bool activeState = true;
     [SerializeField] private GameObject prefab;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Door door;
+    [SerializeField] private DoorPivot door;
     [SerializeField] private SpiritController spiritController;
     [SerializeField] private SpiritEventType spiritEventType = SpiritEventType.Random;
     [SerializeField] private Neighbor neighbor;

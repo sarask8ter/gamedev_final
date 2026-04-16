@@ -13,8 +13,8 @@ public class ProgressionManager : MonoBehaviour
 
     void Awake()
     {
-        if (tasksManager == null) tasksManager = FindObjectOfType<TasksManager>();
-        if (spiritController == null) spiritController = FindObjectOfType<SpiritController>();
+        if (tasksManager == null) tasksManager = FindAnyObjectByType<TasksManager>();
+        if (spiritController == null) spiritController = FindAnyObjectByType<SpiritController>();
     }
 
     void OnEnable()
@@ -121,7 +121,7 @@ public class ProgressionManager : MonoBehaviour
         controller.TriggerEvent(eventType);
     }
 
-    public void OpenDoor(Door door)
+    public void OpenDoor(DoorPivot door)
     {
         if (door == null) return;
         door.Open();
@@ -130,7 +130,7 @@ public class ProgressionManager : MonoBehaviour
     public void StartNeighborDialogue(Neighbor neighbor)
     {
         if (neighbor == null) return;
-        neighbor.StartDialogueFromProgression();
+        neighbor.StartDialogue();
     }
 
     public void SpawnPrefab(GameObject prefab, Transform spawnPoint)

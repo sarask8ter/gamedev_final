@@ -49,4 +49,15 @@ public class DialogueController : MonoBehaviour
         choiceButton.GetComponentInChildren<TMP_Text>().text = choiceText;
         choiceButton.GetComponent<Button>().onClick.AddListener(onClick);
     }
+
+    public void StartDialogue(string npcName)
+    {
+        ShowDialogueUI(true);
+        SetNPCInfo(npcName);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        PlayerStateManager.State = PlayerState.Dialogue;
+    }
 }
