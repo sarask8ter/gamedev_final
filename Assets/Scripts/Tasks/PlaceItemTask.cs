@@ -11,6 +11,7 @@ public class PlaceItemTask : Task
     public override void StartTask()
     {
         count = 0;
+        TasksEvents.OnItemPlace -= HandleProgress;
         UpdateProgressText();
         TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
         TasksEvents.OnItemPlace += HandleProgress;

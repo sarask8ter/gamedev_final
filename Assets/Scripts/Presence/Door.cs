@@ -19,19 +19,34 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
-        isOpen = !isOpen;
-        StopAllCoroutines();
-        StartCoroutine(RotateDoor());
-        Debug.Log("Door rotating. isOpen = " + isOpen);
+        SetOpen(!isOpen);
     }
 
-    
     public void Slam()
     {
         isOpen = false;
         StopAllCoroutines();
         transform.rotation = closedRot;
     }
+
+    public void Open()
+    {
+        SetOpen(true);
+    }
+
+    public void Close()
+    {
+        SetOpen(false);
+    }
+
+    void SetOpen(bool shouldOpen)
+    {
+        isOpen = shouldOpen;
+        StopAllCoroutines();
+        StartCoroutine(RotateDoor());
+        Debug.Log("Door rotating. isOpen = " + isOpen);
+    }
+
     System.Collections.IEnumerator RotateDoor()
     {
         Debug.Log("Rotating door");

@@ -5,8 +5,10 @@ using UnityEngine;
 public class TasksManager : MonoBehaviour
 {
     [SerializeField] private float taskDelay;
+    [SerializeField] private bool autoRunTaskList = true;
     [SerializeField] List<Task> tasks;
     private int currTaskIdx = 0;
+    private Task currentTask;
     private static TasksManager _instance;
 
     void Awake()
@@ -33,11 +35,15 @@ public class TasksManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartNextTask());
+        if (autoRunTaskList) StartCoroutine(StartNextTask());
     }
 
-    void NextTask(TaskData _)
+    void NextTask(TaskData taskData)
     {
+        if (currentTask == null || taskData.Id != currentTask.TaskId) return;
+
+        if (!autoRunTaskList) return;
+
         currTaskIdx++;
         StartCoroutine(StartNextTask());
     }
@@ -45,6 +51,19 @@ public class TasksManager : MonoBehaviour
     IEnumerator StartNextTask()
     {
         yield return new WaitForSeconds(taskDelay);
-        if (currTaskIdx < tasks.Count) tasks[currTaskIdx].StartTask();
+        if (currTaskIdx < tasks.Count)
+        {
+            currentTask = tasks[currTaskIdx];
+            currentTask.StartTask();
+        }
+    }
+
+    public void StartExternalTask(Task task)
+    {
+        if (task == null) return;
+
+        StopAllCoroutines();
+        currentTask = task;
+        currentTask.StartTask();
     }
 }

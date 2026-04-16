@@ -1,41 +1,57 @@
 using UnityEngine;
 
+public enum SpiritEventType
+{
+    Random,
+    FlickerLights,
+    SlamDoor,
+    KnockCabinet,
+    ShakeObject,
+}
+
 public class SpiritController : MonoBehaviour
 {
+    [SerializeField] private bool playRandomEvents = false;
+    [SerializeField] private float randomEventStartDelay = 5f;
+    [SerializeField] private float randomEventRepeatDelay = 10f;
+
     public LightSwitch[] lights;
     public Door[] doors;
     public Cabinet[] cabinets;
 
     void Start()
     {
-        InvokeRepeating("DoRandomEvent", 5f, 10f);
+        if (playRandomEvents)
+        {
+            InvokeRepeating(nameof(DoRandomEvent), randomEventStartDelay, randomEventRepeatDelay);
+        }
     }
 
     // Currently does random events every 10 seconds invoked at the start; we can change based on the storyline how we want the spirit events be triggered later on
-    void DoRandomEvent()
+    public void DoRandomEvent()
     {
-        int rand = Random.Range(0, 4);
-        Debug.Log("Spirit event: " + rand);
+        TriggerEvent((SpiritEventType)Random.Range(1, 5));
+    }
 
-        switch (rand)
+    public void TriggerEvent(SpiritEventType eventType)
+    {
+        Debug.Log("Spirit event: " + eventType);
+
+        switch (eventType)
         {
-            case 0:
-                Debug.Log("Flicker lights");
+            case SpiritEventType.Random:
+                DoRandomEvent();
+                break;
+            case SpiritEventType.FlickerLights:
                 FlickerLights();
                 break;
-
-            case 1:
-                Debug.Log("Slam door");
+            case SpiritEventType.SlamDoor:
                 SlamDoor();
                 break;
-
-            case 2:
-                Debug.Log("Knock cabinet");
+            case SpiritEventType.KnockCabinet:
                 KnockCabinet();
                 break;
-
-            case 3:
-                Debug.Log("Shake object");
+            case SpiritEventType.ShakeObject:
                 ShakeObject();
                 break;
         }
@@ -51,16 +67,19 @@ public class SpiritController : MonoBehaviour
 
     void SlamDoor()
     {
+        if (doors == null || doors.Length == 0) return;
         doors[Random.Range(0, doors.Length)].Slam();
     }
 
     void KnockCabinet()
     {
+        if (cabinets == null || cabinets.Length == 0) return;
         cabinets[Random.Range(0, cabinets.Length)].KnockOver();
     }
 
     void ShakeObject()
     {
+        if (cabinets == null || cabinets.Length == 0) return;
         // simple shake example
         Transform obj = cabinets[0].transform;
 

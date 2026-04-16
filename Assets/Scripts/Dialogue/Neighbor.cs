@@ -60,7 +60,18 @@ public class Neighbor : MonoBehaviour, IInteractable
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        if (!string.IsNullOrEmpty(dialogueData.dialogueStartedSignalId))
+        {
+            ProgressionEvents.RaiseSignal(dialogueData.dialogueStartedSignalId);
+        }
+
         DisplayCurrentLine();
+    }
+
+    public void StartDialogueFromProgression()
+    {
+        if (!canStartDialogue || isDialogueActive || dialogueData == null) return;
+        StartDialogue();
     }
 
     void NextLine()
@@ -154,6 +165,29 @@ public class Neighbor : MonoBehaviour, IInteractable
     {
         CancelInvoke(nameof(NextLine));
 
+        var choice = GetDialogueChoice();
+        if (choice != null &&
+            choice.signalIds != null &&
+            choice.dialogueIndex == dialogueIndex)
+        {
+            int selectedChoiceIndex = -1;
+
+            for (int i = 0; i < choice.nextDialogueIndexes.Length; i++)
+            {
+                if (choice.nextDialogueIndexes[i] == nextIndex)
+                {
+                    selectedChoiceIndex = i;
+                    break;
+                }
+            }
+
+            if (selectedChoiceIndex >= 0 && selectedChoiceIndex < choice.signalIds.Length)
+            {
+                string signalId = choice.signalIds[selectedChoiceIndex];
+                if (!string.IsNullOrEmpty(signalId)) ProgressionEvents.RaiseSignal(signalId);
+            }
+        }
+
         if (nextIndex < 0 || nextIndex >= dialogueData.dialogueLines.Length)
         {
             Debug.LogWarning("Invalid nextIndex: " + nextIndex);
@@ -178,6 +212,11 @@ public class Neighbor : MonoBehaviour, IInteractable
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (!string.IsNullOrEmpty(dialogueData.dialogueEndedSignalId))
+        {
+            ProgressionEvents.RaiseSignal(dialogueData.dialogueEndedSignalId);
+        }
 
         canStartDialogue = false;
         StartCoroutine(ResetDialogueCooldown());
