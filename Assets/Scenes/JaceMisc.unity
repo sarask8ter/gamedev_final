@@ -1940,6 +1940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TasksManager
   taskDelay: 1
+  autoRunTaskList: 1
   tasks:
   - {fileID: 11400000, guid: 555892cb6e61f471caebb183a822b594, type: 2}
   - {fileID: 11400000, guid: 775376c463b0f400289a87d5a08c0de6, type: 2}
@@ -2569,6 +2570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e088edcc2c8054902ac6b6f465a32328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiritController
+  playRandomEvents: 0
+  randomEventStartDelay: 5
+  randomEventRepeatDelay: 10
   lights:
   - {fileID: 2025192322}
   doors:
@@ -3422,6 +3426,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1655219518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655219520}
+  - component: {fileID: 1655219519}
+  m_Layer: 0
+  m_Name: ProgressionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1655219519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655219518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32baa9452c0a74a3f9478d382b09f247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProgressionManager
+  milestones:
+  - id: boxes_finished
+    requiredSignals:
+    - task:complete:BoxesMovedIn
+    requiredMilestones: []
+    raiseSignalOnCompletion: 0
+    actions:
+    - actionType: 5
+      id: 
+      task: {fileID: 0}
+      targetObject: {fileID: 0}
+      activeState: 0
+      prefab: {fileID: 0}
+      spawnPoint: {fileID: 0}
+      door: {fileID: 0}
+      spiritController: {fileID: 0}
+      spiritEventType: 0
+      neighbor: {fileID: 0}
+    - actionType: 3
+      id: 
+      task: {fileID: 0}
+      targetObject: {fileID: 0}
+      activeState: 1
+      prefab: {fileID: 0}
+      spawnPoint: {fileID: 0}
+      door: {fileID: 0}
+      spiritController: {fileID: 0}
+      spiritEventType: 0
+      neighbor: {fileID: 0}
+  tasksManager: {fileID: 748870861}
+  spiritController: {fileID: 1240238781}
+--- !u!4 &1655219520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655219518}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.04379, y: 7.32963, z: 2.71167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -4620,7 +4699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
-  dialogueData: {fileID: 11400000, guid: dda515a3007414db8a390771f0d5c173, type: 2}
+  dialogueStartedSignalId: 
+  dialogueEndedSignalId: 
+  npcName: Ted
+  startNode: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -89176,6 +89258,8 @@ SceneRoots:
   - {fileID: 835692097}
   - {fileID: 1854420356}
   - {fileID: 748870862}
+  - {fileID: 1240238782}
+  - {fileID: 1655219520}
   - {fileID: 900085519}
   - {fileID: 552911220}
   - {fileID: 357588708}
@@ -89188,4 +89272,3 @@ SceneRoots:
   - {fileID: 2025192326}
   - {fileID: 1950818961}
   - {fileID: 87593943}
-  - {fileID: 1240238782}

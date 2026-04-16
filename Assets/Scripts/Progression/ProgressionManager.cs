@@ -6,16 +6,9 @@ public class ProgressionManager : MonoBehaviour
     [SerializeField] private ProgressionMilestone[] milestones;
 
     [Header("System References")]
-    [SerializeField] private TasksManager tasksManager;
     [SerializeField] private SpiritController spiritController;
 
     private readonly ProgressState state = new ProgressState();
-
-    void Awake()
-    {
-        if (tasksManager == null) tasksManager = FindAnyObjectByType<TasksManager>();
-        if (spiritController == null) spiritController = FindAnyObjectByType<SpiritController>();
-    }
 
     void OnEnable()
     {
@@ -109,8 +102,8 @@ public class ProgressionManager : MonoBehaviour
 
     public void StartTask(Task task)
     {
-        if (task == null || tasksManager == null) return;
-        tasksManager.StartExternalTask(task);
+        if (task == null) return;
+        task.StartTask();
     }
 
     public void TriggerSpiritEvent(SpiritEventType eventType, SpiritController overrideController = null)
