@@ -11,7 +11,13 @@ public abstract class Task : ScriptableObject
     public string Description => description;
     public string ProgressText => progressText;
 
-    public abstract void StartTask();
+    public void StartTask()
+    {
+        PreStartTask();
+        TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
+    }
+
+    protected abstract void PreStartTask();
 
     protected TaskData CompileTaskData()
     {

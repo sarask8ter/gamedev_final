@@ -8,12 +8,10 @@ public class PlaceItemTask : Task
 
     private int count;
 
-    public override void StartTask()
+    protected override void PreStartTask()
     {
         count = 0;
-        TasksEvents.OnItemPlace -= HandleProgress;
         UpdateProgressText();
-        TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
         TasksEvents.OnItemPlace += HandleProgress;
     }
 
