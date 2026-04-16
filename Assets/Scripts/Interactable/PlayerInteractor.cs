@@ -64,7 +64,7 @@ public class PlayerInteractor : MonoBehaviour
 
     void TryInteract()
     {
-        Debug.Log("Trying interact");
+        Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.forward * raycastDist, Color.red, 1f);
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, raycastDist, interactableMask))
         {
