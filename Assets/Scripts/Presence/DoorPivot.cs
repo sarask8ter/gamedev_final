@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class DoorPivot : MonoBehaviour, IInteractable
 {
+    private bool isInteractable;
+    public bool IsInteractable => isInteractable;
     [SerializeField] private float openAngle;
     [SerializeField] private float speed;
+    [SerializeField] private ProgressEvent unlockEvent;
 
     private bool isOpen = false;
     private Quaternion closedRot;
@@ -13,9 +16,9 @@ public class DoorPivot : MonoBehaviour, IInteractable
     {
         closedRot = transform.rotation;
         openRot = Quaternion.Euler(0, openAngle, 0);
-    }
 
-    public bool IsInteractable => true;
+        ProgressManager.SubscribeToStart(unlockEvent, () => isInteractable = true);
+    }
 
     public void Interact(PlayerInteractor player)
     {
