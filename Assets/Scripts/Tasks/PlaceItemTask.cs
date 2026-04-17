@@ -15,6 +15,11 @@ public class PlaceItemTask : Task
         TasksEvents.OnItemPlace += HandleProgress;
     }
 
+    protected override void PreCompleteTask()
+    {
+        TasksEvents.OnItemPlace -= HandleProgress;
+    }
+
     protected void HandleProgress(ItemName placedItem)
     {
         if (placedItem != item) return;
@@ -23,12 +28,6 @@ public class PlaceItemTask : Task
         UpdateProgressText();
         TasksEvents.OnTaskProgress?.Invoke(CompileTaskData());
         if (count >= targetCount) CompleteTask();
-    }
-
-    void CompleteTask()
-    {
-        TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
-        TasksEvents.OnItemPlace -= HandleProgress;
     }
 
     void UpdateProgressText()

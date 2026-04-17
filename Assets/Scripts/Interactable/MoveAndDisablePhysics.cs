@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class MoveAndChangePhysicsMethods
 {
+    public static void MoveToDefaultLayer(GameObject obj)
+    {
+        obj.layer = LayerMask.NameToLayer("Default");
+    }
+
     public static void MoveToPoint(GameObject obj, Transform movePoint, bool reparent)
     {
         if (reparent)
