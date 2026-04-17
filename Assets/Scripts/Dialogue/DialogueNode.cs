@@ -4,13 +4,11 @@ using UnityEngine;
 public class DialogueNode : ScriptableObject
 {
     [TextArea]
-    public string text;
-
-    public DialogueNode next;
-
-    public DialogueChoice[] choices;
-
-    public bool autoProgress;
-    public float autoDelay = 1.5f;
-    public string speakerName;
+    public string Text;
+    public ProgressEvent TriggeringEvent;
+    public DialogueNode Next;
+    public DialogueChoice[] Choices;
+    public bool AutoProgress;
+    public float AutoDelay = 1.5f;
+    public string SpeakerName;
 }
