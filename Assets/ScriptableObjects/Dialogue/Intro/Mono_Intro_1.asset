@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: Mono_Intro_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  text: Oh wow looks like a decent place for the $69 I paid
-  next: {fileID: 11400000, guid: e80b32fefc9a54692a13b36c9db5c319, type: 2}
-  choices: []
-  autoProgress: 0
-  autoDelay: 1.5
-  speakerName: 
+  Text: I just gotta find the key. The owner said it would be under the doormat.
+  TriggeringEvent: 0
+  Next: {fileID: 0}
+  Choices: []
+  AutoProgress: 0
+  AutoDelay: 0
+  SpeakerName: 

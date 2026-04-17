@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public static DialogueController Instance { get; private set; }
 
     public GameObject dialoguePanel;
     public TMP_Text dialogueText, nameText;
     public Transform choiceContainer;
     public GameObject choiceButtonPrefab;
+    private static DialogueController _instance;
 
     void Awake()
     {
-        if (Instance == null)
+        if (_instance == null)
         {
-           Instance = this; 
+           _instance = this; 
         }
         else
         {
@@ -23,34 +23,34 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void ShowDialogueUI(bool show)
+    public static void ShowDialogueUI(bool show)
     {
-        dialoguePanel.SetActive(show); // Toggle UI visibility
+        _instance.dialoguePanel.SetActive(show); // Toggle UI visibility
     }
 
-    public void SetNPCInfo(string npcName)
+    public static void SetNPCInfo(string npcName)
     {
-        nameText.text = npcName;
+        _instance.nameText.text = npcName;
     }
 
-    public void SetDialogueText(string text)
+    public static void SetDialogueText(string text)
     {
-        dialogueText.text = text;
+        _instance.dialogueText.text = text;
     }
 
-    public void ClearChoices()
+    public static void ClearChoices()
     {
-        foreach (Transform child in choiceContainer) Destroy(child.gameObject);
+        foreach (Transform child in _instance.choiceContainer) Destroy(child.gameObject);
     }
 
-    public void CreateChoiceButton(string choiceText, UnityEngine.Events.UnityAction onClick)
+    public static void CreateChoiceButton(string choiceText, UnityEngine.Events.UnityAction onClick)
     {
-        GameObject choiceButton = Instantiate(choiceButtonPrefab, choiceContainer);
+        GameObject choiceButton = Instantiate(_instance.choiceButtonPrefab, _instance.choiceContainer);
         choiceButton.GetComponentInChildren<TMP_Text>().text = choiceText;
         choiceButton.GetComponent<Button>().onClick.AddListener(onClick);
     }
 
-    public void StartDialogue(string npcName)
+    public static void StartDialogue(string npcName)
     {
         ShowDialogueUI(true);
         SetNPCInfo(npcName);

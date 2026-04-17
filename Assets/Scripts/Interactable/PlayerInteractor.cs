@@ -13,7 +13,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private string pickedUpLayerName;
     public string PickedUpLayerName => pickedUpLayerName;
 
-    private Pickable heldItem;
+    private PickableItem heldItem;
     private InputAction interactAction;
     private static PlayerInteractor _instance;
 
@@ -22,7 +22,11 @@ public class PlayerInteractor : MonoBehaviour
     // Returns true if successfully dropped item, false otherwise.
     public bool DropHeldItem(ItemName dropItem, Transform dropPoint)
     {
-        Debug.Log("Dropping: " + heldItem + " expected: " + dropItem);
+        if (dropItem != heldItem.Item)
+        {
+            Debug.LogError("Dropping: " + heldItem + " expected: " + dropItem);
+            return false;
+        }
         if (heldItem == null) return false;
         heldItem.Drop(dropPoint);
         heldItem = null;
@@ -30,7 +34,7 @@ public class PlayerInteractor : MonoBehaviour
     }
 
     // Returns true if holding nothing originally, and now picked up item, false otherwise.
-    public bool PickUpItem(Pickable item)
+    public bool PickUpItem(PickableItem item)
     {
         Debug.Log("Trying to pick up: " + item.name + " | Currently holding: " + heldItem);
 

@@ -8,12 +8,16 @@ public class PlaceItemTask : Task
 
     private int count;
 
-    public override void StartTask()
+    protected override void PreStartTask()
     {
         count = 0;
         UpdateProgressText();
-        TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
         TasksEvents.OnItemPlace += HandleProgress;
+    }
+
+    protected override void PreCompleteTask()
+    {
+        TasksEvents.OnItemPlace -= HandleProgress;
     }
 
     protected void HandleProgress(ItemName placedItem)
@@ -24,12 +28,6 @@ public class PlaceItemTask : Task
         UpdateProgressText();
         TasksEvents.OnTaskProgress?.Invoke(CompileTaskData());
         if (count >= targetCount) CompleteTask();
-    }
-
-    void CompleteTask()
-    {
-        TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
-        TasksEvents.OnItemPlace -= HandleProgress;
     }
 
     void UpdateProgressText()
