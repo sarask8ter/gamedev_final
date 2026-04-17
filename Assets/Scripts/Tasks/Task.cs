@@ -2,12 +2,15 @@ using UnityEngine;
 
 public abstract class Task : ScriptableObject
 {
+    public ProgressEvent TriggeringEvent;
+
     [SerializeField] protected string description;
     [SerializeField] protected string progressText;
 
-    [SerializeField] protected string taskId;
+    [SerializeField] protected TaskId id;
+    [SerializeField] protected float progressCompletionDelay;
 
-    public string TaskId => taskId;
+    public TaskId Id => id;
     public string Description => description;
     public string ProgressText => progressText;
 
@@ -19,8 +22,17 @@ public abstract class Task : ScriptableObject
 
     protected abstract void PreStartTask();
 
+    protected abstract void PreCompleteTask();
+
+    protected void CompleteTask()
+    {
+        PreCompleteTask();
+        TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
+        DelayHelper.Delay(progressCompletionDelay, () => ProgressManager.CompleteEvent(TriggeringEvent));
+    }
+
     protected TaskData CompileTaskData()
     {
-        return new TaskData(taskId, description, progressText);
+        return new TaskData(id, description, progressText);
     }
 }

@@ -14,7 +14,7 @@ public class MonologueTrigger : MonoBehaviour
         {
             triggered = true;
 
-            Neighbor neighbor = FindAnyObjectByType<Neighbor>();
+            Speaker neighbor = FindAnyObjectByType<Speaker>();
             neighbor.StartDialogue(startNode, ""); // empty name = monologue
         }
     }

@@ -3080,7 +3080,6 @@ MonoBehaviour:
       spiritController: {fileID: 0}
       spiritEventType: 0
       neighbor: {fileID: 0}
-  tasksManager: {fileID: 748870861}
   spiritController: {fileID: 1240238781}
 --- !u!1 &1473957068
 GameObject:
@@ -4783,7 +4782,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
-  dialogueData: {fileID: 11400000, guid: dda515a3007414db8a390771f0d5c173, type: 2}
+  dialogueStartedSignalId: 
+  dialogueEndedSignalId: 
+  npcName: 
+  startNode: {fileID: 0}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0

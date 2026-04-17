@@ -5,25 +5,37 @@ using UnityEngine;
 public class CurrentTaskUI : MonoBehaviour
 {
     [SerializeField] private float strikethroughTime;
+    [SerializeField] private float taskStayTime;
+    [SerializeField] private GameObject tasksHeader;
+    [SerializeField] private GameObject currentTask;
     private TextMeshProUGUI currentTaskText;
 
     void Awake()
     {
-        currentTaskText = GetComponent<TextMeshProUGUI>();
+        currentTaskText = currentTask.GetComponent<TextMeshProUGUI>();
     }
 
     void OnEnable()
     {
-        TasksEvents.OnTaskStart += UpdateTaskText;
+        TasksEvents.OnTaskStart += TaskStart;
         TasksEvents.OnTaskProgress += UpdateTaskText;
         TasksEvents.OnTaskComplete += CompleteTask;
     }
 
     void OnDisable()
     {
-        TasksEvents.OnTaskStart -= UpdateTaskText;
+        TasksEvents.OnTaskStart -= TaskStart;
         TasksEvents.OnTaskProgress -= UpdateTaskText;
         TasksEvents.OnTaskComplete -= CompleteTask;
+    }
+
+    void TaskStart(TaskData task)
+    {
+        StopAllCoroutines();
+
+        tasksHeader.SetActive(true);
+        currentTask.SetActive(true);
+        UpdateTaskText(task);
     }
 
     void UpdateTaskText(TaskData task)
@@ -33,7 +45,7 @@ public class CurrentTaskUI : MonoBehaviour
 
     void CompleteTask(TaskData task)
     {
-        StartCoroutine(AnimateStrikethrough(task.Description + " ", task.Progress));
+        StartCoroutine(AnimateStrikethroughThenHide(task.Description + " ", task.Progress));
     }
 
     void SetTaskText(string beginning, string bolded)
@@ -41,7 +53,7 @@ public class CurrentTaskUI : MonoBehaviour
         currentTaskText.text = beginning + "<b>" + bolded + "</b>";
     }
 
-    IEnumerator AnimateStrikethrough(string description, string progress)
+    IEnumerator AnimateStrikethroughThenHide(string description, string progress)
     {
         const string beginningTag = "<s>";
         const string endTag = "</s>";
@@ -70,5 +82,10 @@ public class CurrentTaskUI : MonoBehaviour
 
             isDesc = false;
         }
+
+        yield return new WaitForSeconds(taskStayTime);
+
+        tasksHeader.SetActive(false);
+        currentTask.SetActive(false);
     }
 }
