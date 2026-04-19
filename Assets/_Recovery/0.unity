@@ -681,37 +681,6 @@ PrefabInstance:
       addedObject: {fileID: 1180396687}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
---- !u!1 &210644905
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 210644906}
-  m_Layer: 0
-  m_Name: PlayerDoorPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &210644906
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210644905}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235080517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,7 +2360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpeaker
   npcName: You
   startNode: {fileID: 0}
-  eventHandler: {fileID: 0}
   dialogues:
   - {fileID: 11400000, guid: 4ee5469a767d64b498c6040abab480d4, type: 2}
   - {fileID: 11400000, guid: 79617c124330c4656b1b78d819f90aaf, type: 2}
@@ -2560,7 +2528,7 @@ Transform:
   m_GameObject: {fileID: 1384652074}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.7, z: 1}
+  m_LocalPosition: {x: 0, y: 0.3, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3124,7 +3092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 0100000002000000030000000400000005000000060000000700000008000000
+  sequence: 0100000002000000030000000400000005000000060000000700000009000000
   currEvtIdx: 0
 --- !u!1 &1661750084
 GameObject:
@@ -3203,8 +3171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1716919721}
-  - component: {fileID: 1716919722}
-  - component: {fileID: 1716919723}
+  - component: {fileID: 1716919720}
   m_Layer: 0
   m_Name: E1_Manager
   m_TagString: Untagged
@@ -3212,6 +3179,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1716919720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716919719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e9a967d451c43f5bdf9542fde72753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  neighborPrefab: {fileID: 2109881767}
+  spawnPoint: {fileID: 1384652075}
+  knockDialogueStart: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
 --- !u!4 &1716919721
 Transform:
   m_ObjectHideFlags: 0
@@ -3227,37 +3209,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1716919722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716919719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e1641760112f43879db24c458613809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::E1_NeighborDialogue
-  neighborPrefab: {fileID: 2109881767}
-  spawnPoint: {fileID: 1384652075}
-  player: {fileID: 8997996947019722064}
-  playerDoorPoint: {fileID: 210644906}
-  knockDialogueStart: {fileID: 11400000, guid: 26593917fd733426c88e73063e24b774, type: 2}
-  talkNode: {fileID: 11400000, guid: ffab4dc37e0894bc594e014bd9eb17a4, type: 2}
-  ignoreNode: {fileID: 11400000, guid: 57bd030b63c5040cb8c826c9219ef316, type: 2}
---- !u!114 &1716919723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716919719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db6ab15d7415426a9a147d7115d8b18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::E1_PeekJumpscare
 --- !u!1001 &1722742770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4354,7 +4305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
   npcName: Ted
   startNode: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
-  eventHandler: {fileID: 1716919722}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -89066,4 +89016,3 @@ SceneRoots:
   - {fileID: 1786844822640890876}
   - {fileID: 1384652075}
   - {fileID: 1716919721}
-  - {fileID: 210644906}
