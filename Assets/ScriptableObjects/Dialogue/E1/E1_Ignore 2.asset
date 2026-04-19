@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E1_Ignore 2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Sorry. Don't mind me actually. You must be busy.
+  Text: Sorry. Don't mind me actually. You must be busy
   TriggeringEvent: 0
   Next: {fileID: 11400000, guid: ccab24d14a8ea48809b28579b835c3db, type: 2}
   Choices: []
