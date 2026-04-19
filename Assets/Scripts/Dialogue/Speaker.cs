@@ -6,6 +6,7 @@ public class Speaker : MonoBehaviour, IInteractable
 {
     [SerializeField] protected string npcName;
     [SerializeField] private DialogueNode startNode;
+    [SerializeField] private E1_NeighborEvent eventHandler;
 
     private DialogueNode currentNode;
     private ProgressEvent lastNodeEvent;
@@ -120,9 +121,37 @@ public class Speaker : MonoBehaviour, IInteractable
         {
             DialogueController.CreateChoiceButton(choice.Text, () =>
             {
-                currentNode = choice.NextNode;
-                ShowNode();
+                HandleChoice(choice);
             });
+        }
+    }
+
+    void HandleChoice(DialogueChoice choice)
+    {
+        // 1. run gameplay logic
+        ExecuteChoiceAction(choice.Action);
+
+        // 2. move dialogue forward
+        currentNode = choice.NextNode;
+        ShowNode();
+    }
+
+    void ExecuteChoiceAction(ChoiceType type)
+    {
+
+        switch (type)
+        {
+            case ChoiceType.Peek:
+                eventHandler.OnPeekChosen();
+                break;
+
+            case ChoiceType.Talk:
+                eventHandler.OnTalkChosen();
+                break;
+
+            case ChoiceType.Ignore:
+                eventHandler.OnIgnoreChosen();
+                break;
         }
     }
 
