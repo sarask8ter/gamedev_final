@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class E1_NeighborEvent : MonoBehaviour
 {
@@ -12,14 +13,13 @@ public class E1_NeighborEvent : MonoBehaviour
 
     [Header("Dialogue")]
     [SerializeField] private DialogueNode knockDialogueStart;
+    [SerializeField] private DialogueNode talkNode;
+    [SerializeField] private DialogueNode ignoreNode;
 
     private GameObject spawnedNeighbor;
     private bool triggered = false;
 
-    [SerializeField] private DialogueNode talkNode;
-    [SerializeField] private DialogueNode ignoreNode;
-
-    void OnEnable() // 🔥 better than Start
+    void OnEnable()
     {
         ProgressManager.SubscribeToStart(ProgressEvent.DoorKnock, TriggerNeighborEvent);
     }
@@ -48,7 +48,7 @@ public class E1_NeighborEvent : MonoBehaviour
 
     public void OnPeekChosen()
     {
-        MovePlayerToDoor();
+        StartCoroutine(TeleportPlayer());
 
         var jumpscare = FindObjectOfType<E1_PeekJumpscare>();
         if (jumpscare != null)
@@ -59,7 +59,7 @@ public class E1_NeighborEvent : MonoBehaviour
 
     public void OnTalkChosen()
     { 
-        MovePlayerToDoor();
+        StartCoroutine(TeleportPlayer());
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(talkNode, "");
@@ -71,9 +71,31 @@ public class E1_NeighborEvent : MonoBehaviour
         speaker.StartDialogue(ignoreNode, "");
     }
 
-    void MovePlayerToDoor()
+    IEnumerator TeleportPlayer()
     {
-        player.position = playerDoorPoint.position;
-        player.rotation = playerDoorPoint.rotation;
+        var controller = player.GetComponent<CharacterController>();
+        var fps = player.GetComponent<StarterAssets.FirstPersonController>();
+
+        // Disable controller so it doesn't override position
+        controller.enabled = false;
+
+        // Reset velocity so no snap-back
+        if (fps != null)
+        {
+            var verticalVelField = typeof(StarterAssets.FirstPersonController)
+                .GetField("_verticalVelocity", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            if (verticalVelField != null)
+            {
+                verticalVelField.SetValue(fps, 0f);
+            }
+        }
+
+        // Teleport
+        player.SetPositionAndRotation(playerDoorPoint.position, playerDoorPoint.rotation);
+
+        yield return null; // wait 1 frame
+
+        controller.enabled = true;
     }
 }

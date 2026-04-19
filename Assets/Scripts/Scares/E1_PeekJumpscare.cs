@@ -4,10 +4,15 @@ using System.Collections;
 public class E1_PeekJumpscare : MonoBehaviour
 {
     private GameObject neighbor;
+    private Vector3 originalPosition;
 
     public void SetNeighbor(GameObject obj)
     {
         neighbor = obj;
+        if (neighbor != null)
+        {
+            originalPosition = neighbor.transform.position;
+        }
     }
 
     public void PlayJumpscare()
@@ -19,16 +24,13 @@ public class E1_PeekJumpscare : MonoBehaviour
 
     IEnumerator Jumpscare()
     {
-        var renderers = neighbor.GetComponentsInChildren<Renderer>();
+        // Move neighbor slightly away (away from player/camera direction)
+        Vector3 jumpOffset = -neighbor.transform.right.normalized * 6f;
+        neighbor.transform.position += jumpOffset;
 
-        foreach (var r in renderers)
-            r.enabled = false;
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(2f);
-
-        foreach (var r in renderers)
-            r.enabled = true;
-
-        neighbor.transform.position += neighbor.transform.forward.normalized * 1.5f;
+        // Snap back to original spawn position
+        neighbor.transform.position = originalPosition;
     }
 }

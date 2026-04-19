@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E1_Peek 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: GAHHH.. You scared me.
+  Text: AHHH.. You scared me.
   TriggeringEvent: 0
   Next: {fileID: 0}
   Choices: []
