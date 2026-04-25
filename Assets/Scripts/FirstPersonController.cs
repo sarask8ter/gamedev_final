@@ -153,6 +153,8 @@ namespace StarterAssets
 
 		private void Move()
 		{
+			if (!(_controller.enabled && gameObject.activeInHierarchy)) return;
+
 			if (PlayerStateManager.State != PlayerState.Normal)
 			{
 				_controller.Move(new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);

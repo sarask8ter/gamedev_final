@@ -33,7 +33,7 @@ public class E1_NeighborEvent : MonoBehaviour
 
         spawnedNeighbor = Instantiate(neighborPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        var jumpscare = FindObjectOfType<E1_PeekJumpscare>();
+        var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
         if (jumpscare != null)
         {
             jumpscare.SetNeighbor(spawnedNeighbor);
@@ -50,7 +50,7 @@ public class E1_NeighborEvent : MonoBehaviour
     {
         StartCoroutine(TeleportPlayer());
 
-        var jumpscare = FindObjectOfType<E1_PeekJumpscare>();
+        var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
         if (jumpscare != null)
         {
             jumpscare.PlayJumpscare();
