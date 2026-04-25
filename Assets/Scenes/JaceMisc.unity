@@ -2344,6 +2344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpeaker
   npcName: You
   startNode: {fileID: 0}
+  eventHandler: {fileID: 0}
   dialogues:
   - {fileID: 11400000, guid: 4ee5469a767d64b498c6040abab480d4, type: 2}
   - {fileID: 11400000, guid: 79617c124330c4656b1b78d819f90aaf, type: 2}
@@ -2479,7 +2480,7 @@ Transform:
   m_GameObject: {fileID: 1309662094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4499998, y: -0.341, z: 0.506}
+  m_LocalPosition: {x: 0.4499998, y: -0.341, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3123,6 +3124,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6649558419134552556, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649558419134552556, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: 'm_Cameras.Array.data[0]'
+      value: 
+      objectReference: {fileID: 932251219}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -3170,6 +3179,10 @@ PrefabInstance:
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: orthographic size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4663
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_Name
@@ -4211,6 +4224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
   npcName: Ted
   startNode: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
+  eventHandler: {fileID: 0}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0
