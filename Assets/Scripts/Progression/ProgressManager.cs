@@ -6,7 +6,7 @@ public class ProgressManager : MonoBehaviour
 {
     [SerializeField] private float startDelay;
     [SerializeField] private ProgressEvent[] sequence;
-    [SerializeField] private int currEvtIdx; // Editable from editor to allow "jumping ahead"
+    private int currEvtIdx;
     public event Action<ProgressEvent> OnProgressEventStarted;
     public event Action<ProgressEvent> OnProgressEventCompleted;
 
@@ -64,6 +64,11 @@ public class ProgressManager : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    void Start()
+    {
+        currEvtIdx = Mathf.Max(0, Array.IndexOf(sequence, ProgressEvent.GameStart));
     }
 
     void OnEnable()
