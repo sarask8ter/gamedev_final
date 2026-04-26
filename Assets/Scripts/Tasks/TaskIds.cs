@@ -4,4 +4,5 @@ public enum TaskId
     FindKey,
     MoveInBoxes,
     CloseDoor,
+    ExploreHouse,
 }

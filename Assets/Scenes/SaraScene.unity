@@ -762,6 +762,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32191c383923a4251b7ab76eea1875fd, type: 2}
   - {fileID: 11400000, guid: 5334496a81f2c41dba6a7fe4b20a9b6f, type: 2}
   - {fileID: 11400000, guid: 840630d44e4f14be2ae932406419b65b, type: 2}
+  - {fileID: 11400000, guid: 90caabfe9643a46d8be21ea766d79366, type: 2}
 --- !u!1 &238118942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,7 +3125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 010000000200000003000000040000000500000006000000070000000800000009000000
+  sequence: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
   currEvtIdx: 0
 --- !u!1 &1661750084
 GameObject:
@@ -4375,7 +4376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
-  npcName: Ted
+  npcName: Neighbor
   startNode: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
   eventHandler: {fileID: 1716919722}
 --- !u!136 &2109881770

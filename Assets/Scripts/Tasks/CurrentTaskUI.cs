@@ -45,7 +45,26 @@ public class CurrentTaskUI : MonoBehaviour
 
     void CompleteTask(TaskData task)
     {
-        StartCoroutine(AnimateStrikethroughThenHide(task.Description + " ", task.Progress));
+        if (task.Id == TaskId.ExploreHouse)
+        {
+            StartCoroutine(HideWithoutStrikethrough());
+            return;
+        }
+
+        StartCoroutine(
+            AnimateStrikethroughThenHide(
+                task.Description + " ",
+                task.Progress
+            )
+        );
+    }
+
+    IEnumerator HideWithoutStrikethrough()
+    {
+        yield return new WaitForSeconds(taskStayTime);
+
+        tasksHeader.SetActive(false);
+        currentTask.SetActive(false);
     }
 
     void SetTaskText(string beginning, string bolded)
