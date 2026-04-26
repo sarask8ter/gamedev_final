@@ -2,22 +2,27 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class DelayHelper : MonoBehaviour
+public class CoroutineHelper : MonoBehaviour
 {
-    private static DelayHelper _instance;
+    private static CoroutineHelper _instance;
 
     // Essentially, bootstrap a DelayHelper if it doesn't alreayd exist.
-    private static DelayHelper instance
+    private static CoroutineHelper instance
     {
         get
         {
             if (_instance == null)
             {
                 var obj = new GameObject("DelayHelper");
-                _instance = obj.AddComponent<DelayHelper>();
+                _instance = obj.AddComponent<CoroutineHelper>();
             }
             return _instance;
         }
+    }
+
+    public static void StartCoroutineHelper(IEnumerator enumerator)
+    {
+        instance.StartCoroutine(enumerator);
     }
 
     public static void Delay(float seconds, Action action)

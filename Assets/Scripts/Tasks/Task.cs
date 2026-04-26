@@ -28,7 +28,7 @@ public abstract class Task : ScriptableObject
     {
         PreCompleteTask();
         TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
-        DelayHelper.Delay(progressCompletionDelay, () => ProgressManager.CompleteEvent(TriggeringEvent));
+        CoroutineHelper.Delay(progressCompletionDelay, () => ProgressManager.CompleteEvent(TriggeringEvent));
     }
 
     protected TaskData CompileTaskData()

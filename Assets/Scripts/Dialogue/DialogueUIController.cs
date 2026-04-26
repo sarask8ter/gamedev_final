@@ -2,14 +2,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DialogueController : MonoBehaviour
+public class DialogueUIController : MonoBehaviour
 {
 
     public GameObject dialoguePanel;
     public TMP_Text dialogueText, nameText;
     public Transform choiceContainer;
     public GameObject choiceButtonPrefab;
-    private static DialogueController _instance;
+    private static DialogueUIController _instance;
 
     void Awake()
     {
@@ -50,10 +50,9 @@ public class DialogueController : MonoBehaviour
         choiceButton.GetComponent<Button>().onClick.AddListener(onClick);
     }
 
-    public static void StartDialogue(string npcName)
+    public static void StartDialogue()
     {
         ShowDialogueUI(true);
-        SetNPCInfo(npcName);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
