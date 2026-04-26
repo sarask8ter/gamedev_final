@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class DoorPivot : MonoBehaviour, IInteractable
 {
@@ -7,6 +8,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
     [SerializeField] private float openAngle;
     [SerializeField] private float speed;
 
+    private bool moveInBoxesStarted;
     private bool closeDoorTaskActive;
     private bool isOpen;
 
@@ -18,20 +20,17 @@ public class DoorPivot : MonoBehaviour, IInteractable
         closedRot = transform.rotation;
         openRot = Quaternion.Euler(0, openAngle, 0);
 
-        ProgressManager.SubscribeToStart(ProgressEvent.CloseDoor, EnableCloseDoorTask);
-    }
-
-    void EnableCloseDoorTask()
-    {
-        closeDoorTaskActive = true;
+        ProgressManager.SubscribeToStart(ProgressEvent.MoveInBoxes, () => moveInBoxesStarted = true);
+        ProgressManager.SubscribeToStart(ProgressEvent.CloseDoor, () => closeDoorTaskActive = true);
     }
 
     public void Interact(PlayerInteractor player)
     {
+        if (!moveInBoxesStarted) return;
+
         if (isOpen)
         {
             if (!closeDoorTaskActive) return;
-
             SetOpen(false);
         }
         else
@@ -46,25 +45,10 @@ public class DoorPivot : MonoBehaviour, IInteractable
         isOpen = shouldOpen;
 
         StopAllCoroutines();
-        StartCoroutine(RotateDoor(() =>
-        {
-            // ONLY when door finishes closing during task
-            if (!isOpen && wasOpen && closeDoorTaskActive)
-            {
-                TasksEvents.OnItemInteract?.Invoke(ItemName.Door);
-            }
-        }));
+        StartCoroutine(RotateDoor());
     }
 
-    public void Slam()
-    {
-        StopAllCoroutines();
-
-        isOpen = false;
-        transform.rotation = closedRot;
-    }
-
-    System.Collections.IEnumerator RotateDoor(System.Action onComplete)
+    System.Collections.IEnumerator RotateDoor()
     {
         Quaternion target = isOpen ? openRot : closedRot;
 
@@ -79,6 +63,18 @@ public class DoorPivot : MonoBehaviour, IInteractable
         }
 
         transform.rotation = target;
-        onComplete?.Invoke();
+
+        // ONLY notify systems, NOT ProgressManager
+        if (!isOpen)
+        {
+            TasksEvents.OnItemInteract?.Invoke(ItemName.Door);
+        }
+    }
+
+    public void Slam()
+    {
+        StopAllCoroutines();
+        isOpen = false;
+        transform.rotation = closedRot;
     }
 }
