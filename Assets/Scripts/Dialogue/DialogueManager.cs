@@ -2,28 +2,24 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 
-public class Speaker : MonoBehaviour, IInteractable
+public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] protected string npcName;
-    [SerializeField] private DialogueNode startNode;
-    [SerializeField] private E1_NeighborEvent eventHandler;
-
+    [SerializeField] private DialogueNode[] dialogues;
     private DialogueNode currentNode;
     private ProgressEvent lastNodeEvent;
-
     private bool isTyping;
     private bool isDialogueActive;
-    private bool canStartDialogue = true;
-
-    private InteractionPrompt interactionPrompt;
     private InputAction nextLineAction;
-
-    public bool IsInteractable => canStartDialogue && !isDialogueActive;
 
     void Awake()
     {
         nextLineAction = InputSystem.actions.FindAction("Click");
-        interactionPrompt = GetComponentInChildren<InteractionPrompt>();
+    }
+
+    void Start()
+    {
+        // No need to unsubscribe -- ProgressManager handles that.
+        foreach (var dialogue in dialogues) ProgressManager.SubscribeToStart(dialogue.TriggeringEvent, () => StartDialogue(dialogue));
     }
 
     void Update()
@@ -35,7 +31,7 @@ public class Speaker : MonoBehaviour, IInteractable
                 StopNode();
                 CompleteLine();
             }
-            else if (!HasChoices()) GoToNextNode();
+            else if (!HasChoices() && currentNode.AllowClickToNextNode) GoToNextNode();
         }
     }
     
@@ -45,27 +41,12 @@ public class Speaker : MonoBehaviour, IInteractable
         CancelInvoke();
     }
 
-    public void Interact(PlayerInteractor player)
-    {
-        if (!canStartDialogue || isDialogueActive) return;
-
-        StartDialogue();
-    }
-
-    public void StartDialogue()
-    {
-        StartDialogue(startNode, npcName);
-    }
-
-    public void StartDialogue(DialogueNode node, string speaker)
+    public void StartDialogue(DialogueNode node)
     {
         isDialogueActive = true;
         lastNodeEvent = ProgressEvent.None;
         currentNode = node;
-
-        if (interactionPrompt != null) interactionPrompt.HideEUI();
-
-        DialogueController.StartDialogue(speaker);
+        DialogueUIController.StartDialogue();
         ShowNode();
     }
 
@@ -77,10 +58,12 @@ public class Speaker : MonoBehaviour, IInteractable
             return;
         }
 
+        DialogueUIController.SetNPCInfo(currentNode.SpeakerName);
+
         if (currentNode.TriggeringEvent != ProgressEvent.None) lastNodeEvent = currentNode.TriggeringEvent;
 
         StopNode();
-        DialogueController.ClearChoices();
+        DialogueUIController.ClearChoices();
 
         StartCoroutine(TypeLine(currentNode.Text));
     }
@@ -88,11 +71,11 @@ public class Speaker : MonoBehaviour, IInteractable
     IEnumerator TypeLine(string line)
     {
         isTyping = true;
-        DialogueController.SetDialogueText("");
+        DialogueUIController.SetDialogueText("");
 
         for (int i = 0; i < line.Length; i++)
         {
-            DialogueController.SetDialogueText(line.Substring(0, i + 1));
+            DialogueUIController.SetDialogueText(line.Substring(0, i + 1));
             yield return new WaitForSeconds(0.02f);
         }
 
@@ -101,7 +84,7 @@ public class Speaker : MonoBehaviour, IInteractable
 
     void CompleteLine()
     {
-        DialogueController.SetDialogueText(currentNode.Text);
+        DialogueUIController.SetDialogueText(currentNode.Text);
 
         isTyping = false;
         
@@ -119,7 +102,7 @@ public class Speaker : MonoBehaviour, IInteractable
     {
         foreach (var choice in currentNode.Choices)
         {
-            DialogueController.CreateChoiceButton(choice.Text, () =>
+            DialogueUIController.CreateChoiceButton(choice.Text, () =>
             {
                 HandleChoice(choice);
             });
@@ -129,30 +112,11 @@ public class Speaker : MonoBehaviour, IInteractable
     void HandleChoice(DialogueChoice choice)
     {
         // 1. run gameplay logic
-        ExecuteChoiceAction(choice.Action);
+        choice.OnChooseChoice?.Execute();
 
         // 2. move dialogue forward
         currentNode = choice.NextNode;
         ShowNode();
-    }
-
-    void ExecuteChoiceAction(ChoiceType type)
-    {
-
-        switch (type)
-        {
-            case ChoiceType.Peek:
-                eventHandler.OnPeekChosen();
-                break;
-
-            case ChoiceType.Talk:
-                eventHandler.OnTalkChosen();
-                break;
-
-            case ChoiceType.Ignore:
-                eventHandler.OnIgnoreChosen();
-                break;
-        }
     }
 
     void GoToNextNode()
@@ -172,23 +136,13 @@ public class Speaker : MonoBehaviour, IInteractable
 
         isDialogueActive = false;
 
-        DialogueController.SetDialogueText("");
-        DialogueController.ShowDialogueUI(false);
+        DialogueUIController.SetDialogueText("");
+        DialogueUIController.ShowDialogueUI(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         PlayerStateManager.State = PlayerState.Normal;
-
-        canStartDialogue = false;
-        StartCoroutine(ResetDialogueCooldown());
-
         ProgressManager.CompleteEvent(lastNodeEvent);
-    }
-
-    IEnumerator ResetDialogueCooldown()
-    {
-        yield return new WaitForSeconds(1f);
-        canStartDialogue = true;
     }
 }

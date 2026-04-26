@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Start 1
+  m_Name: E1_Peek
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   Text: Hello?
-  TriggeringEvent: 9
+  TriggeringEvent: 0
   Next: {fileID: 11400000, guid: 36487b1f5d73842db8f928ee77888296, type: 2}
   Choices: []
   AutoProgress: 1
-  AutoDelay: 1.2
-  SpeakerName: 
+  AutoDelay: 1.5
+  SpeakerName: You
+  AllowClickToNextNode: 0
