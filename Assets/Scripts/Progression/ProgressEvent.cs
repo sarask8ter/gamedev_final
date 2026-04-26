@@ -8,5 +8,6 @@ public enum ProgressEvent
     FindKeyInTrash,
     KeyFoundMonologue,
     MoveInBoxes,
+    CloseDoor,
     DoorKnock,
 }

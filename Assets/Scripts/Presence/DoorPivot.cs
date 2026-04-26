@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class DoorPivot : MonoBehaviour, IInteractable
 {
-    private bool isInteractable;
-    public bool IsInteractable => isInteractable;
+    public bool IsInteractable => true;
+
     [SerializeField] private float openAngle;
     [SerializeField] private float speed;
-    [SerializeField] private ProgressEvent unlockEvent;
 
-    private bool isOpen = false;
+    private bool closeDoorTaskActive;
+    private bool isOpen;
+
     private Quaternion closedRot;
     private Quaternion openRot;
 
@@ -17,42 +18,54 @@ public class DoorPivot : MonoBehaviour, IInteractable
         closedRot = transform.rotation;
         openRot = Quaternion.Euler(0, openAngle, 0);
 
-        ProgressManager.SubscribeToStart(unlockEvent, () => isInteractable = true);
+        ProgressManager.SubscribeToStart(ProgressEvent.CloseDoor, EnableCloseDoorTask);
+    }
+
+    void EnableCloseDoorTask()
+    {
+        closeDoorTaskActive = true;
     }
 
     public void Interact(PlayerInteractor player)
     {
-        SetOpen(!isOpen);
-    }
+        if (isOpen)
+        {
+            if (!closeDoorTaskActive) return;
 
-    public void Slam()
-    {
-        isOpen = false;
-        StopAllCoroutines();
-        transform.rotation = closedRot;
-    }
-
-    public void Open()
-    {
-        SetOpen(true);
-    }
-
-    public void Close()
-    {
-        SetOpen(false);
+            SetOpen(false);
+        }
+        else
+        {
+            SetOpen(true);
+        }
     }
 
     void SetOpen(bool shouldOpen)
     {
+        bool wasOpen = isOpen;
         isOpen = shouldOpen;
+
         StopAllCoroutines();
-        StartCoroutine(RotateDoor());
-        Debug.Log("Door rotating. isOpen = " + isOpen);
+        StartCoroutine(RotateDoor(() =>
+        {
+            // ONLY when door finishes closing during task
+            if (!isOpen && wasOpen && closeDoorTaskActive)
+            {
+                TasksEvents.OnItemInteract?.Invoke(ItemName.Door);
+            }
+        }));
     }
 
-    System.Collections.IEnumerator RotateDoor()
+    public void Slam()
     {
-        Debug.Log("Rotating door");
+        StopAllCoroutines();
+
+        isOpen = false;
+        transform.rotation = closedRot;
+    }
+
+    System.Collections.IEnumerator RotateDoor(System.Action onComplete)
+    {
         Quaternion target = isOpen ? openRot : closedRot;
 
         while (Quaternion.Angle(transform.rotation, target) > 0.1f)
@@ -66,5 +79,6 @@ public class DoorPivot : MonoBehaviour, IInteractable
         }
 
         transform.rotation = target;
+        onComplete?.Invoke();
     }
 }

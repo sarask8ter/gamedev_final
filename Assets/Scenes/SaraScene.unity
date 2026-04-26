@@ -761,6 +761,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2a42394a86004ca984ee43fdf398650, type: 2}
   - {fileID: 11400000, guid: 32191c383923a4251b7ab76eea1875fd, type: 2}
   - {fileID: 11400000, guid: 5334496a81f2c41dba6a7fe4b20a9b6f, type: 2}
+  - {fileID: 11400000, guid: 840630d44e4f14be2ae932406419b65b, type: 2}
 --- !u!1 &238118942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,7 +2752,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Door
   openAngle: 90
   speed: 2
-  unlockEvent: 7
 --- !u!65 &1544185542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3883,7 +3883,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Door
   openAngle: 90
   speed: 2
-  unlockEvent: 0
 --- !u!4 &1950818961
 Transform:
   m_ObjectHideFlags: 0

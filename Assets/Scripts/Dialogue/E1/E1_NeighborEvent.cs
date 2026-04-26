@@ -41,8 +41,6 @@ public class E1_NeighborEvent : MonoBehaviour
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(knockDialogueStart, "");
-
-        ProgressManager.CompleteEvent(ProgressEvent.DoorKnock);
     }
 
 
