@@ -72,6 +72,15 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
+		public void SetLookRotation(float yaw, float pitch)
+		{
+			transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+
+			_cinemachineTargetPitch = pitch;
+			CinemachineCameraTarget.transform.localRotation =
+				Quaternion.Euler(pitch, 0f, 0f);
+		}
+
 		private bool IsCurrentDeviceMouse
 		{
 			get

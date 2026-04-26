@@ -11,4 +11,5 @@ public class DialogueNode : ScriptableObject
     public bool AutoProgress;
     public float AutoDelay = 1.5f;
     public string SpeakerName;
+    public bool AllowClickToNextNode = true;
 }
