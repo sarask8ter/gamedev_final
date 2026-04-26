@@ -14,6 +14,6 @@ public class EventsSetup : MonoBehaviour
         }
 
         // Start Game.
-        DelayHelper.Delay(startDelay, () => ProgressManager.CompleteEvent(ProgressEvent.GameStart));
+        CoroutineHelper.Delay(startDelay, () => ProgressManager.CompleteEvent(ProgressEvent.GameStart));
     }
 }
