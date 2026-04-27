@@ -10,8 +10,7 @@ public class E1_PeekJumpscare : MonoBehaviour
     [Header("Scare")]
     [SerializeField] private Transform jumpscarePoint;
 
-    [SerializeField] private float vanishDelay = 3f;
-    [SerializeField] private float reappearDelay = 3f;
+    [SerializeField] private float reappearDelay = 1f;
 
     private GameObject neighbor;
     private Vector3 originalPosition;
@@ -33,29 +32,27 @@ public class E1_PeekJumpscare : MonoBehaviour
 
     IEnumerator JumpscareSequence()
     {
-        playerCamera.enabled = false;
-        peekCamera.enabled = true;
+        // switch cameras
+        playerCamera.gameObject.SetActive(false);
+        peekCamera.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f);
-
-        // vanish
+        // neighbor disappears
         neighbor.transform.position = originalPosition + Vector3.up * 100f;
-
-        yield return new WaitForSeconds(vanishDelay);
 
         yield return new WaitForSeconds(reappearDelay);
 
-        // snap to glass
+        // snap at window
         neighbor.transform.position = jumpscarePoint.position;
         neighbor.transform.rotation = jumpscarePoint.rotation;
 
         Debug.Log("JUMPSCARE!");
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         neighbor.transform.position = originalPosition;
 
-        peekCamera.enabled = false;
-        playerCamera.enabled = true;
+        // switch back
+        peekCamera.gameObject.SetActive(false);
+        playerCamera.gameObject.SetActive(true);
     }
 }

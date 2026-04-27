@@ -46,8 +46,6 @@ public class E1_NeighborEvent : MonoBehaviour
 
     public void OnPeekChosen()
     {
-        StartCoroutine(TeleportPlayer());
-
         var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
 
         if (jumpscare != null)

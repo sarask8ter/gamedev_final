@@ -17,5 +17,5 @@ MonoBehaviour:
   Next: {fileID: 11400000, guid: 36487b1f5d73842db8f928ee77888296, type: 2}
   Choices: []
   AutoProgress: 1
-  AutoDelay: 1.2
+  AutoDelay: 2
   SpeakerName: 
