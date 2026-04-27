@@ -21,13 +21,13 @@ public class MovableItem : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
-        MoveAndChangePhysicsMethods.MoveToPoint(gameObject, isMoved ? originalLocation : movedLocation, false);
+        MovementHelper.MoveToPoint(gameObject, isMoved ? originalLocation : movedLocation, false);
         isMoved = !isMoved;
         TasksEvents.OnItemInteract?.Invoke(item);
 
         if (singleTimeInteract) 
         {
-            MoveAndChangePhysicsMethods.MoveToDefaultLayer(gameObject);
+            MovementHelper.MoveToDefaultLayer(gameObject);
             isInteractable = false;
         }
     }

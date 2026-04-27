@@ -6,28 +6,26 @@ public class CoroutineHelper : MonoBehaviour
 {
     private static CoroutineHelper _instance;
 
-    // Essentially, bootstrap a DelayHelper if it doesn't alreayd exist.
-    private static CoroutineHelper instance
+    void Awake()
     {
-        get
+        if (_instance != null && _instance != this)
         {
-            if (_instance == null)
-            {
-                var obj = new GameObject("DelayHelper");
-                _instance = obj.AddComponent<CoroutineHelper>();
-            }
-            return _instance;
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
         }
     }
 
     public static void StartCoroutineHelper(IEnumerator enumerator)
     {
-        instance.StartCoroutine(enumerator);
+        _instance.StartCoroutine(enumerator);
     }
 
     public static void Delay(float seconds, Action action)
     {
-        instance.StartCoroutine(DelayAction(seconds, action));
+        _instance.StartCoroutine(DelayAction(seconds, action));
     }
 
     static IEnumerator DelayAction(float seconds, Action action)

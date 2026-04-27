@@ -1,7 +1,31 @@
 using UnityEngine;
 
-public class MoveAndChangePhysicsMethods
+public class MovementHelper
 {
+    public static void MovePlayer(Transform playerTeleportPoint)
+    {
+        var player = GameState.Player;
+
+        var controller = player.GetComponent<CharacterController>();
+        var fps = player.GetComponent<StarterAssets.FirstPersonController>();
+
+        controller.enabled = false;
+
+        MoveToPoint(player, playerTeleportPoint, false);
+        fps.SetLookRotation(
+            playerTeleportPoint.eulerAngles.y,
+            NormalizePitch(playerTeleportPoint.eulerAngles.x)
+        );
+
+        controller.enabled = true;
+    }
+
+    static float NormalizePitch(float angle)
+    {
+        if (angle > 180f) angle -= 360f;
+        return angle;
+    }
+
     public static void MoveToDefaultLayer(GameObject obj)
     {
         obj.layer = LayerMask.NameToLayer("Default");

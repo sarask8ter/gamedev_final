@@ -17,6 +17,6 @@ public class RedirectInteraction : MonoBehaviour, IInteractable
     public void Interact(PlayerInteractor player)
     {
         interactable.Interact(player);
-        if (singleTimeInteract) MoveAndChangePhysicsMethods.MoveToDefaultLayer(gameObject);
+        if (singleTimeInteract) MovementHelper.MoveToDefaultLayer(gameObject);
     }
 }
