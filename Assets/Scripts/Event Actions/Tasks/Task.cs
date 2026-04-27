@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public abstract class Task : ScriptableObject
+public abstract class Task : EventAction
 {
-    public ProgressEvent TriggeringEvent;
-
     [SerializeField] protected string description;
     [SerializeField] protected string progressText;
 
@@ -14,7 +12,7 @@ public abstract class Task : ScriptableObject
     public string Description => description;
     public string ProgressText => progressText;
 
-    public void StartTask()
+    public override void OnEventStart()
     {
         PreStartTask();
         TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
@@ -28,7 +26,7 @@ public abstract class Task : ScriptableObject
     {
         PreCompleteTask();
         TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
-        CoroutineHelper.Delay(progressCompletionDelay, () => ProgressManager.CompleteEvent(TriggeringEvent));
+        CoroutineHelper.Delay(progressCompletionDelay, () => CompleteEvent());
     }
 
     protected TaskData CompileTaskData()
