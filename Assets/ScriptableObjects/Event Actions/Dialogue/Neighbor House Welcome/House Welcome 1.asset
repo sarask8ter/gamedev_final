@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Talk
+  m_Name: House Welcome 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: "Not many people stay long\u2026 place can feel weird"
-  Next: {fileID: 11400000, guid: ccab24d14a8ea48809b28579b835c3db, type: 2}
+  Text: Feel free to take a look around downstairs. Please <i><b>don't</b></i> go
+    upstairs.
+  Next: {fileID: 11400000, guid: b66cf4cf137844eeebe62e7d1412f9b6, type: 2}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5

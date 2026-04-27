@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DialogueChoice - Peek Jumpscare", menuName = "Event Actions/Dialogue Actions/Peek Jumpscare")]
+[CreateAssetMenu(fileName = "DialogueChoice - Peek Jumpscare", menuName = "Dialogue/Choice Actions/Peek Jumpscare")]
 public class PeekJumpscare : DialogueChoiceAction
 {
 

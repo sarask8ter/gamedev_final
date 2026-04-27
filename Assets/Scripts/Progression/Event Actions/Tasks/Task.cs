@@ -5,10 +5,8 @@ public abstract class Task : EventAction
     [SerializeField] protected string description;
     [SerializeField] protected string progressText;
 
-    [SerializeField] protected TaskId id;
     [SerializeField] protected float progressCompletionDelay;
 
-    public TaskId Id => id;
     public string Description => description;
     public string ProgressText => progressText;
 
@@ -31,6 +29,6 @@ public abstract class Task : EventAction
 
     protected TaskData CompileTaskData()
     {
-        return new TaskData(id, description, progressText);
+        return new TaskData(TriggeringEvent, description, progressText);
     }
 }

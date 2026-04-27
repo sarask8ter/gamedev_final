@@ -60,7 +60,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        DialogueUIController.SetNPCInfo(currentNode.SpeakerName);
+        DialogueUIController.SetNPCInfo(currentNode.speaker.GetName());
 
         if (currentNode.TriggeringEvent != ProgressEvent.None) lastNodeEvent = currentNode.TriggeringEvent;
 
