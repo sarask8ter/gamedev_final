@@ -7,6 +7,9 @@ public class E1_NeighborEvent : MonoBehaviour
     [SerializeField] private GameObject neighborPrefab;
     [SerializeField] private Transform spawnPoint;
 
+    [Header("Scene References")]
+    [SerializeField] private DoorPivot frontDoor;
+
     [Header("Player")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerDoorPoint;
@@ -53,8 +56,18 @@ public class E1_NeighborEvent : MonoBehaviour
     }
 
     public void OnTalkChosen()
-    { 
-        StartCoroutine(TeleportPlayer());
+    {
+        StartCoroutine(TalkSequence());
+    }
+
+    IEnumerator TalkSequence()
+    {
+        if (frontDoor != null)
+            frontDoor.Open();
+
+        yield return new WaitForSeconds(0.5f); // let door open a bit
+
+        yield return StartCoroutine(TeleportPlayer());
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(talkNode, "");

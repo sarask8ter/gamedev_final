@@ -11,6 +11,7 @@ public class E1_PeekJumpscare : MonoBehaviour
     [SerializeField] private Transform jumpscarePoint;
 
     [SerializeField] private float reappearDelay = 1f;
+    [SerializeField] private Transform player;
 
     private GameObject neighbor;
     private Vector3 originalPosition;
@@ -51,8 +52,31 @@ public class E1_PeekJumpscare : MonoBehaviour
 
         neighbor.transform.position = originalPosition;
 
+        // move player body to peek camera position
+        TeleportPlayerToPeek();
+
         // switch back
         peekCamera.gameObject.SetActive(false);
         playerCamera.gameObject.SetActive(true);
+    }
+
+    void TeleportPlayerToPeek()
+    {
+        CharacterController controller =
+            player.GetComponent<CharacterController>();
+
+        if (controller != null)
+            controller.enabled = false;
+
+        Vector3 peekPos = peekCamera.transform.position;
+        peekPos.x = -2f; // override only x
+
+        player.SetPositionAndRotation(
+            peekPos,
+            peekCamera.transform.rotation
+        );
+
+        if (controller != null)
+            controller.enabled = true;
     }
 }

@@ -16,6 +16,6 @@ MonoBehaviour:
   TriggeringEvent: 0
   Next: {fileID: 0}
   Choices: []
-  AutoProgress: 0
+  AutoProgress: 1
   AutoDelay: 1.5
   SpeakerName: 
