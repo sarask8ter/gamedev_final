@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlaceItemTask", menuName = "Tasks/Place Item")]
+[CreateAssetMenu(fileName = "PlaceItemTask", menuName = "Event Actions/Tasks/Place Item")]
 public class PlaceItemTask : Task
 {
     [SerializeField] private ItemName item;

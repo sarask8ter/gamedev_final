@@ -9,4 +9,5 @@ public enum ProgressEvent
     KeyFoundMonologue,
     MoveInBoxes,
     DoorKnock,
+    GoToNeighborsHouse,
 }

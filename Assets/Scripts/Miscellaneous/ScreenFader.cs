@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ScreenFader : MonoBehaviour
 {
-
     private Image fadeImage;
     private static ScreenFader _instance;
 
