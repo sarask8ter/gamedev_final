@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E1_Knock
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: KNOCK KNOCK KNOCK
   TriggeringEvent: 8
+  Text: KNOCK KNOCK KNOCK
   Next: {fileID: 11400000, guid: 6f0e123de4dc140bb989e487d7ac3f36, type: 2}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: ???
+  speaker: 2
+  AllowClickToNextNode: 1

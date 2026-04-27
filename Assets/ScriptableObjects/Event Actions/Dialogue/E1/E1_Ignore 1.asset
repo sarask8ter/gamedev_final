@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E1_Ignore 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: '[...]'
   TriggeringEvent: 0
+  Text: '[...]'
   Next: {fileID: 11400000, guid: 229c53c90ded64a34ac1e59472057591, type: 2}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: Jeremy
+  speaker: 1
+  AllowClickToNextNode: 1
