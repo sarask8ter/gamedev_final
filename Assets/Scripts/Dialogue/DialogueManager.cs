@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     private bool isDialogueActive;
     private InputAction nextLineAction;
     private static DialogueManager _instance;
+    private bool changePlayerState;
 
     void Awake()
     {
@@ -43,12 +44,14 @@ public class DialogueManager : MonoBehaviour
         CancelInvoke();
     }
 
-    public static void StartDialogue(DialogueNode node)
+    public static void StartDialogue(DialogueNode node,bool lockCursor = true, bool changePlayerState = true)
     {
         _instance.isDialogueActive = true;
         _instance.lastNodeEvent = ProgressEvent.None;
         _instance.currentNode = node;
-        DialogueUIController.StartDialogue();
+        DialogueUIController.StartDialogue(lockCursor);
+        _instance.changePlayerState = changePlayerState;
+        if (changePlayerState) PlayerStateManager.State = PlayerState.Dialogue;
         _instance.ShowNode();
     }
 
@@ -144,7 +147,7 @@ public class DialogueManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        PlayerStateManager.State = PlayerState.Normal;
-        ProgressManager.CompleteEvent(lastNodeEvent);
+        if (changePlayerState) PlayerStateManager.State = PlayerState.Normal;
+        if (lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
     }
 }

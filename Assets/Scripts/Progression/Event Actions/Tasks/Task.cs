@@ -14,11 +14,14 @@ public abstract class Task : EventAction
     {
         PreStartTask();
         TasksEvents.OnTaskStart?.Invoke(CompileTaskData());
+        PostStartTask();
     }
 
-    protected abstract void PreStartTask();
+    protected virtual void PreStartTask() {}
 
-    protected abstract void PreCompleteTask();
+    protected virtual void PostStartTask() {}
+
+    protected virtual void PreCompleteTask() {}
 
     protected void CompleteTask()
     {

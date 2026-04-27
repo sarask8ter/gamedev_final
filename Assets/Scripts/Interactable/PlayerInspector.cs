@@ -44,7 +44,7 @@ public class PlayerInspector : MonoBehaviour
     public static void BeginInspection(GameObject objToInspect)
     {
         PlayerStateManager.State = PlayerState.Inspecting;
-        _instance.inspectedItem = Instantiate(objToInspect);
+        _instance.inspectedItem = objToInspect;
         MovementHelper.MoveAndDisable(_instance.inspectedItem, _instance.inspectItemLayer, _instance.inspectPoint, true);
     }
 
