@@ -11,11 +11,11 @@ public class PeekJumpscare : DialogueChoiceAction
 
     public override void Execute()
     {
-        neighbor = DialogueContext.Neighbor;
-        neighborTeleportPoint = DialogueContext.NeighborPeekTeleportPoint;
+        neighbor = GameState.Neighbor;
+        neighborTeleportPoint = GameState.NeighborPeekTeleportPoint;
     
-        player = DialogueContext.Player;
-        playerTeleportPoint = DialogueContext.PlayerPeekTeleportPoint;
+        player = GameState.Player;
+        playerTeleportPoint = GameState.PlayerPeekTeleportPoint;
 
         TeleportPlayer();
         CoroutineHelper.StartCoroutineHelper(Jumpscare());

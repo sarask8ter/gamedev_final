@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DialogueContext : MonoBehaviour
+public class GameState : MonoBehaviour
 {
-    private static DialogueContext _instance;
+    private static GameState _instance;
     [SerializeField] private GameObject player;
     public static GameObject Player => _instance.player;
 
