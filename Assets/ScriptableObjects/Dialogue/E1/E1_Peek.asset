@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_Start 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   Text: Hello?
-  TriggeringEvent: 9
+  TriggeringEvent: 0
   Next: {fileID: 11400000, guid: 36487b1f5d73842db8f928ee77888296, type: 2}
   Choices: []
   AutoProgress: 1

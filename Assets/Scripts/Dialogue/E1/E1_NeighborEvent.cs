@@ -49,10 +49,9 @@ public class E1_NeighborEvent : MonoBehaviour
         StartCoroutine(TeleportPlayer());
 
         var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
+
         if (jumpscare != null)
-        {
             jumpscare.PlayJumpscare();
-        }
     }
 
     public void OnTalkChosen()

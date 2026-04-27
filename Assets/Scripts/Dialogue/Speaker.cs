@@ -183,7 +183,12 @@ public class Speaker : MonoBehaviour, IInteractable
         canStartDialogue = false;
         StartCoroutine(ResetDialogueCooldown());
 
-        ProgressManager.CompleteEvent(lastNodeEvent);
+        // Only complete if this dialogue specifically advances progression
+        if (lastNodeEvent != ProgressEvent.None)
+        {
+            ProgressManager.CompleteEvent(lastNodeEvent);
+            lastNodeEvent = ProgressEvent.None; // prevents double fire
+        }
     }
 
     IEnumerator ResetDialogueCooldown()
