@@ -4,6 +4,7 @@ using UnityEngine;
 public class EventsSetup : MonoBehaviour
 {
     [SerializeField] private float startDelay;
+    [SerializeField] private float fadeDuration;
     [SerializeField] private EventAction[] eventActions;
 
     void Start()
@@ -21,7 +22,7 @@ public class EventsSetup : MonoBehaviour
     IEnumerator FadeInGameStart()
     {
         PlayerStateManager.State = PlayerState.Fading;
-        yield return ScreenFader.FadeInRoutine(startDelay);
+        yield return ScreenFader.FadeInRoutine(fadeDuration);
         PlayerStateManager.State = PlayerState.Normal;
         ProgressManager.CompleteEvent(ProgressEvent.GameStart);
     }
