@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EventsSetup : MonoBehaviour
@@ -14,6 +15,14 @@ public class EventsSetup : MonoBehaviour
         }
 
         // Start Game.
-        CoroutineHelper.Delay(startDelay, () => ProgressManager.CompleteEvent(ProgressEvent.GameStart));
+        CoroutineHelper.Delay(startDelay, () => StartCoroutine(FadeInGameStart()));
+    }
+
+    IEnumerator FadeInGameStart()
+    {
+        PlayerStateManager.State = PlayerState.Fading;
+        yield return ScreenFader.FadeInRoutine(startDelay);
+        PlayerStateManager.State = PlayerState.Normal;
+        ProgressManager.CompleteEvent(ProgressEvent.GameStart);
     }
 }
