@@ -20,7 +20,8 @@ public class GameState : MonoBehaviour
     public static Transform NeighborAtNeighborHouseInitialTeleportPoint => _instance.neighborAtNeighborHouseInitialTeleportPoint;
 
     // DYNAMIC
-
+    [Header("Evidence")]
+    public static bool FoundEvidence;
 
     private static GameState _instance;
     void Awake()
