@@ -50,13 +50,14 @@ public class DialogueUIController : MonoBehaviour
         choiceButton.GetComponent<Button>().onClick.AddListener(onClick);
     }
 
-    public static void StartDialogue()
+    public static void StartDialogue(bool lockCursor)
     {
         ShowDialogueUI(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        PlayerStateManager.State = PlayerState.Dialogue;
+        if (lockCursor)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }
