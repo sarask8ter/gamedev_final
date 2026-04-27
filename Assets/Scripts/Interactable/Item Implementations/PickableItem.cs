@@ -23,7 +23,7 @@ public class PickableItem : MonoBehaviour, IInteractable
         if (!player.PickUpItem(this)) return;
         oldLayerName = LayerMask.LayerToName(gameObject.layer);
         oldParent = transform.parent;
-        MoveAndChangePhysicsMethods.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
+        MovementHelper.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
         isInteractable = false;
     }
 
@@ -35,6 +35,6 @@ public class PickableItem : MonoBehaviour, IInteractable
             return;
         }
         transform.SetParent(oldParent);
-        MoveAndChangePhysicsMethods.MoveAndEnable(gameObject, oldLayerName, dropPoint, false);
+        MovementHelper.MoveAndEnable(gameObject, oldLayerName, dropPoint, false);
     }
 }
