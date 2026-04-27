@@ -3,14 +3,14 @@ using UnityEngine;
 public class EventsSetup : MonoBehaviour
 {
     [SerializeField] private float startDelay;
-    [SerializeField] private Task[] tasks;
+    [SerializeField] private EventAction[] eventActions;
 
     void Start()
     {
         // Set up tasks.
-        foreach (var task in tasks)
+        foreach (var eventAction in eventActions)
         {
-            ProgressManager.SubscribeToStart(task.TriggeringEvent, () => task.StartTask());
+            ProgressManager.SubscribeToStart(eventAction.TriggeringEvent, () => eventAction.OnEventStart());
         }
 
         // Start Game.

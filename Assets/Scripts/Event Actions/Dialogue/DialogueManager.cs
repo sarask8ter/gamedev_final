@@ -4,22 +4,24 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private DialogueNode[] dialogues;
     private DialogueNode currentNode;
     private ProgressEvent lastNodeEvent;
     private bool isTyping;
     private bool isDialogueActive;
     private InputAction nextLineAction;
+    private static DialogueManager _instance;
 
     void Awake()
     {
-        nextLineAction = InputSystem.actions.FindAction("Click");
-    }
-
-    void Start()
-    {
-        // No need to unsubscribe -- ProgressManager handles that.
-        foreach (var dialogue in dialogues) ProgressManager.SubscribeToStart(dialogue.TriggeringEvent, () => StartDialogue(dialogue));
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+            nextLineAction = InputSystem.actions.FindAction("Click");
+        }
     }
 
     void Update()
@@ -41,13 +43,13 @@ public class DialogueManager : MonoBehaviour
         CancelInvoke();
     }
 
-    public void StartDialogue(DialogueNode node)
+    public static void StartDialogue(DialogueNode node)
     {
-        isDialogueActive = true;
-        lastNodeEvent = ProgressEvent.None;
-        currentNode = node;
+        _instance.isDialogueActive = true;
+        _instance.lastNodeEvent = ProgressEvent.None;
+        _instance.currentNode = node;
         DialogueUIController.StartDialogue();
-        ShowNode();
+        _instance.ShowNode();
     }
 
     void ShowNode()
