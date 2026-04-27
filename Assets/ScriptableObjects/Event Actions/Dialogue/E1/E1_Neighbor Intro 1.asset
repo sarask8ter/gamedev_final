@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E1_Neighbor Intro 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Just wanted to check that you got in okay.
   TriggeringEvent: 0
+  Text: Just wanted to check that you got in okay.
   Next: {fileID: 11400000, guid: ffab4dc37e0894bc594e014bd9eb17a4, type: 2}
   Choices:
   - Text: Talk to him
@@ -27,5 +27,5 @@ MonoBehaviour:
     OnChooseChoice: {fileID: 0}
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: Jeremy
+  speaker: 1
   AllowClickToNextNode: 1

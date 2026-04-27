@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TaskData
 {
-    private TaskId id;
-    public TaskId Id => id;
+    private ProgressEvent triggeringEvent;
+    public ProgressEvent TriggeringEvent => triggeringEvent;
 
     private string description;
     public string Description => description;
@@ -12,9 +12,9 @@ public class TaskData
     private string progress;
     public string Progress => progress;
 
-    public TaskData(TaskId id, string description, string progress)
+    public TaskData(ProgressEvent triggeringEvent, string description, string progress)
     {
-        this.id = id;
+        this.triggeringEvent = triggeringEvent;
         this.description = description;
         this.progress = progress;
     }
@@ -56,16 +56,16 @@ public class TasksEvents : MonoBehaviour
 
     void LogTaskStart(TaskData task)
     {
-        Debug.Log($"Task started: {task.Id} : {task.Description}");
+        Debug.Log($"Task started: {task.TriggeringEvent} : {task.Description}");
     }
 
     void LogTaskProgress(TaskData task)
     {
-        Debug.Log($"Task progressed: {task.Id} | {task.Progress}");
+        Debug.Log($"Task progressed: {task.TriggeringEvent} | {task.Progress}");
     }
 
     void LogTaskComplete(TaskData task)
     {
-        Debug.Log($"Task completed: {task.Id}");
+        Debug.Log($"Task completed: {task.TriggeringEvent}");
     }
 }

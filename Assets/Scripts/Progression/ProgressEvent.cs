@@ -10,4 +10,6 @@ public enum ProgressEvent
     MoveInBoxes,
     DoorKnock,
     GoToNeighborsHouse,
+    NeighborWelcome,
+    ExploreNeighborsHouse,
 }
