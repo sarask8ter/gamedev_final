@@ -5061,6 +5061,10 @@ PrefabInstance:
       propertyPath: isBloodiedDoor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5506544195305838269, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: singleTimeInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6228803571057599485, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5484,6 +5488,7 @@ MonoBehaviour:
   speed: 2
   unlockEvent: 0
   isBloodiedDoor: 0
+  singleTimeInteract: 0
 --- !u!4 &1950818961
 Transform:
   m_ObjectHideFlags: 0
