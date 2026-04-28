@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     private InputAction nextLineAction;
     private static DialogueManager _instance;
     private bool changePlayerState;
+    private bool isEndingDialogue;
 
     void Awake()
     {
@@ -27,14 +28,16 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueActive && nextLineAction.WasPressedThisFrame())
+        if (currentNode == null) return;
+
+        if (currentNode.AllowClickToNextNode && isDialogueActive && nextLineAction.WasPressedThisFrame())
         {
             if (isTyping)
             {
                 StopNode();
                 CompleteLine();
             }
-            else if (!HasChoices() && currentNode.AllowClickToNextNode) GoToNextNode();
+            else if (!HasChoices()) GoToNextNode();
         }
     }
     
@@ -44,13 +47,14 @@ public class DialogueManager : MonoBehaviour
         CancelInvoke();
     }
 
-    public static void StartDialogue(DialogueNode node,bool lockCursor = true, bool changePlayerState = true)
+    public static void StartDialogue(DialogueNode node, bool lockCursor = true, bool changePlayerState = true)
     {
         _instance.isDialogueActive = true;
         _instance.lastNodeEvent = ProgressEvent.None;
         _instance.currentNode = node;
         DialogueUIController.StartDialogue(lockCursor);
         _instance.changePlayerState = changePlayerState;
+        _instance.isEndingDialogue = node.IsEndingDialogue;
         if (changePlayerState) PlayerStateManager.State = PlayerState.Dialogue;
         _instance.ShowNode();
     }
@@ -99,7 +103,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (currentNode.AutoProgress)
         {
-            Invoke(nameof(GoToNextNode), currentNode.AutoDelay);
+            CoroutineHelper.Delay(currentNode.AutoDelay, GoToNextNode);
         }
     }
 
@@ -117,7 +121,7 @@ public class DialogueManager : MonoBehaviour
     void HandleChoice(DialogueChoice choice)
     {
         // 1. run gameplay logic
-        choice.OnChooseChoice?.Execute();
+        foreach (var action in choice.OnChooseChoice) action.Execute();
 
         // 2. move dialogue forward
         currentNode = choice.NextNode;
@@ -126,7 +130,9 @@ public class DialogueManager : MonoBehaviour
 
     void GoToNextNode()
     {
-        currentNode = currentNode.Next;
+        var nextNode = currentNode.Next;
+        if (currentNode.NextIfFoundEvidence != null && GameState.FoundEvidence) nextNode = currentNode.NextIfFoundEvidence;
+        currentNode = nextNode;
         ShowNode();
     }
 
@@ -139,6 +145,7 @@ public class DialogueManager : MonoBehaviour
     {
         StopNode();
 
+        currentNode = null;
         isDialogueActive = false;
 
         DialogueUIController.SetDialogueText("");
@@ -147,7 +154,8 @@ public class DialogueManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (changePlayerState) PlayerStateManager.State = PlayerState.Normal;
+        if (changePlayerState) PlayerStateManager.State = EndingState.ChosenEnding == Ending.DeathByTea ? PlayerState.OnlyLookingInput : PlayerState.Normal;
         if (lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
+        if (isEndingDialogue) TriggerEnd.End();
     }
 }

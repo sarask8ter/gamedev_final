@@ -5,6 +5,8 @@ public class Inspectable : MonoBehaviour, IInteractable
     public bool IsInteractable => PlayerStateManager.State == PlayerState.Normal && !PlayerInteractor.IsHoldingItem;
     [SerializeField] private GameObject inspectPrefab;
     [SerializeField] private float inspectScale = 1;
+    [SerializeField] private bool useLocalRotationOverride;
+    [SerializeField] private Vector3 localRotationOverride;
     [SerializeField] private DialogueNode dialogue;
     [SerializeField] private bool isEvidence;
 
@@ -13,6 +15,7 @@ public class Inspectable : MonoBehaviour, IInteractable
         var inspectClone = Instantiate(inspectPrefab != null ? inspectPrefab : gameObject);
         inspectClone.transform.localScale *= inspectScale;
         PlayerInspector.BeginInspection(inspectClone);
+        if (useLocalRotationOverride) inspectClone.transform.localRotation = Quaternion.Euler(localRotationOverride);
         if (dialogue != null) DialogueManager.StartDialogue(dialogue, false, false);
         if (isEvidence) GameState.FoundEvidence = true;
     }

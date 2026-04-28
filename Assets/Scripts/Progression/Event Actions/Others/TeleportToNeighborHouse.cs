@@ -5,6 +5,7 @@ using UnityEngine;
 public class TeleportToNeighbor : EventAction
 {
     [SerializeField] private float fadeDuration;
+    [SerializeField] private bool teleportForTea;
 
     public override void OnEventStart()
     {
@@ -13,18 +14,25 @@ public class TeleportToNeighbor : EventAction
 
     IEnumerator FadeAndTeleport()
     {
-        yield return ScreenFader.FadeOutRoutine(fadeDuration);
+        PlayerStateManager.State = PlayerState.NoInput;
+
+        yield return ScreenFader.FadeOut(fadeDuration);
+
         TeleportPlayerAndNeighbor();
-        yield return ScreenFader.FadeInRoutine(fadeDuration);
+        if (teleportForTea) foreach (var obj in GameState.ObjectsToActivateAtTeaReady) obj.SetActive(true);
+
+        yield return ScreenFader.FadeIn(fadeDuration);
+
+        PlayerStateManager.State = PlayerState.Normal;
         CompleteEvent();
     }
 
     void TeleportPlayerAndNeighbor()
     {
         // Teleport neighbor.
-        MovementHelper.MoveToPoint(GameState.Neighbor, GameState.NeighborAtNeighborHouseInitialTeleportPoint, false);
+        MovementHelper.MoveToPoint(GameState.Neighbor, teleportForTea ? GameState.NeighborTeaTeleportPoint : GameState.NeighborAtNeighborHouseInitialTeleportPoint, false);
 
         // Teleport player.
-        MovementHelper.MovePlayer(GameState.PlayerAtNeighborHouseInitialTeleportPoint);
+        MovementHelper.MovePlayer(teleportForTea ? GameState.PlayerTeaTeleportPoint : GameState.PlayerAtNeighborHouseInitialTeleportPoint);
     }
 }

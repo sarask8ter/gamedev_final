@@ -12,4 +12,8 @@ public enum ProgressEvent
     GoToNeighborsHouse,
     NeighborWelcome,
     ExploreNeighborsHouse,
+    TeaReadyDialogue,
+    TeaReady,
+    StayTheNightDialogue,
+    StayTheNightDecision,
 }

@@ -46,8 +46,6 @@ public class PlayerInteractor : MonoBehaviour
 
     void Awake()
     {
-        interactAction = InputSystem.actions.FindAction("Interact");
-
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
@@ -55,12 +53,13 @@ public class PlayerInteractor : MonoBehaviour
         else
         {
             _instance = this;
+            interactAction = InputSystem.actions.FindAction("Interact");
         }
     }
 
     void Update()
     {
-        if (PlayerStateManager.State == PlayerState.Normal && interactAction.WasPressedThisFrame())
+        if ((PlayerStateManager.State == PlayerState.Normal || PlayerStateManager.State == PlayerState.OnlyLookingInput) && interactAction.WasPressedThisFrame())
         {
             TryInteract();
         }

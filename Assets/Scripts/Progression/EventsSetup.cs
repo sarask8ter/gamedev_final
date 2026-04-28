@@ -21,8 +21,8 @@ public class EventsSetup : MonoBehaviour
 
     IEnumerator FadeInGameStart()
     {
-        PlayerStateManager.State = PlayerState.Fading;
-        yield return ScreenFader.FadeInRoutine(fadeDuration);
+        PlayerStateManager.State = PlayerState.NoInput;
+        yield return ScreenFader.FadeIn(fadeDuration);
         PlayerStateManager.State = PlayerState.Normal;
         ProgressManager.CompleteEvent(ProgressEvent.GameStart);
     }
