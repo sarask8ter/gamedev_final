@@ -20,6 +20,8 @@ public class E1_NeighborEvent : MonoBehaviour
     private GameObject spawnedNeighbor;
     private bool triggered = false;
 
+    private bool despawnNeighborAfterDialogue = false;
+
     void OnEnable()
     {
         ProgressManager.SubscribeToStart(ProgressEvent.DoorKnock, TriggerNeighborEvent);
@@ -55,6 +57,8 @@ public class E1_NeighborEvent : MonoBehaviour
 
     public void OnTalkChosen()
     {
+        despawnNeighborAfterDialogue = true;
+
         StartCoroutine(TalkSequence());
     }
 
@@ -66,8 +70,6 @@ public class E1_NeighborEvent : MonoBehaviour
             frontDoor.SetOpen(true); // uses SAME logic as E key
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
-
-        yield return new WaitForSeconds(6f);
         speaker.StartDialogue(talkNode, "");
     }
 
@@ -103,5 +105,18 @@ public class E1_NeighborEvent : MonoBehaviour
         yield return null; // wait 1 frame
 
         controller.enabled = true;
+    }
+
+    public void OnNeighborConversationFinished()
+    {
+        if (!despawnNeighborAfterDialogue) return;
+
+        despawnNeighborAfterDialogue = false;
+
+        if (frontDoor != null)
+            frontDoor.SetOpen(false); // close door
+
+        if (spawnedNeighbor != null)
+            spawnedNeighbor.transform.position += Vector3.left * 100f; // neighbor gone
     }
 }

@@ -133,12 +133,16 @@ public class Speaker : MonoBehaviour, IInteractable
 
     void HandleChoice(DialogueChoice choice)
     {
-        // 1. run gameplay logic
-        ExecuteChoiceAction(choice.Action);
-
         CancelInvoke();
-        
-        // 2. move dialogue forward
+
+        // If gameplay action handles dialogue itself,
+        // don't also advance via choice.NextNode
+        if (choice.Action == ChoiceType.Peek || choice.Action == ChoiceType.Talk || choice.Action == ChoiceType.Ignore)
+        {
+            ExecuteChoiceAction(choice.Action);
+            return;
+        }
+
         currentNode = choice.NextNode;
         ShowNode();
     }
@@ -198,6 +202,11 @@ public class Speaker : MonoBehaviour, IInteractable
         if (lastNodeEvent != ProgressEvent.None)
         {
             ProgressManager.CompleteEvent(lastNodeEvent);
+        }
+
+        if (eventHandler != null)
+        {
+            eventHandler.OnNeighborConversationFinished();
         }
 
         lastNodeEvent = ProgressEvent.None;
