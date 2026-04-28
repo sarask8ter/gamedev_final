@@ -8,6 +8,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
     [SerializeField] private float speed;
     [SerializeField] private ProgressEvent unlockEvent;
     [SerializeField] private bool isBloodiedDoor;
+    [SerializeField] private bool singleTimeInteract;
 
     private bool isOpen = false;
     private Quaternion closedRot;
@@ -30,6 +31,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
     {
         SetOpen(!isOpen);
         if (isBloodiedDoor) TasksEvents.OnItemInteract?.Invoke(ItemName.BloodiedDoor);
+        if (singleTimeInteract) isInteractable = false;
     }
 
     public void Slam()
