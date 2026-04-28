@@ -13,9 +13,10 @@ public class DialogueNode : EventAction
     public Speaker speaker;
     public bool AllowClickToNextNode = true;
     public bool IsEndingDialogue;
+    public bool ChangePlayerState = true;
 
     public override void OnEventStart()
     {
-        DialogueManager.StartDialogue(this);
+        DialogueManager.StartDialogue(this, true, ChangePlayerState);
     }
 }

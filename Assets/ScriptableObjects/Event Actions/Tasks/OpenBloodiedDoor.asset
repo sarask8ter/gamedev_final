@@ -15,5 +15,5 @@ MonoBehaviour:
   TriggeringEvent: 19
   description: Open the bloodied door
   progressText: 
-  progressCompletionDelay: 1
+  progressCompletionDelay: 0
   item: 5

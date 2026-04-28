@@ -461,8 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64804cab19c7d4ad78c485888b0d7399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloodiedDoorDialogueTrigger
-  dialogue: {fileID: 11400000, guid: 7f2cd8562ba4446d7b90b3b63b27ec41, type: 2}
-  evt: 16
+  progressEvent: 16
 --- !u!1 &150747162
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +499,7 @@ MonoBehaviour:
   neighborPeekTeleportPoint: {fileID: 1384652075}
   neighborAtNeighborHouseInitialTeleportPoint: {fileID: 844580185}
   neighborTeaTeleportPoint: {fileID: 163401038}
+  neighborBathroomTeleportPoint: {fileID: 261192437}
   objectsToActivateAtTeaReady:
   - {fileID: 1422737450}
   - {fileID: 549748261}
@@ -508,6 +508,8 @@ MonoBehaviour:
   - {fileID: 139204209}
   neighborDoor: {fileID: 1945797685}
   stairBlocker: {fileID: 1227952082}
+  corpse: {fileID: 1718900480}
+  corpseUprightPoint: {fileID: 1400745852}
 --- !u!4 &150747164
 Transform:
   m_ObjectHideFlags: 0
@@ -958,6 +960,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f2cd8562ba4446d7b90b3b63b27ec41, type: 2}
   - {fileID: 11400000, guid: d6326a6a3e640428ea2f44b2137e0c53, type: 2}
   - {fileID: 11400000, guid: 2815f0de8ed8c4147a1fbf84ba01c012, type: 2}
+  - {fileID: 11400000, guid: 582ade9cd818b45ea97c7eb3e9f70477, type: 2}
+  - {fileID: 11400000, guid: e9aefde930bfe45348f0a474ea8946b7, type: 2}
+  - {fileID: 11400000, guid: e880fba2f5a7e4122bbef22196b69215, type: 2}
+  - {fileID: 11400000, guid: 123d6237b6336444496d7a9b7a2e19ba, type: 2}
+  - {fileID: 11400000, guid: 6c16aec7ecbbc4d7588e85165c89407a, type: 2}
 --- !u!114 &235080520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,6 +1056,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238118942}
   m_CullTransparentMesh: 1
+--- !u!1 &261192436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 261192437}
+  m_Layer: 0
+  m_Name: 'NeighborBathroomTeleportPoint '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &261192437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261192436}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -3.2415662, y: 4.024, z: -1006.201}
+  m_LocalScale: {x: 0.399486, y: 0.47605202, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1553103755}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &346719231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2532,7 +2570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843100479}
   - component: {fileID: 843100481}
-  - component: {fileID: 843100480}
+  - component: {fileID: 843100482}
   m_Layer: 0
   m_Name: Body Encounter Trigger
   m_TagString: Untagged
@@ -2555,20 +2593,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1553103755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &843100480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843100478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64804cab19c7d4ad78c485888b0d7399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EventColliderDialogueTrigger
-  dialogue: {fileID: 11400000, guid: 8f69053d894084cfda572ff99ed911d6, type: 2}
-  evt: 20
 --- !u!65 &843100481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2590,6 +2614,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.98579264, y: 2.0024247, z: 2.071167}
   m_Center: {x: -0.0071036816, y: 0.50121236, z: 0.5355835}
+--- !u!114 &843100482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843100478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e053e62af3a432db4bc7c97ef6e0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueColliderTrigger
+  dialogue: {fileID: 11400000, guid: 8f69053d894084cfda572ff99ed911d6, type: 2}
 --- !u!1 &844580184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,28 +2722,13 @@ GameObject:
   m_Component:
   - component: {fileID: 855055261}
   - component: {fileID: 855055260}
-  - component: {fileID: 855055259}
   m_Layer: 0
-  m_Name: BodyCamera
+  m_Name: BathroomCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &855055259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855055258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6b6771fb3944091ab3b09b84d42e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraSwitcher
-  allCams: []
-  hidePlayer: 1
+  m_IsActive: 1
 --- !u!114 &855055260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,13 +2780,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855055258}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.036155906, y: -0.8701145, z: 0.06825818, w: -0.48675907}
-  m_LocalPosition: {x: -6.521, y: 5.767717, z: -1005.773}
+  m_LocalRotation: {x: -0.031505413, y: -0.9007476, z: 0.07052546, w: -0.42741942}
+  m_LocalPosition: {x: -6.874, y: 5.767717, z: -1005.773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 8.858, y: -238.463, z: -0.205}
+  m_LocalEulerAnglesHint: {x: 8.858, y: -230.786, z: -0.205}
 --- !u!1 &874855553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,9 +3264,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1250511833}
   - component: {fileID: 1250511832}
-  - component: {fileID: 1250511834}
   m_Layer: 0
-  m_Name: BathroomCamera
+  m_Name: CorpseOnlyCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3308,20 +3329,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 35.816, y: -143.302, z: -0.055}
---- !u!114 &1250511834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250511831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6b6771fb3944091ab3b09b84d42e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraSwitcher
-  allCams: []
-  hidePlayer: 1
 --- !u!1 &1309662094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3486,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2060916811}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1400745851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400745852}
+  m_Layer: 0
+  m_Name: body upright
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400745852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400745851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.003532216, w: 0.9999938}
+  m_LocalPosition: {x: -6.109, y: 4.738, z: -1007.414}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1553103755}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.405}
 --- !u!1001 &1410606802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3847,6 +3885,7 @@ Transform:
   - {fileID: 1184343610}
   - {fileID: 844580185}
   - {fileID: 163401038}
+  - {fileID: 261192437}
   - {fileID: 1744087829}
   - {fileID: 3404778592403710758}
   - {fileID: 1422737451}
@@ -3856,6 +3895,7 @@ Transform:
   - {fileID: 139204210}
   - {fileID: 843100479}
   - {fileID: 1718900481}
+  - {fileID: 1400745852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563043500
@@ -4041,8 +4081,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CinemachineCameraSwitcher
   allCams:
   - {fileID: 1584296233}
-  - {fileID: 855055258}
   - {fileID: 1250511831}
+  - {fileID: 855055258}
   hidePlayer: 1
 --- !u!1 &1579643382 stripped
 GameObject:
@@ -4264,7 +4304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 02000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c000000010000000d0000000e0000000f0000001000000011000000120000001300000014000000150000001600000017000000
+  sequence: 02000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c000000010000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -4345,8 +4385,7 @@ GameObject:
   - component: {fileID: 1718900484}
   - component: {fileID: 1718900483}
   - component: {fileID: 1718900482}
-  - component: {fileID: 1718900485}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4385,7 +4424,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -4448,20 +4487,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718900480}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1718900485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718900480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7a01bf5db57430693a46ffc43029cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwitchableItem
-  camSwitcher: {fileID: 1250511834}
-  singleTimeInteract: 1
 --- !u!1001 &1722742770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4480,31 +4505,31 @@ PrefabInstance:
       objectReference: {fileID: 932251219}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.795
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.543
+      value: 1.431
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1006.292
+      value: 11.24
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.29969493
+      value: 0.06945844
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09723292
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9031233
+      value: -0.9975849
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.29171407
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4520,7 +4545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: field of view
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: far clip plane
@@ -4541,6 +4566,10 @@ PrefabInstance:
     - target: {fileID: 9018249871969862650, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: UpdateMethod
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018249871969862650, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: DefaultBlend.Time
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4719,7 +4748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4991,6 +5020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Neighborhood - Neighbor's House
       objectReference: {fileID: 0}
+    - target: {fileID: 2101047982674033386, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2195509152276324503, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5021,7 +5054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5506544195305838269, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: unlockEvent
-      value: 17
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5506544195305838269, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: isBloodiedDoor
@@ -5056,6 +5089,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7808497310940927669, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286476989182133830, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
