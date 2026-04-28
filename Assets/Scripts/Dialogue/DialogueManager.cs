@@ -130,6 +130,7 @@ public class DialogueManager : MonoBehaviour
 
     void GoToNextNode()
     {
+        if (currentNode == null) return;
         var nextNode = currentNode.Next;
         if (currentNode.NextIfFoundEvidence != null && GameState.FoundEvidence) nextNode = currentNode.NextIfFoundEvidence;
         currentNode = nextNode;

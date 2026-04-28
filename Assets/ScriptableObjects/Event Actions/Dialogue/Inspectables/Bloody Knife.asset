@@ -15,8 +15,10 @@ MonoBehaviour:
   TriggeringEvent: 0
   Text: Why is this knife so dirty?
   Next: {fileID: 0}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 1
-  AutoDelay: 1
+  AutoDelay: 2
   speaker: 0
   AllowClickToNextNode: 0
+  IsEndingDialogue: 0
