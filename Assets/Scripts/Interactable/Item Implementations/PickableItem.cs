@@ -5,6 +5,8 @@ public class PickableItem : MonoBehaviour, IInteractable
 {
     [SerializeField] private ProgressEvent unlockEvent;
     [SerializeField] private ItemName item;
+    [SerializeField] private bool useLocalRotationOverride;
+    [SerializeField] private Vector3 localRotationOverride;
     public ItemName Item => item;
 
     private bool isInteractable;
@@ -24,8 +26,9 @@ public class PickableItem : MonoBehaviour, IInteractable
         oldLayerName = LayerMask.LayerToName(gameObject.layer);
         oldParent = transform.parent;
         MovementHelper.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
+        if (useLocalRotationOverride) gameObject.transform.localRotation = Quaternion.Euler(localRotationOverride);
         isInteractable = false;
-    }
+    } 
 
     public void Drop(Transform dropPoint)
     {

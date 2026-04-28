@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_Ignore 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: '[...]'
+  Text: ...
   Next: {fileID: 11400000, guid: 229c53c90ded64a34ac1e59472057591, type: 2}
   Choices: []
   AutoProgress: 0

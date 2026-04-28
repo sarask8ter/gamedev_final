@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Journal 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: 
-  Next: {fileID: 0}
+  Text: Why is Jessica Wierks' name here? That's my friend who went missing.
+  Next: {fileID: 11400000, guid: 18303f19a5591482096fdf106801f737, type: 2}
   Choices: []
-  AutoProgress: 0
-  AutoDelay: 1.5
+  AutoProgress: 1
+  AutoDelay: 2
   speaker: 0
-  AllowClickToNextNode: 1
+  AllowClickToNextNode: 0
