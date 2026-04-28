@@ -39,7 +39,7 @@ public class GameState : MonoBehaviour
 
     // DYNAMIC
     [Header("Evidence")]
-    public static bool FoundEvidence;
+    public static bool FoundEvidence = true;
 
     private static GameState _instance;
     void Awake()
