@@ -154,7 +154,12 @@ public class DialogueManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (changePlayerState) PlayerStateManager.State = EndingState.ChosenEnding == Ending.DeathByTea ? PlayerState.OnlyLookingInput : PlayerState.Normal;
+        if (changePlayerState) 
+        {
+            PlayerStateManager.State = 
+                (EndingState.ChosenEnding == Ending.DeathByTea) 
+                ? PlayerState.OnlyLookingInput : PlayerState.Normal;
+        }
         if (lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
         if (isEndingDialogue) TriggerEnd.End();
     }

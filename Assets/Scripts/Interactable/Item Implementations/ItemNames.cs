@@ -5,4 +5,5 @@ public enum ItemName
     Key,
     Box,
     Crowbar,
+    BloodiedDoor,
 }
