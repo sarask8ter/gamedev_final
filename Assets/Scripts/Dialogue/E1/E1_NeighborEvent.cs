@@ -41,24 +41,24 @@ public class E1_NeighborEvent : MonoBehaviour
 
         spawnedNeighbor = Instantiate(neighborPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
-        if (jumpscare != null)
-        {
-            jumpscare.SetNeighbor(spawnedNeighbor);
-        }
+        // var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
+        // if (jumpscare != null)
+        // {
+        //     jumpscare.SetNeighbor(spawnedNeighbor);
+        // }
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(knockDialogueStart, "");
     }
 
 
-    public void OnPeekChosen()
-    {
-        var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
+    // public void OnPeekChosen()
+    // {
+    //     var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
 
-        if (jumpscare != null)
-            jumpscare.PlayJumpscare();
-    }
+    //     if (jumpscare != null)
+    //         jumpscare.PlayJumpscare();
+    // }
 
     public void OnTalkChosen()
     {

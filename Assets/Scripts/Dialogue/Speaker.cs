@@ -137,7 +137,7 @@ public class Speaker : MonoBehaviour, IInteractable
 
         // If gameplay action handles dialogue itself,
         // don't also advance via choice.NextNode
-        if (choice.Action == ChoiceType.Peek || choice.Action == ChoiceType.Talk || choice.Action == ChoiceType.Ignore)
+        if (choice.Action == ChoiceType.Talk || choice.Action == ChoiceType.Ignore)
         {
             ExecuteChoiceAction(choice.Action);
             return;
@@ -152,10 +152,6 @@ public class Speaker : MonoBehaviour, IInteractable
 
         switch (type)
         {
-            case ChoiceType.Peek:
-                eventHandler.OnPeekChosen();
-                break;
-
             case ChoiceType.Talk:
                 eventHandler.OnTalkChosen();
                 break;
