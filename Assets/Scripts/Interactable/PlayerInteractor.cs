@@ -33,6 +33,22 @@ public class PlayerInteractor : MonoBehaviour
         return true;
     }
 
+    public static bool DiscardItem(ItemName item) { return _instance._DiscardItem(item); }
+
+    // Returns true if successfully discarded item, false otherwise.
+    bool _DiscardItem(ItemName item)
+    {
+        if (item != heldItem.Item)
+        {
+            Debug.LogError("Discarding: " + heldItem + " expected: " + heldItem.Item);
+            return false;
+        }
+        if (heldItem == null) return false;
+        Destroy(heldItem);
+        heldItem = null;
+        return true;
+    }
+
     // Returns true if holding nothing originally, and now picked up item, false otherwise.
     public bool PickUpItem(PickableItem item)
     {
@@ -46,8 +62,6 @@ public class PlayerInteractor : MonoBehaviour
 
     void Awake()
     {
-        interactAction = InputSystem.actions.FindAction("Interact");
-
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
@@ -55,12 +69,19 @@ public class PlayerInteractor : MonoBehaviour
         else
         {
             _instance = this;
+            interactAction = InputSystem.actions.FindAction("Interact");
         }
+    }
+
+    void Start()
+    {
+        // Don't allow held item to preserve between events.
+        ProgressManager.OnProgressEventCompleted += (_) => { if (heldItem != null) _DiscardItem(heldItem.Item); };
     }
 
     void Update()
     {
-        if (PlayerStateManager.State == PlayerState.Normal && interactAction.WasPressedThisFrame())
+        if ((PlayerStateManager.State == PlayerState.Normal || PlayerStateManager.State == PlayerState.OnlyLookingInput) && interactAction.WasPressedThisFrame())
         {
             TryInteract();
         }

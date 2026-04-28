@@ -126,7 +126,7 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			if (PlayerStateManager.State == PlayerState.Normal) CameraRotation();
+			if (PlayerStateManager.State == PlayerState.Normal || PlayerStateManager.State == PlayerState.OnlyLookingInput) CameraRotation();
 		}
 
 		private void GroundedCheck()

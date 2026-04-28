@@ -5,6 +5,9 @@ public class PickableItem : MonoBehaviour, IInteractable
 {
     [SerializeField] private ProgressEvent unlockEvent;
     [SerializeField] private ItemName item;
+    [SerializeField] private bool useLocalRotationOverride;
+    [SerializeField] private Vector3 localRotationOverride;
+    [SerializeField] private bool itemForTask;
     public ItemName Item => item;
 
     private bool isInteractable;
@@ -23,9 +26,12 @@ public class PickableItem : MonoBehaviour, IInteractable
         if (!player.PickUpItem(this)) return;
         oldLayerName = LayerMask.LayerToName(gameObject.layer);
         oldParent = transform.parent;
-        MoveAndChangePhysicsMethods.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
+        MovementHelper.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
+        if (useLocalRotationOverride) gameObject.transform.localRotation = Quaternion.Euler(localRotationOverride);
         isInteractable = false;
-    }
+
+        if (itemForTask) TasksEvents.OnItemInteract?.Invoke(item);
+    } 
 
     public void Drop(Transform dropPoint)
     {
@@ -35,6 +41,6 @@ public class PickableItem : MonoBehaviour, IInteractable
             return;
         }
         transform.SetParent(oldParent);
-        MoveAndChangePhysicsMethods.MoveAndEnable(gameObject, oldLayerName, dropPoint, false);
+        MovementHelper.MoveAndEnable(gameObject, oldLayerName, dropPoint, false);
     }
 }

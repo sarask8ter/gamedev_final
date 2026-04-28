@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
+  m_Name: House Welcome
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  TriggeringEvent: 10
+  Text: 'Welcome to my house! Get comfortable, I''ll make us some tea.
+
+'
+  Next: {fileID: 11400000, guid: c893e08a0be3b4a6fb39a999d8b2284f, type: 2}
+  Choices: []
+  AutoProgress: 0
+  AutoDelay: 1.5
+  speaker: 1
+  AllowClickToNextNode: 1

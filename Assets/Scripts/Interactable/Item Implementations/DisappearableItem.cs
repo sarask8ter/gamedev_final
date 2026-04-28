@@ -5,8 +5,8 @@ public class DisappearableItem : MonoBehaviour, IInteractable
     [SerializeField] private ItemName item;
     public ItemName Item => item;
 
-    private bool isIteractable = true;
-    public bool IsInteractable => isIteractable;
+    private bool isInteractable = true;
+    public bool IsInteractable => isInteractable;
 
     public void Interact(PlayerInteractor player)
     {
