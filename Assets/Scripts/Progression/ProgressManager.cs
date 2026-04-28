@@ -7,8 +7,10 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] private float startDelay;
     [SerializeField] private ProgressEvent[] sequence;
     private int currEvtIdx;
-    public event Action<ProgressEvent> OnProgressEventStarted;
-    public event Action<ProgressEvent> OnProgressEventCompleted;
+    private Action<ProgressEvent> onProgressEventStarted;
+    public static Action<ProgressEvent> OnProgressEventStarted { get => _instance.onProgressEventStarted; set => _instance.onProgressEventStarted = value; }
+    private Action<ProgressEvent> onProgressEventCompleted;
+    public static Action<ProgressEvent> OnProgressEventCompleted { get => _instance.onProgressEventCompleted; set => _instance.onProgressEventCompleted = value; }
 
     private Dictionary<ProgressEvent, Action> startListeners = new();
     private Dictionary<ProgressEvent, Action> endListeners = new();
@@ -44,7 +46,7 @@ public class ProgressManager : MonoBehaviour
             return;
         }
 
-        OnProgressEventCompleted?.Invoke(evt);
+        onProgressEventCompleted?.Invoke(evt);
         if (endListeners.TryGetValue(evt, out var callback)) callback?.Invoke();
 
         startListeners.Remove(evt);
@@ -73,14 +75,14 @@ public class ProgressManager : MonoBehaviour
 
     void OnEnable()
     {
-        OnProgressEventStarted += LogEventStart;
-        OnProgressEventCompleted += LogEventComplete;
+        onProgressEventStarted += LogEventStart;
+        onProgressEventCompleted += LogEventComplete;
     }
 
     void OnDisable()
     {
-        OnProgressEventStarted -= LogEventStart;
-        OnProgressEventCompleted -= LogEventComplete;
+        onProgressEventStarted -= LogEventStart;
+        onProgressEventCompleted -= LogEventComplete;
     }
 
     void InvokeCurrEvent()
@@ -88,7 +90,7 @@ public class ProgressManager : MonoBehaviour
         if (currEvtIdx < 0 || currEvtIdx >= sequence.Length) return;
         var evt = sequence[currEvtIdx];
 
-        OnProgressEventStarted?.Invoke(evt);
+        onProgressEventStarted?.Invoke(evt);
         if (startListeners.TryGetValue(evt, out var callback)) callback?.Invoke();
     }
 

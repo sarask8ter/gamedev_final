@@ -411,6 +411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrentTaskUI
   strikethroughTime: 0.3
+  taskStayTime: 0
+  tasksHeader: {fileID: 0}
+  currentTask: {fileID: 0}
 --- !u!1 &243762780
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +495,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4b6b19fc7584595ab79d060ebdee73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickable
+  unlockEvent: 0
   item: 0
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  itemForTask: 0
 --- !u!23 &243762784
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -646,7 +653,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4b6b19fc7584595ab79d060ebdee73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickable
+  unlockEvent: 0
   item: 0
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  itemForTask: 0
 --- !u!23 &303387117
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -773,7 +784,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4b6b19fc7584595ab79d060ebdee73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickable
+  unlockEvent: 0
   item: 0
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  itemForTask: 0
 --- !u!23 &357588706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1665,6 +1680,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e77ac99130e472dbce4d6e1794dfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
+  inspectPrefab: {fileID: 0}
+  inspectScale: 1
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  dialogue: {fileID: 0}
+  isEvidence: 0
 --- !u!23 &1148807380
 MeshRenderer:
   m_ObjectHideFlags: 0

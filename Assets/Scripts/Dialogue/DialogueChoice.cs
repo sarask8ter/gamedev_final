@@ -5,7 +5,7 @@ public class DialogueChoice
 {
     public string Text;
     public DialogueNode NextNode;
-    public DialogueChoiceAction OnChooseChoice;
+    public DialogueChoiceAction[] OnChooseChoice;
 }
 
 public abstract class DialogueChoiceAction : ScriptableObject
