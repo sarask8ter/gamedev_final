@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimedTask
   TriggeringEvent: 11
   description: Explore the house/wait for tea
-  progressText: (23)
+  progressText: (1)
   progressCompletionDelay: 1
-  totalTime: 1
+  totalTime: 20
