@@ -11,11 +11,16 @@ public class E1_NeighborEvent : MonoBehaviour
     [Header("Player")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerDoorPoint;
+    [SerializeField] private PlayerSpeaker playerSpeaker;
 
     [Header("Dialogue")]
     [SerializeField] private DialogueNode knockDialogueStart;
     [SerializeField] private DialogueNode talkNode;
     [SerializeField] private DialogueNode ignoreNode;
+
+    [Header("Presence")]
+    [SerializeField] private SpiritController spiritController;
+    [SerializeField] private DialogueNode flickerMonologue;
 
     private GameObject spawnedNeighbor;
     private bool triggered = false;
@@ -118,5 +123,33 @@ public class E1_NeighborEvent : MonoBehaviour
 
         if (spawnedNeighbor != null)
             spawnedNeighbor.transform.position += Vector3.left * 100f; // neighbor gone
+        
+        // Trigger haunting sequence
+        StartCoroutine(PostNeighborHaunt());
+    }
+
+    IEnumerator PostNeighborHaunt()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (spiritController != null)
+        {
+            spiritController.TriggerEvent(SpiritEventType.FlickerLights);
+            Debug.Log("Flicker lights");
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+        PlayerSpeaker playerSpeaker = player.GetComponent<PlayerSpeaker>();
+
+        if (playerSpeaker != null && flickerMonologue != null)
+        {
+            Debug.Log("Monologue starts");
+
+            playerSpeaker.StartDialogue(
+                flickerMonologue,
+                "You"
+            );
+        }
     }
 }

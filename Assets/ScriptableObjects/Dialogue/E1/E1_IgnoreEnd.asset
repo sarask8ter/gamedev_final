@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_EndConvo
+  m_Name: E1_IgnoreEnd
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Okay thank you Jeremy
+  Text: Um what's he even doing here
   TriggeringEvent: 0
   Next: {fileID: 0}
   Choices: []

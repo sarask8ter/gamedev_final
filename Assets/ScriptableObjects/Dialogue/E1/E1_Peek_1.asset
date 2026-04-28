@@ -16,7 +16,7 @@ MonoBehaviour:
   TriggeringEvent: 0
   Next: {fileID: 0}
   Choices:
-  - Text: Talk to him
+  - Text: Go talk to him
     NextNode: {fileID: 11400000, guid: ffab4dc37e0894bc594e014bd9eb17a4, type: 2}
     Action: 1
   - Text: Ignore him

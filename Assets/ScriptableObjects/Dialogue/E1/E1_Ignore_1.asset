@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   Text: Sorry. Don't mind me actually. You must be busy
   TriggeringEvent: 0
-  Next: {fileID: 11400000, guid: ccab24d14a8ea48809b28579b835c3db, type: 2}
+  Next: {fileID: 11400000, guid: 2128057d8fcd34050aa1b339e3284af3, type: 2}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
