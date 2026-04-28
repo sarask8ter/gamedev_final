@@ -502,6 +502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrentTaskUI
   strikethroughTime: 0.3
+  taskStayTime: 0
+  tasksHeader: {fileID: 0}
+  currentTask: {fileID: 0}
 --- !u!1001 &210145726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -720,7 +723,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4b6b19fc7584595ab79d060ebdee73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickable
+  unlockEvent: 0
   item: 0
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  itemForTask: 0
 --- !u!23 &243762784
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -846,7 +853,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4b6b19fc7584595ab79d060ebdee73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickable
+  unlockEvent: 0
   item: 0
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  itemForTask: 0
 --- !u!23 &303387117
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -972,7 +983,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4b6b19fc7584595ab79d060ebdee73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickable
+  unlockEvent: 0
   item: 0
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  itemForTask: 0
 --- !u!23 &357588706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2415,6 +2430,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e77ac99130e472dbce4d6e1794dfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
+  inspectPrefab: {fileID: 0}
+  inspectScale: 1
+  useLocalRotationOverride: 0
+  localRotationOverride: {x: 0, y: 0, z: 0}
+  dialogue: {fileID: 0}
+  isEvidence: 0
 --- !u!23 &1148807380
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2639,6 +2660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e088edcc2c8054902ac6b6f465a32328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiritController
+  playRandomEvents: 0
+  randomEventStartDelay: 5
+  randomEventRepeatDelay: 10
   lights:
   - {fileID: 2025192322}
   doors:
@@ -3577,6 +3601,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Priority.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Priority.m_Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_LegacyPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_StreamingVersion
+      value: 20241001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 1913631138}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Target.CustomLookAtTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
@@ -3641,7 +3689,9 @@ PrefabInstance:
       propertyPath: m_StreamingVersion
       value: 20241001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8762286023885395323, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+    - {fileID: 5920878889820899606, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4199,6 +4249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Door
   openAngle: 90
   speed: 2
+  unlockEvent: 0
+  isBloodiedDoor: 0
 --- !u!4 &1950818961
 Transform:
   m_ObjectHideFlags: 0
@@ -4631,7 +4683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
-  dialogueData: {fileID: 11400000, guid: dda515a3007414db8a390771f0d5c173, type: 2}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0

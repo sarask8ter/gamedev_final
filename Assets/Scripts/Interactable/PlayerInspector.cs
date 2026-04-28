@@ -16,6 +16,7 @@ public class PlayerInspector : MonoBehaviour
     private InputAction clickAction;
 
     private static PlayerInspector _instance;
+    private bool isEndingInspection;
 
     void Awake()
     {
@@ -30,6 +31,22 @@ public class PlayerInspector : MonoBehaviour
             lookAction = InputSystem.actions.FindAction("Look");
             clickAction = InputSystem.actions.FindAction("Click");
         }
+    }
+
+    void Start()
+    {
+        // Don't allow inspection to preserve between events.
+        ProgressManager.OnProgressEventCompleted += OnProgressEventCompleted;
+    }
+
+    void OnDestroy()
+    {
+        ProgressManager.OnProgressEventCompleted -= OnProgressEventCompleted;
+    }
+
+    void OnProgressEventCompleted(ProgressEvent _)
+    {
+        EndInspection();
     }
 
     void Update()
@@ -50,9 +67,24 @@ public class PlayerInspector : MonoBehaviour
 
     public static void EndInspection()
     {
+        if (_instance == null) return;
+        if (_instance.isEndingInspection) return;
+
+        // Guard against infinite loop of cancel dialogue => complete event => end inspection => cancel dialogue...
+        _instance.isEndingInspection = true;
+        DialogueManager.CancelDialogue();
+
+        if (_instance.inspectedItem == null)
+        {
+            _instance.isEndingInspection = false;
+            return;
+        }
+
         Destroy(_instance.inspectedItem);
         _instance.inspectedItem = null;
         PlayerStateManager.State = PlayerState.Normal;
+
+        _instance.isEndingInspection = false;
     }
 
     void RotateInspectedObj()

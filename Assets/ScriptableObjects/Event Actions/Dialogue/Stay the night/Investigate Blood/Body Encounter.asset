@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: Tea refusal 6
+  m_Name: Body Encounter
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: (I need to investigate further what's going on in this house.)
+  Text: Oh my god...Is that Jessica??
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
