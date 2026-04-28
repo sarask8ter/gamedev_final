@@ -28,7 +28,8 @@ public class Task : EventAction
     {
         PreCompleteTask();
         TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
-        CoroutineHelper.Delay(progressCompletionDelay, () => CompleteEvent());
+        if (progressCompletionDelay > 0) CoroutineHelper.Delay(progressCompletionDelay, () => CompleteEvent());
+        else CompleteEvent();
     }
 
     protected TaskData CompileTaskData()

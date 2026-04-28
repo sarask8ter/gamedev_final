@@ -24,5 +24,6 @@ public enum ProgressEvent
     SeeBody,
     MoveCameraToBody,
     CorpseJumpscare,
+    CorpseJumpscareDialogue,
     MoveCameraToNeighborAndBody,
 }

@@ -22,6 +22,8 @@ public class GameState : MonoBehaviour
     public static Transform NeighborAtNeighborHouseInitialTeleportPoint => _instance.neighborAtNeighborHouseInitialTeleportPoint;
     [SerializeField] private Transform neighborTeaTeleportPoint;
     public static Transform NeighborTeaTeleportPoint => _instance.neighborTeaTeleportPoint;
+    [SerializeField] private Transform neighborBathroomTeleportPoint;
+    public static Transform NeighborBathroomTeleportPoint => _instance.neighborBathroomTeleportPoint;
 
     [Header("Others")]
     [SerializeField] private GameObject[] objectsToActivateAtTeaReady;
@@ -30,6 +32,10 @@ public class GameState : MonoBehaviour
     public static DoorPivot NeighborDoor => _instance.neighborDoor;
     [SerializeField] private GameObject stairBlocker;
     public static GameObject StairBlocker => _instance.stairBlocker;
+    [SerializeField] private GameObject corpse;
+    public static GameObject Corpse => _instance.corpse;
+    [SerializeField] private Transform corpseUprightPoint;
+    public static Transform CorpseUprightPoint => _instance.corpseUprightPoint;
 
     // DYNAMIC
     [Header("Evidence")]

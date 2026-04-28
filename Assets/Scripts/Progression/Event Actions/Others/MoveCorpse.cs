@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SwitchCameraForDuration", menuName = "Event Actions/Others/Switch To Camera")]
-public class SwitchCameraForDuration : EventAction
+[CreateAssetMenu(fileName = "MoveCorpse", menuName = "Event Actions/Others/Move Corpse")]
+public class MoveObject : EventAction
 {
     [SerializeField] private float duration;
-    [SerializeField] private GameCamera cam;
+
     public override void OnEventStart()
     {
-        CinemachineCameraSwitcher.SwitchToNewCam(cam);
+        MovementHelper.MoveToPoint(GameState.Corpse, GameState.CorpseUprightPoint, false);
         CoroutineHelper.StartCoroutineHelper(DelayThenCompleteEvent());
     }
 
