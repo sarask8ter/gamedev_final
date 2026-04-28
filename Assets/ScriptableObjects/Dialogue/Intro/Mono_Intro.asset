@@ -17,6 +17,6 @@ MonoBehaviour:
   TriggeringEvent: 2
   Next: {fileID: 11400000, guid: e80b32fefc9a54692a13b36c9db5c319, type: 2}
   Choices: []
-  AutoProgress: 1
+  AutoProgress: 0
   AutoDelay: 1.5
   SpeakerName: 
