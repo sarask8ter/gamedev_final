@@ -33,6 +33,22 @@ public class PlayerInteractor : MonoBehaviour
         return true;
     }
 
+    public static bool DiscardItem(ItemName item) { return _instance._DiscardItem(item); }
+
+    // Returns true if successfully discarded item, false otherwise.
+    bool _DiscardItem(ItemName item)
+    {
+        if (item != heldItem.Item)
+        {
+            Debug.LogError("Discarding: " + heldItem + " expected: " + heldItem.Item);
+            return false;
+        }
+        if (heldItem == null) return false;
+        Destroy(heldItem);
+        heldItem = null;
+        return true;
+    }
+
     // Returns true if holding nothing originally, and now picked up item, false otherwise.
     public bool PickUpItem(PickableItem item)
     {

@@ -1432,6 +1432,77 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &130449093324080603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3863556948290088945}
+  - component: {fileID: 5506544195305838269}
+  - component: {fileID: 5365622250212151631}
+  m_Layer: 9
+  m_Name: Door Pivot 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3863556948290088945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130449093324080603}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6, y: 5.038, z: -6.653}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1468235103039179769}
+  m_Father: {fileID: 909077790767973633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5506544195305838269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130449093324080603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99d1c5f15d974ac88afaa83e0e57856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
+  openAngle: -90
+  speed: 2
+  unlockEvent: 11
+  isBloodiedDoor: 0
+--- !u!65 &5365622250212151631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130449093324080603}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.27222252, y: 2.4336221, z: 1.2468445}
+  m_Center: {x: -0.025022984, y: -0.1198796, z: 0.55904067}
 --- !u!1 &143776972755473957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5789,6 +5860,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 11
+  isBloodiedDoor: 0
 --- !u!65 &2325446376366111566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21659,7 +21731,7 @@ Transform:
   - {fileID: 2729015350392674737}
   - {fileID: 4836900640768243139}
   - {fileID: 4677185638565225158}
-  - {fileID: 1468235103039179769}
+  - {fileID: 3863556948290088945}
   - {fileID: 5999774917410037568}
   - {fileID: 8154702794987264123}
   - {fileID: 1356741200687018606}
@@ -31753,6 +31825,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 11
+  isBloodiedDoor: 0
 --- !u!65 &6051442788863558279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66231,6 +66304,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 11
+  isBloodiedDoor: 0
 --- !u!65 &8378979933499404594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67574,7 +67648,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -67595,6 +67669,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 11
+  isBloodiedDoor: 0
 --- !u!1 &7322723382166300357
 GameObject:
   m_ObjectHideFlags: 0
@@ -78162,11 +78237,11 @@ Transform:
   m_GameObject: {fileID: 8286476989182133830}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.49999997, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -6.0472703, y: 5.0017967, z: -6.6510496}
+  m_LocalPosition: {x: -0.047270298, y: -0.036203384, z: 0.001950264}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 909077790767973633}
+  m_Father: {fileID: 3863556948290088945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1930288722380337716
 MeshFilter:
@@ -84082,6 +84157,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 7
+  isBloodiedDoor: 0
 --- !u!65 &5824876265610242544
 BoxCollider:
   m_ObjectHideFlags: 0
