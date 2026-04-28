@@ -4,4 +4,6 @@ public enum ItemName
     TrashCan,
     Key,
     Box,
+    Crowbar,
+    BloodiedDoor,
 }

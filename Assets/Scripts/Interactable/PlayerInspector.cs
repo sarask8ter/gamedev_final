@@ -16,6 +16,7 @@ public class PlayerInspector : MonoBehaviour
     private InputAction clickAction;
 
     private static PlayerInspector _instance;
+    private bool isEndingInspection;
 
     void Awake()
     {
@@ -32,6 +33,22 @@ public class PlayerInspector : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        // Don't allow inspection to preserve between events.
+        ProgressManager.OnProgressEventCompleted += OnProgressEventCompleted;
+    }
+
+    void OnDestroy()
+    {
+        ProgressManager.OnProgressEventCompleted -= OnProgressEventCompleted;
+    }
+
+    void OnProgressEventCompleted(ProgressEvent _)
+    {
+        EndInspection();
+    }
+
     void Update()
     {
         if (PlayerStateManager.State == PlayerState.Inspecting)
@@ -44,15 +61,30 @@ public class PlayerInspector : MonoBehaviour
     public static void BeginInspection(GameObject objToInspect)
     {
         PlayerStateManager.State = PlayerState.Inspecting;
-        _instance.inspectedItem = Instantiate(objToInspect);
-        MoveAndChangePhysicsMethods.MoveAndDisable(_instance.inspectedItem, _instance.inspectItemLayer, _instance.inspectPoint, true);
+        _instance.inspectedItem = objToInspect;
+        MovementHelper.MoveAndDisable(_instance.inspectedItem, _instance.inspectItemLayer, _instance.inspectPoint, true);
     }
 
     public static void EndInspection()
     {
+        if (_instance == null) return;
+        if (_instance.isEndingInspection) return;
+
+        // Guard against infinite loop of cancel dialogue => complete event => end inspection => cancel dialogue...
+        _instance.isEndingInspection = true;
+        DialogueManager.CancelDialogue();
+
+        if (_instance.inspectedItem == null)
+        {
+            _instance.isEndingInspection = false;
+            return;
+        }
+
         Destroy(_instance.inspectedItem);
         _instance.inspectedItem = null;
         PlayerStateManager.State = PlayerState.Normal;
+
+        _instance.isEndingInspection = false;
     }
 
     void RotateInspectedObj()

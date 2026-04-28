@@ -4,61 +4,85 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private DialogueNode[] dialogues;
     private DialogueNode currentNode;
     private ProgressEvent lastNodeEvent;
     private bool isTyping;
     private bool isDialogueActive;
     private InputAction nextLineAction;
+    private static DialogueManager _instance;
+    private bool changePlayerState;
+    private bool isEndingDialogue;
+    private Coroutine autoProgressCoroutine;
+
+    public static void CancelDialogue()
+    {
+        if (_instance == null) return;
+        if (!_instance.isDialogueActive) return;
+
+        _instance.EndDialogue(false);
+    }
 
     void Awake()
     {
-        nextLineAction = InputSystem.actions.FindAction("Click");
-    }
-
-    void Start()
-    {
-        // No need to unsubscribe -- ProgressManager handles that.
-        foreach (var dialogue in dialogues) ProgressManager.SubscribeToStart(dialogue.TriggeringEvent, () => StartDialogue(dialogue));
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+            nextLineAction = InputSystem.actions.FindAction("Click");
+        }
     }
 
     void Update()
     {
-        if (isDialogueActive && nextLineAction.WasPressedThisFrame())
+        if (currentNode == null) return;
+
+        if (currentNode.AllowClickToNextNode && isDialogueActive && nextLineAction.WasPressedThisFrame())
         {
             if (isTyping)
             {
                 StopNode();
                 CompleteLine();
             }
-            else if (!HasChoices() && currentNode.AllowClickToNextNode) GoToNextNode();
+            else if (!HasChoices()) GoToNextNode();
         }
     }
     
     void StopNode()
     {
         StopAllCoroutines();
+        if (autoProgressCoroutine != null)
+        {
+            // Owned by CoroutineHelper so need to manually cancel.
+            CoroutineHelper.Cancel(autoProgressCoroutine);
+            autoProgressCoroutine = null;
+        }
         CancelInvoke();
     }
 
-    public void StartDialogue(DialogueNode node)
+    public static void StartDialogue(DialogueNode node, bool lockCursor = true, bool changePlayerState = true)
     {
-        isDialogueActive = true;
-        lastNodeEvent = ProgressEvent.None;
-        currentNode = node;
-        DialogueUIController.StartDialogue();
-        ShowNode();
+        _instance.isDialogueActive = true;
+        _instance.lastNodeEvent = ProgressEvent.None;
+        _instance.currentNode = node;
+        DialogueUIController.StartDialogue(lockCursor);
+        _instance.changePlayerState = changePlayerState;
+        _instance.isEndingDialogue = node.IsEndingDialogue;
+        if (changePlayerState) PlayerStateManager.State = PlayerState.Dialogue;
+        _instance.ShowNode();
     }
 
     void ShowNode()
     {
         if (currentNode == null)
         {
-            EndDialogue();
+            EndDialogue(true);
             return;
         }
 
-        DialogueUIController.SetNPCInfo(currentNode.SpeakerName);
+        DialogueUIController.SetNPCInfo(currentNode.speaker.GetName());
 
         if (currentNode.TriggeringEvent != ProgressEvent.None) lastNodeEvent = currentNode.TriggeringEvent;
 
@@ -94,7 +118,16 @@ public class DialogueManager : MonoBehaviour
         }
         else if (currentNode.AutoProgress)
         {
-            Invoke(nameof(GoToNextNode), currentNode.AutoDelay);
+            var nodeToProgress = currentNode;
+            autoProgressCoroutine = CoroutineHelper.Delay(currentNode.AutoDelay, () =>
+            {
+                autoProgressCoroutine = null;
+
+                if (isDialogueActive && nodeToProgress == currentNode)
+                {
+                    GoToNextNode();
+                }
+            });
         }
     }
 
@@ -112,7 +145,7 @@ public class DialogueManager : MonoBehaviour
     void HandleChoice(DialogueChoice choice)
     {
         // 1. run gameplay logic
-        choice.OnChooseChoice?.Execute();
+        foreach (var action in choice.OnChooseChoice) action.Execute();
 
         // 2. move dialogue forward
         currentNode = choice.NextNode;
@@ -121,7 +154,10 @@ public class DialogueManager : MonoBehaviour
 
     void GoToNextNode()
     {
-        currentNode = currentNode.Next;
+        if (currentNode == null) return;
+        var nextNode = currentNode.Next;
+        if (currentNode.NextIfFoundEvidence != null && GameState.FoundEvidence) nextNode = currentNode.NextIfFoundEvidence;
+        currentNode = nextNode;
         ShowNode();
     }
 
@@ -130,10 +166,11 @@ public class DialogueManager : MonoBehaviour
         return currentNode.Choices != null && currentNode.Choices.Length > 0;
     }
 
-    void EndDialogue()
+    void EndDialogue(bool makeProgress)
     {
         StopNode();
 
+        currentNode = null;
         isDialogueActive = false;
 
         DialogueUIController.SetDialogueText("");
@@ -142,7 +179,13 @@ public class DialogueManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        PlayerStateManager.State = PlayerState.Normal;
-        ProgressManager.CompleteEvent(lastNodeEvent);
+        if (changePlayerState) 
+        {
+            PlayerStateManager.State = 
+                (EndingState.ChosenEnding == Ending.DeathByTea) 
+                ? PlayerState.OnlyLookingInput : PlayerState.Normal;
+        }
+        if (makeProgress && lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
+        if (isEndingDialogue) TriggerEnd.End();
     }
 }
