@@ -2,7 +2,8 @@ using UnityEngine;
 
 public enum PlayerState
 {
-    Fading, // Fading screen in or out -- disable inputs.
+    NoInput,
+    OnlyLookingInput,
     Normal,
     Inspecting,
     Dialogue,

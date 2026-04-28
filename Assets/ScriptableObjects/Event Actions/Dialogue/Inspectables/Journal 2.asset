@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Journal 2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: 
+  Text: Something weird is going on here...
   Next: {fileID: 0}
   Choices: []
-  AutoProgress: 0
-  AutoDelay: 1.5
+  AutoProgress: 1
+  AutoDelay: 2
   speaker: 0
-  AllowClickToNextNode: 1
+  AllowClickToNextNode: 0

@@ -2,32 +2,46 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[RequireComponent(typeof(Image))]
 public class ScreenFader : MonoBehaviour
 {
-    private Image fadeImage;
     private static ScreenFader _instance;
 
-    void Awake()
+    private Image fadeImage;
+    private Coroutine currentFade;
+
+    private void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-        else
+
+        _instance = this;
+        fadeImage = GetComponent<Image>();
+        fadeImage.raycastTarget = false;
+    }
+
+    public static Coroutine FadeOut(float duration)
+    {
+        return _instance.StartFade(1f, duration);
+    }
+
+    public static Coroutine FadeIn(float duration)
+    {
+        return _instance.StartFade(0f, duration);
+    }
+
+    private Coroutine StartFade(float targetAlpha, float duration)
+    {
+        if (currentFade != null)
         {
-            _instance = this;
-            fadeImage = GetComponent<Image>();
+            StopCoroutine(currentFade);
         }
-    }
 
-    public static IEnumerator FadeOutRoutine(float duration)
-    {
-        yield return _instance.Fade(1f, duration);
-    }
-
-    public static IEnumerator FadeInRoutine(float duration)
-    {
-        yield return _instance.Fade(0f, duration);
+        currentFade = StartCoroutine(Fade(targetAlpha, duration));
+        return currentFade;
     }
 
     private IEnumerator Fade(float targetAlpha, float duration)
@@ -40,16 +54,15 @@ public class ScreenFader : MonoBehaviour
             time += Time.deltaTime;
 
             float t = Mathf.Clamp01(time / duration);
-
             float eased = Mathf.SmoothStep(0f, 1f, t);
 
-            float alpha = Mathf.Lerp(startAlpha, targetAlpha, eased);
-            SetAlpha(alpha);
+            SetAlpha(Mathf.Lerp(startAlpha, targetAlpha, eased));
 
             yield return null;
         }
 
         SetAlpha(targetAlpha);
+        currentFade = null;
     }
 
     private void SetAlpha(float alpha)

@@ -17,7 +17,12 @@ public class DoorPivot : MonoBehaviour, IInteractable
         closedRot = transform.rotation;
         openRot = Quaternion.Euler(0, openAngle, 0);
 
-        ProgressManager.SubscribeToStart(unlockEvent, () => isInteractable = true);
+        ProgressManager.SubscribeToStart(unlockEvent, Unlock);
+    }
+
+    public void Unlock()
+    {
+        isInteractable = true;
     }
 
     public void Interact(PlayerInteractor player)
