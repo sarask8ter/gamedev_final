@@ -24,7 +24,7 @@ public class TimedTask : Task
         {
             HandleProgress();
             yield return new WaitForSeconds(1f);
-            currTime--;
+            if (PlayerStateManager.State != PlayerState.Inspecting) currTime--;
         }
 
         HandleProgress();
@@ -39,6 +39,6 @@ public class TimedTask : Task
 
     void UpdateProgressText()
     {
-       progressText = "(" + currTime.ToString("0") + ")";  
+       progressText = "(" + currTime + ")";  
     }
 }

@@ -12,6 +12,15 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager _instance;
     private bool changePlayerState;
     private bool isEndingDialogue;
+    private Coroutine autoProgressCoroutine;
+
+    public static void CancelDialogue()
+    {
+        if (_instance == null) return;
+        if (!_instance.isDialogueActive) return;
+
+        _instance.EndDialogue(false);
+    }
 
     void Awake()
     {
@@ -44,6 +53,12 @@ public class DialogueManager : MonoBehaviour
     void StopNode()
     {
         StopAllCoroutines();
+        if (autoProgressCoroutine != null)
+        {
+            // Owned by CoroutineHelper so need to manually cancel.
+            CoroutineHelper.Cancel(autoProgressCoroutine);
+            autoProgressCoroutine = null;
+        }
         CancelInvoke();
     }
 
@@ -63,7 +78,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentNode == null)
         {
-            EndDialogue();
+            EndDialogue(true);
             return;
         }
 
@@ -103,7 +118,16 @@ public class DialogueManager : MonoBehaviour
         }
         else if (currentNode.AutoProgress)
         {
-            CoroutineHelper.Delay(currentNode.AutoDelay, GoToNextNode);
+            var nodeToProgress = currentNode;
+            autoProgressCoroutine = CoroutineHelper.Delay(currentNode.AutoDelay, () =>
+            {
+                autoProgressCoroutine = null;
+
+                if (isDialogueActive && nodeToProgress == currentNode)
+                {
+                    GoToNextNode();
+                }
+            });
         }
     }
 
@@ -142,7 +166,7 @@ public class DialogueManager : MonoBehaviour
         return currentNode.Choices != null && currentNode.Choices.Length > 0;
     }
 
-    void EndDialogue()
+    void EndDialogue(bool makeProgress)
     {
         StopNode();
 
@@ -161,7 +185,7 @@ public class DialogueManager : MonoBehaviour
                 (EndingState.ChosenEnding == Ending.DeathByTea) 
                 ? PlayerState.OnlyLookingInput : PlayerState.Normal;
         }
-        if (lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
+        if (makeProgress && lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
         if (isEndingDialogue) TriggerEnd.End();
     }
 }

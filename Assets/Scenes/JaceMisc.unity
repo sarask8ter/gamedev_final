@@ -726,10 +726,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventsSetup
   startDelay: 0.75
-  tasks:
-  - {fileID: 11400000, guid: f2a42394a86004ca984ee43fdf398650, type: 2}
-  - {fileID: 11400000, guid: 32191c383923a4251b7ab76eea1875fd, type: 2}
-  - {fileID: 11400000, guid: 5334496a81f2c41dba6a7fe4b20a9b6f, type: 2}
+  fadeDuration: 0
+  eventActions: []
 --- !u!1 &238118942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,6 +2672,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 7
+  isBloodiedDoor: 0
 --- !u!65 &1544185542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3047,7 +3046,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
   sequence: 01000000020000000300000004000000050000000600000007000000
-  currEvtIdx: 0
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,6 +3243,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Priority.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Priority.m_Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_LegacyPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_StreamingVersion
+      value: 20241001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 4135013735480512182}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Target.CustomLookAtTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
@@ -3309,7 +3331,9 @@ PrefabInstance:
       propertyPath: m_StreamingVersion
       value: 20241001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8762286023885395323, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+    - {fileID: 5920878889820899606, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3730,6 +3754,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 0
+  isBloodiedDoor: 0
 --- !u!4 &1950818961
 Transform:
   m_ObjectHideFlags: 0
@@ -4222,9 +4247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Neighbor
-  npcName: Ted
-  startNode: {fileID: 11400000, guid: b9b36b1d9e8ac4caf91d3f41fb8dae0d, type: 2}
-  eventHandler: {fileID: 0}
 --- !u!136 &2109881770
 CapsuleCollider:
   m_ObjectHideFlags: 0

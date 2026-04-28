@@ -17,6 +17,12 @@ public enum ProgressEvent
     StayTheNightDialogue,
     StayTheNightDecision,
     // Events that only happen if investigating blood/clues.
+    GoToSleep,
+    SeeBlood,
     FindToolToOpenDoor,
     OpenBloodiedDoor,
+    SeeBody,
+    MoveCameraToBody,
+    CorpseJumpscare,
+    MoveCameraToNeighborAndBody,
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09f15384e1ba4e6ca5473df3610d91e, type: 3}
   m_Name: OpenBloodiedDoor
   m_EditorClassIdentifier: Assembly-CSharp::InteractWithItemTask
-  TriggeringEvent: 17
+  TriggeringEvent: 19
   description: Open the bloodied door
   progressText: 
   progressCompletionDelay: 1

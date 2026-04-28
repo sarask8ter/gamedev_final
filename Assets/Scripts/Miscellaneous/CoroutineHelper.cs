@@ -23,9 +23,15 @@ public class CoroutineHelper : MonoBehaviour
         _instance.StartCoroutine(enumerator);
     }
 
-    public static void Delay(float seconds, Action action)
+    public static Coroutine Delay(float seconds, Action action)
     {
-        _instance.StartCoroutine(DelayAction(seconds, action));
+        return _instance.StartCoroutine(DelayAction(seconds, action));
+    }
+
+    public static void Cancel(Coroutine coroutine)
+    {
+        if (_instance == null || coroutine == null) return;
+        _instance.StopCoroutine(coroutine);
     }
 
     static IEnumerator DelayAction(float seconds, Action action)
