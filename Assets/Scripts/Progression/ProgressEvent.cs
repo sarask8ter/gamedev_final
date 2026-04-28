@@ -16,4 +16,7 @@ public enum ProgressEvent
     TeaReady,
     StayTheNightDialogue,
     StayTheNightDecision,
+    // Events that only happen if investigating blood/clues.
+    FindToolToOpenDoor,
+    OpenBloodiedDoor,
 }
