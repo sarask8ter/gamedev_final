@@ -15,5 +15,5 @@ MonoBehaviour:
   TriggeringEvent: 18
   description: Find tool to open the door
   progressText: 
-  progressCompletionDelay: 1
+  progressCompletionDelay: 0
   item: 4

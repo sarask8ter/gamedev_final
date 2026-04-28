@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: Body Encounter
+  m_Name: PostJumpscareDialogue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  TriggeringEvent: 20
-  Text: Oh my god...Is that Jessica??
+  TriggeringEvent: 23
+  Text: Tha n k    yo u    foR f  findI nG    mE...
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
-  AutoProgress: 1
-  AutoDelay: 1
-  speaker: 0
-  AllowClickToNextNode: 0
+  AutoProgress: 0
+  AutoDelay: 1.5
+  speaker: 3
+  AllowClickToNextNode: 1
   IsEndingDialogue: 0
   ChangePlayerState: 0
