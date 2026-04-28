@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Talk
+  m_Name: E1_Peek_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Oh hey. I heard you moved in here
+  Text: AHHH.. He scared me.
   TriggeringEvent: 0
-  Next: {fileID: 11400000, guid: 4aed0a6fa5b68499d83f03920beeb26f, type: 2}
-  Choices: []
-  AutoProgress: 0
+  Next: {fileID: 0}
+  Choices:
+  - Text: Talk to him
+    NextNode: {fileID: 11400000, guid: ffab4dc37e0894bc594e014bd9eb17a4, type: 2}
+    Action: 1
+  - Text: Ignore him
+    NextNode: {fileID: 0}
+    Action: 2
+  AutoProgress: 1
   AutoDelay: 1.5
   SpeakerName: 

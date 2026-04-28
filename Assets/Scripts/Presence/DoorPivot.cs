@@ -24,7 +24,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
         ProgressManager.SubscribeToStart(ProgressEvent.CloseDoor, () => closeDoorTaskActive = true);
     }
 
-    public void Interact(PlayerInteractor player)
+    public void Interact(PlayerInteractor player = null)
     {
         if (!moveInBoxesStarted) return;
 
@@ -39,7 +39,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
         }
     }
 
-    void SetOpen(bool shouldOpen)
+    public void SetOpen(bool shouldOpen)
     {
         bool wasOpen = isOpen;
         isOpen = shouldOpen;

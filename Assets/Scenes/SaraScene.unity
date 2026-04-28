@@ -3379,6 +3379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::E1_NeighborDialogue
   neighborPrefab: {fileID: 2109881767}
   spawnPoint: {fileID: 1384652075}
+  frontDoor: {fileID: 1544185541}
   player: {fileID: 8997996947019722064}
   playerDoorPoint: {fileID: 210644906}
   knockDialogueStart: {fileID: 11400000, guid: 26593917fd733426c88e73063e24b774, type: 2}

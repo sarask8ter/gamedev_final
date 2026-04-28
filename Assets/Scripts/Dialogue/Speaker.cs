@@ -14,6 +14,7 @@ public class Speaker : MonoBehaviour, IInteractable
     private bool isTyping;
     private bool isDialogueActive;
     private bool canStartDialogue = true;
+    private bool waitingForNextNode;
 
     private InteractionPrompt interactionPrompt;
     private InputAction nextLineAction;
@@ -59,6 +60,8 @@ public class Speaker : MonoBehaviour, IInteractable
 
     public void StartDialogue(DialogueNode node, string speaker)
     {
+        CancelInvoke(); 
+        
         isDialogueActive = true;
         lastNodeEvent = ProgressEvent.None;
         currentNode = node;
@@ -71,6 +74,8 @@ public class Speaker : MonoBehaviour, IInteractable
 
     void ShowNode()
     {
+        waitingForNextNode = false;
+
         if (currentNode == null)
         {
             EndDialogue();
@@ -131,6 +136,8 @@ public class Speaker : MonoBehaviour, IInteractable
         // 1. run gameplay logic
         ExecuteChoiceAction(choice.Action);
 
+        CancelInvoke();
+        
         // 2. move dialogue forward
         currentNode = choice.NextNode;
         ShowNode();
@@ -157,6 +164,10 @@ public class Speaker : MonoBehaviour, IInteractable
 
     void GoToNextNode()
     {
+        if (waitingForNextNode) return;
+
+        waitingForNextNode = true;
+
         currentNode = currentNode.Next;
         ShowNode();
     }
@@ -183,12 +194,13 @@ public class Speaker : MonoBehaviour, IInteractable
         canStartDialogue = false;
         StartCoroutine(ResetDialogueCooldown());
 
-        // Only complete if this dialogue specifically advances progression
+        // ONLY trigger progression if this node is actually tied to progression
         if (lastNodeEvent != ProgressEvent.None)
         {
             ProgressManager.CompleteEvent(lastNodeEvent);
-            lastNodeEvent = ProgressEvent.None; // prevents double fire
         }
+
+        lastNodeEvent = ProgressEvent.None;
     }
 
     IEnumerator ResetDialogueCooldown()
