@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: Blood Encounter 0
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  TriggeringEvent: 0
+  TriggeringEvent: 17
   Text: Where the FUCK is all this blood from??
   Next: {fileID: 11400000, guid: 54887dbd57d8a40b9a8cb4a7d5f21d30, type: 2}
   NextIfFoundEvidence: {fileID: 0}

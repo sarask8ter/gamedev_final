@@ -148,11 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7465d00d94c645599096a11537e9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  dialogues:
-  - {fileID: 11400000, guid: 4ee5469a767d64b498c6040abab480d4, type: 2}
-  - {fileID: 11400000, guid: 79617c124330c4656b1b78d819f90aaf, type: 2}
-  - {fileID: 11400000, guid: 22b1b9f30aa2c4e7bbb27a4b679832a5, type: 2}
-  - {fileID: 11400000, guid: 26593917fd733426c88e73063e24b774, type: 2}
 --- !u!4 &21339901
 Transform:
   m_ObjectHideFlags: 0
@@ -467,8 +462,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueContext
   player: {fileID: 2119371547}
   playerPeekTeleportPoint: {fileID: 210644906}
+  playerAtNeighborHouseInitialTeleportPoint: {fileID: 0}
+  playerTeaTeleportPoint: {fileID: 0}
   neighbor: {fileID: 2109881767}
   neighborPeekTeleportPoint: {fileID: 1384652075}
+  neighborAtNeighborHouseInitialTeleportPoint: {fileID: 0}
+  neighborTeaTeleportPoint: {fileID: 0}
+  objectsToActivateAtTeaReady: []
+  neighborDoor: {fileID: 0}
+  stairBlocker: {fileID: 0}
 --- !u!4 &150747164
 Transform:
   m_ObjectHideFlags: 0
@@ -867,10 +869,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventsSetup
   startDelay: 0.75
-  tasks:
-  - {fileID: 11400000, guid: f2a42394a86004ca984ee43fdf398650, type: 2}
-  - {fileID: 11400000, guid: 32191c383923a4251b7ab76eea1875fd, type: 2}
-  - {fileID: 11400000, guid: 5334496a81f2c41dba6a7fe4b20a9b6f, type: 2}
+  fadeDuration: 0
+  eventActions: []
 --- !u!1 &238118942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,6 +2812,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 7
+  isBloodiedDoor: 0
 --- !u!65 &1544185542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3390,6 +3391,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Lens.FieldOfView
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Priority.Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Priority.m_Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_LegacyPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_StreamingVersion
+      value: 20241001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 4135013735480512182}
+    - target: {fileID: 7821645624454124216, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: Target.CustomLookAtTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
@@ -3462,7 +3491,9 @@ PrefabInstance:
       propertyPath: m_Lens.FarClipPlane
       value: 500
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8762286023885395323, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+    - {fileID: 5920878889820899606, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3883,6 +3914,7 @@ MonoBehaviour:
   openAngle: 90
   speed: 2
   unlockEvent: 0
+  isBloodiedDoor: 0
 --- !u!4 &1950818961
 Transform:
   m_ObjectHideFlags: 0

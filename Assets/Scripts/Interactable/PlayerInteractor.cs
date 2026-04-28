@@ -73,6 +73,12 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        // Don't allow held item to preserve between events.
+        ProgressManager.OnProgressEventCompleted += (_) => { if (heldItem != null) _DiscardItem(heldItem.Item); };
+    }
+
     void Update()
     {
         if ((PlayerStateManager.State == PlayerState.Normal || PlayerStateManager.State == PlayerState.OnlyLookingInput) && interactAction.WasPressedThisFrame())
