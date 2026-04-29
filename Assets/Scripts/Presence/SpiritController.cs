@@ -26,6 +26,13 @@ public class SpiritController : MonoBehaviour
 
     bool poltergeistActive;
 
+    [Header("Whispers")]
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform bathroom;
+    [SerializeField] private AudioClip whisperClip;
+    [SerializeField] private float maxWhisperDistance = 5f;
+    private AudioSource whisperAudio;
+
     void Start()
     {
         ProgressManager.SubscribeToStart(
@@ -120,6 +127,13 @@ public class SpiritController : MonoBehaviour
 
     void StartPizzaHaunting()
     {
+        whisperAudio = gameObject.AddComponent<AudioSource>();
+
+        whisperAudio.clip = whisperClip;
+        whisperAudio.loop = true;
+        whisperAudio.spatialBlend = 1f;
+        whisperAudio.playOnAwake = false;
+
         if (poltergeistActive) return;
 
         poltergeistActive = true;
@@ -127,6 +141,11 @@ public class SpiritController : MonoBehaviour
         Debug.Log("Pizza haunting started");
 
         StartCoroutine(PoltergeistRoutine());
+
+        whisperAudio.loop = true;
+        whisperAudio.Play();
+
+        StartCoroutine(WhisperRoutine());
     }
 
     IEnumerator PoltergeistRoutine()
@@ -156,6 +175,25 @@ public class SpiritController : MonoBehaviour
         else
         {
             FlickerLights();
+        }
+    }
+
+    IEnumerator WhisperRoutine()
+    {
+        while (poltergeistActive)
+        {
+            float dist =
+                Vector3.Distance(player.position, bathroom.position);
+
+            float t =
+                1f - Mathf.Clamp01(dist / maxWhisperDistance);
+
+            whisperAudio.volume = t;
+
+            // optional creepiness
+            whisperAudio.pitch = 0.9f + (t * 0.2f);
+
+            yield return null; // update every frame
         }
     }
 }
