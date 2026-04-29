@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E1_Talk_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: I'm Jeremy by the way
   TriggeringEvent: 0
+  Text: I'm Jeremy by the way
   Next: {fileID: 11400000, guid: 05f4d183b4d7344478a942e7a4bc19ae, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: 
+  speaker: 1
+  AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1
