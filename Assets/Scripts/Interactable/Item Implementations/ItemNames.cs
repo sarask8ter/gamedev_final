@@ -6,4 +6,7 @@ public enum ItemName
     Box,
     Crowbar,
     BloodiedDoor,
+    HouseDoor,
+    PizzaBox,
+    BedroomDoor,
 }

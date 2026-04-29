@@ -29,4 +29,8 @@ public enum ProgressEvent
     NeighborConfrontation,
     NeighborAttack,
     NeighborDeath,
+    CloseDoor,
+    ExploreHouse,
+    GetPizza,
+    EnterBedroom,
 }
