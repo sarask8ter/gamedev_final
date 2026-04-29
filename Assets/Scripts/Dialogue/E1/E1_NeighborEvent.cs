@@ -39,7 +39,7 @@ public class E1_NeighborEvent : MonoBehaviour
 
         spawnedNeighbor = Instantiate(neighborPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        speaker.StartDialogue(knockDialogueStart, "");
+        DialogueManager.StartDialogue(knockDialogueStart);
     }
 
     public void OnTalkChosen()
@@ -56,7 +56,7 @@ public class E1_NeighborEvent : MonoBehaviour
         if (frontDoor != null)
             frontDoor.SetOpen(true);
 
-        speaker.StartDialogue(talkNode, "");
+        DialogueManager.StartDialogue(talkNode);
     }
 
     public void OnIgnoreChosen()
@@ -68,7 +68,7 @@ public class E1_NeighborEvent : MonoBehaviour
 
     IEnumerator IgnorePath()
 {
-        speaker.StartDialogue(ignoreNode, "");
+        DialogueManager.StartDialogue(ignoreNode);
         yield break;
     }
 
@@ -139,18 +139,18 @@ public class E1_NeighborEvent : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        if (ps != null && flickerMonologue != null)
+        if (flickerMonologue != null)
         {
-            ps.StartDialogue(flickerMonologue, "You");
+            DialogueManager.StartDialogue(flickerMonologue);
             yield return new WaitUntil(() => PlayerStateManager.State == PlayerState.Normal);
         }
     }
 
     IEnumerator PizzaSequence()
     {
-        if (ps != null && pizzaMonologue != null)
+        if (pizzaMonologue != null)
         {
-            ps.StartDialogue(pizzaMonologue, "You");
+            DialogueManager.StartDialogue(pizzaMonologue);
             yield return new WaitUntil(() => PlayerStateManager.State == PlayerState.Normal);
 
             Debug.Log("Monologue finished");
