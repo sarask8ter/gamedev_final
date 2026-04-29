@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class NeighborAnimation : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem powerTransferVFX;
+
     private Animator animator;
     private static readonly int DeathTrigger = Animator.StringToHash("death");
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        
+        // Disable auto-play on the particle system
+        if (powerTransferVFX != null)
+        {
+            var main = powerTransferVFX.main;
+            main.playOnAwake = false;
+            powerTransferVFX.Stop();
+        }
     }
 
     void Start()
@@ -22,7 +32,22 @@ public class NeighborAnimation : MonoBehaviour
 
     void OnProgressEventStarted(ProgressEvent evt)
     {
-        if (evt == ProgressEvent.NeighborDeath)
+        Debug.Log($"NeighborAnimation: Event started: {evt}");
+        
+        if (evt == ProgressEvent.NeighborConfrontation)
+        {
+            if (powerTransferVFX != null)
+            {
+                
+                powerTransferVFX.Play();
+                Debug.Log($"NeighborAnimation: VFX played");
+            }
+            else
+            {
+                Debug.LogError("powerTransferVFX is null!");
+            }
+        }
+        else if (evt == ProgressEvent.NeighborDeath)
         {
             PlayDeath();
         }
@@ -33,3 +58,5 @@ public class NeighborAnimation : MonoBehaviour
         animator.SetTrigger(DeathTrigger);
     }
 }
+
+
