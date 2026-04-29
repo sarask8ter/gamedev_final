@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class RoomDoor : MonoBehaviour, IInteractable
 {
@@ -7,6 +8,8 @@ public class RoomDoor : MonoBehaviour, IInteractable
 
     [SerializeField] ProgressEvent unlockEvent = ProgressEvent.EnterBedroom;
     [SerializeField] ItemName roomItem;
+    [SerializeField] private DialogueNode monologue;
+    [SerializeField] private PlayerSpeaker player;
 
     bool unlocked;
     bool isOpen;
@@ -46,18 +49,26 @@ public class RoomDoor : MonoBehaviour, IInteractable
         StopAllCoroutines();
         StartCoroutine(RotateDoor());
 
-        if(firstOpen && !hasCountedVisit)
+        if (firstOpen && !hasCountedVisit)
         {
             hasCountedVisit = true;
 
             TasksEvents.OnItemInteract?.Invoke(roomItem);
 
-            if (roomItem == ItemName.BedroomDoor)
-            {
-                Debug.Log("Bedroom entered");
+            if (monologue != null)
+                StartCoroutine(RoomSequence());
+        }
+    }
 
-                ProgressManager.CompleteEvent(ProgressEvent.EnterBedroom);
-            }
+    IEnumerator RoomSequence()
+    {
+        yield return new WaitForSeconds(1f);
+
+        PlayerSpeaker ps = player.GetComponent<PlayerSpeaker>();
+
+        if (ps != null && monologue != null)
+        {
+            ps.StartDialogue(monologue, "You");
         }
     }
 

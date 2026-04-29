@@ -7,4 +7,5 @@ public enum TaskId
     ExploreHouse,
     GetPizza,
     EnterBedroom,
+    EnterBathroom,
 }
