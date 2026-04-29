@@ -34,7 +34,7 @@ public class NeighborAnimation : MonoBehaviour
     {
         Debug.Log($"NeighborAnimation: Event started: {evt}");
         
-        if (evt == ProgressEvent.NeighborConfrontation)
+        if (evt == ProgressEvent.NeighborAttack)
         {
             if (powerTransferVFX != null)
             {

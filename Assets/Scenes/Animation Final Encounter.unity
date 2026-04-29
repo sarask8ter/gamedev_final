@@ -1563,6 +1563,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 123d6237b6336444496d7a9b7a2e19ba, type: 2}
   - {fileID: 11400000, guid: 6c16aec7ecbbc4d7588e85165c89407a, type: 2}
   - {fileID: 11400000, guid: 5bd3c16c07ea04627823edb1135bc2d0, type: 2}
+  - {fileID: 11400000, guid: 439648f91e8aa48cbb3d9256274814de, type: 2}
 --- !u!114 &235080520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,9 +2517,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d17b72cb676ab4ebca851909bea524ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1661750085}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d17b72cb676ab4ebca851909bea524ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2065325469}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d17b72cb676ab4ebca851909bea524ff, type: 3}
       insertIndex: -1
@@ -5123,6 +5121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2065325469}
   - {fileID: 1913905617}
   - {fileID: 1500738132}
   - {fileID: 874855554}
@@ -6187,7 +6186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 020000000300000004000000050000000600000007000000080000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000010000000900000012000000130000001400000015000000160000001700000018000000190000001a000000
+  sequence: 020000000300000004000000050000000600000007000000080000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000010000000900000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -7820,7 +7819,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 3
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -7933,7 +7932,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -12608,13 +12607,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065325466}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.004321033, y: -0.058808837, z: 0.07315086, w: 0.99557614}
+  m_LocalPosition: {x: -6.742, y: 5.09, z: -1007.42664}
+  m_LocalScale: {x: 0.399486, y: 0.47605202, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2109881773}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_Father: {fileID: 1553103755}
+  m_LocalEulerAnglesHint: {x: 0.986, y: -6.689, z: 8.347}
 --- !u!1 &2109881767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d17b72cb676ab4ebca851909bea524ff, type: 3}
