@@ -21,11 +21,12 @@ public class E1_NeighborEvent : MonoBehaviour
     [Header("Presence")]
     [SerializeField] private SpiritController spiritController;
     [SerializeField] private DialogueNode flickerMonologue;
+    [SerializeField] private DialogueNode pizzaMonologue;
 
     private GameObject spawnedNeighbor;
     private bool triggered = false;
-
     private bool despawnNeighborAfterDialogue = false;
+    private bool didTalk;
 
     void OnEnable()
     {
@@ -37,42 +38,25 @@ public class E1_NeighborEvent : MonoBehaviour
         if (triggered) return;
         triggered = true;
 
-        Debug.Log("KNOCK KNOCK KNOCK");
-
         spawnedNeighbor = Instantiate(neighborPrefab, spawnPoint.position, spawnPoint.rotation);
-
-        // var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
-        // if (jumpscare != null)
-        // {
-        //     jumpscare.SetNeighbor(spawnedNeighbor);
-        // }
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(knockDialogueStart, "");
     }
 
-
-    // public void OnPeekChosen()
-    // {
-    //     var jumpscare = FindAnyObjectByType<E1_PeekJumpscare>();
-
-    //     if (jumpscare != null)
-    //         jumpscare.PlayJumpscare();
-    // }
-
     public void OnTalkChosen()
     {
         despawnNeighborAfterDialogue = true;
-
-        StartCoroutine(TalkSequence());
+        didTalk = true;
+        StartCoroutine(TalkPath());
     }
 
-    IEnumerator TalkSequence()
+    IEnumerator TalkPath()
     {
         yield return StartCoroutine(TeleportPlayer());
 
         if (frontDoor != null)
-            frontDoor.SetOpen(true); // uses SAME logic as E key
+            frontDoor.SetOpen(true);
 
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(talkNode, "");
@@ -80,8 +64,16 @@ public class E1_NeighborEvent : MonoBehaviour
 
     public void OnIgnoreChosen()
     {
+        despawnNeighborAfterDialogue = true;
+        didTalk = false;
+        StartCoroutine(IgnorePath());
+    }
+
+    IEnumerator IgnorePath()
+{
         var speaker = spawnedNeighbor.GetComponent<Speaker>();
         speaker.StartDialogue(ignoreNode, "");
+        yield break;
     }
 
     IEnumerator TeleportPlayer()
@@ -119,19 +111,30 @@ public class E1_NeighborEvent : MonoBehaviour
         despawnNeighborAfterDialogue = false;
 
         if (frontDoor != null)
-            frontDoor.SetOpen(false); // close door
+            frontDoor.SetOpen(false);
 
         if (spawnedNeighbor != null)
-            spawnedNeighbor.transform.position += Vector3.left * 100f; // neighbor gone
-        
-        // Trigger haunting sequence
-        StartCoroutine(PostNeighborHaunt());
+            spawnedNeighbor.transform.position += Vector3.left * 100f;
+
+        StartCoroutine(PostNeighborCleanup());
     }
 
-    IEnumerator PostNeighborHaunt()
+    IEnumerator PostNeighborCleanup()
     {
         yield return new WaitForSeconds(2f);
 
+        if (didTalk)
+        {
+            yield return StartCoroutine(HauntSequence());
+        }
+
+        yield return new WaitForSeconds(3f);
+
+        yield return StartCoroutine(PizzaSequence());
+    }
+
+    IEnumerator HauntSequence()
+    {
         if (spiritController != null)
         {
             spiritController.TriggerEvent(SpiritEventType.FlickerLights);
@@ -140,16 +143,23 @@ public class E1_NeighborEvent : MonoBehaviour
 
         yield return new WaitForSeconds(2.5f);
 
-        PlayerSpeaker playerSpeaker = player.GetComponent<PlayerSpeaker>();
+        PlayerSpeaker ps = player.GetComponent<PlayerSpeaker>();
 
-        if (playerSpeaker != null && flickerMonologue != null)
+        if (ps != null && flickerMonologue != null)
         {
-            Debug.Log("Monologue starts");
+            ps.StartDialogue(flickerMonologue, "You");
+            yield return new WaitUntil(() => PlayerStateManager.State == PlayerState.Normal);
+        }
+    }
 
-            playerSpeaker.StartDialogue(
-                flickerMonologue,
-                "You"
-            );
+    IEnumerator PizzaSequence()
+    {
+        PlayerSpeaker ps = player.GetComponent<PlayerSpeaker>();
+
+        if (ps != null && pizzaMonologue != null)
+        {
+            ps.StartDialogue(pizzaMonologue, "You");
+            yield return new WaitUntil(() => PlayerStateManager.State == PlayerState.Normal);
         }
     }
 }

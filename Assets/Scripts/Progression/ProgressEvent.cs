@@ -11,4 +11,6 @@ public enum ProgressEvent
     CloseDoor,
     ExploreHouse,
     DoorKnock,
+    PizzaBox,
+    EnterBedroom,
 }

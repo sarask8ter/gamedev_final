@@ -5,4 +5,6 @@ public enum ItemName
     Key,
     Box,
     Door,
+    PizzaBox,
+    BedroomDoor,
 }

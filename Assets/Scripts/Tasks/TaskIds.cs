@@ -5,4 +5,6 @@ public enum TaskId
     MoveInBoxes,
     CloseDoor,
     ExploreHouse,
+    GetPizza,
+    EnterBedroom,
 }
