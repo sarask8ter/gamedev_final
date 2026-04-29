@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Ignore_1
+  m_Name: E1_Ignore_2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: Sorry. Don't mind me actually. You must be busy
-  Next: {fileID: 11400000, guid: e0b9cc0e87f064e26a5559232ff13976, type: 2}
+  Text: Um what's he even doing here...
+  Next: {fileID: 11400000, guid: 2128057d8fcd34050aa1b339e3284af3, type: 2}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  speaker: 2
+  speaker: 0
   AllowClickToNextNode: 1
   IsEndingDialogue: 0
   ChangePlayerState: 1

@@ -33,4 +33,6 @@ public enum ProgressEvent
     ExploreHouse,
     GetPizza,
     EnterBedroom,
+    LightsFlicker,
+    BedroomMonologue,
 }

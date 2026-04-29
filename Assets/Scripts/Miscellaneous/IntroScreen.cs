@@ -1,11 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class IntroScreen : MonoBehaviour
 {
     [SerializeField] GameObject introPanel;
-
-    bool waitingForInput = true;
+    [SerializeField] private float startDelay;
+    [SerializeField] private float fadeDuration;
+    private bool started;
 
     void Start()
     {
@@ -19,26 +21,26 @@ public class IntroScreen : MonoBehaviour
 
     void Update()
     {
-        if (!waitingForInput) return;
-
+        if (started) return;
         if (Mouse.current.leftButton.wasPressedThisFrame ||
             Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            BeginGame();
+            // Start Game.
+            started = true;
+    
+            introPanel.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            CoroutineHelper.Delay(startDelay, () => StartCoroutine(FadeInGameStart()));
         }
     }
 
-    void BeginGame()
+    IEnumerator FadeInGameStart()
     {
-        waitingForInput = false;
-
-        introPanel.SetActive(false);
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
+        PlayerStateManager.State = PlayerState.NoInput;
+        yield return ScreenFader.FadeIn(fadeDuration);
         PlayerStateManager.State = PlayerState.Normal;
-
         ProgressManager.CompleteEvent(ProgressEvent.GameStart);
+        gameObject.SetActive(false);
     }
 }

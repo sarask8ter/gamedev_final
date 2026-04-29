@@ -6,7 +6,7 @@ public class E2 : MonoBehaviour
     [SerializeField] private SpiritController spirit;
     [SerializeField] private LightSwitch[] lights;
 
-    void OnEnable()
+    void Start()
     {
         ProgressManager.SubscribeToStart(ProgressEvent.ExploreHouse, StartHauntingPhase);
         ProgressManager.SubscribeToStart(ProgressEvent.MoveInBoxes, StartEarlyHaunting);

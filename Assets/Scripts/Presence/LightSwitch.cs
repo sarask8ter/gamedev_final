@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LightSwitch : MonoBehaviour, IInteractable
 {
-    public Light lightSource;
+    public Light[] lightSources;
     private bool isOn = true;
     private bool isFlickering;
 
@@ -17,7 +17,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
     public void ToggleLight()
     {
         isOn = !isOn;
-        lightSource.enabled = isOn;
+        foreach (var lightSource in lightSources) lightSource.enabled = isOn;
     }
 
     public void Flicker(float duration)
@@ -34,7 +34,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
 
         while (elapsed < duration)
         {
-            lightSource.enabled = !lightSource.enabled;
+            foreach (var lightSource in lightSources) lightSource.enabled = !lightSource.enabled;
 
             float delay = Random.Range(0.05f, 0.2f);
             yield return new WaitForSeconds(delay);
@@ -42,7 +42,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
             elapsed += delay;
         }
 
-        lightSource.enabled = true;
+        foreach (var lightSource in lightSources) lightSource.enabled = true;
         isFlickering = false;
     }
 }

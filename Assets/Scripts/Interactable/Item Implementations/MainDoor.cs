@@ -3,8 +3,6 @@ using System.Collections;
 
 public class MainDoor : DoorPivot
 {
-    [SerializeField] private float openAngle;
-    [SerializeField] private float speed;
     [SerializeField] private ProgressEvent closeDoorTask;
     private bool closeDoorTaskActive;
 
@@ -27,7 +25,7 @@ public class MainDoor : DoorPivot
         }
     }
 
-    public override void SetOpen(bool shouldOpen)
+    public override void  SetOpen(bool shouldOpen)
     {
         isOpen = shouldOpen;
         StopAllCoroutines();

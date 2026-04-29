@@ -19,8 +19,6 @@ public class RoomDoor : DoorPivot
             hasCountedVisit = true;
 
             TasksEvents.OnItemInteract?.Invoke(roomItem);
-
-            ProgressManager.CompleteEvent(unlockEvent);
         }
     }
 }

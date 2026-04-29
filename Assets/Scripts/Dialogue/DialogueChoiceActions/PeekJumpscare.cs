@@ -8,6 +8,7 @@ public class PeekJumpscare : DialogueChoiceAction
     public override void Execute()
     {
         MovementHelper.MovePlayer(GameState.PlayerPeekTeleportPoint);
+        GameState.FrontDoor.SetOpen(true);
         CoroutineHelper.StartCoroutineHelper(Jumpscare());
     }
 
@@ -21,7 +22,7 @@ public class PeekJumpscare : DialogueChoiceAction
         Vector3 jumpOffset = -neighbor.transform.right.normalized * 6f;
         neighbor.transform.position += jumpOffset;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // Snap back to original spawn position
         MovementHelper.MoveToPoint(neighbor, neighborTeleportPoint, false);
