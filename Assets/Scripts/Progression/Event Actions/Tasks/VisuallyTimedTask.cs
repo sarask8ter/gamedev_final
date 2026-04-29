@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TimedTask", menuName = "Event Actions/Tasks/Timed")]
-public class TimedTask : Task
+[CreateAssetMenu(fileName = "VisuallyTimedTask", menuName = "Event Actions/Tasks/Visually Timed Task")]
+public class VisuallyTimedTask : Task
 {
     [SerializeField] private int totalTime;
     private int currTime;

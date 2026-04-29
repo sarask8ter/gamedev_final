@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class DoorPivot : MonoBehaviour, IInteractable
 {
-    private bool isInteractable;
+    protected bool isInteractable;
     public bool IsInteractable => isInteractable;
+    [SerializeField] protected ProgressEvent unlockEvent;
     [SerializeField] private float openAngle;
     [SerializeField] private float speed;
-    [SerializeField] private ProgressEvent unlockEvent;
     [SerializeField] private bool isBloodiedDoor;
     [SerializeField] private bool singleTimeInteract;
 
-    private bool isOpen = false;
+    protected bool isOpen;
     private Quaternion closedRot;
     private Quaternion openRot;
 
-    void Start()
+    protected virtual void Start()
     {
         closedRot = transform.rotation;
         openRot = Quaternion.Euler(0, openAngle, 0);
@@ -27,7 +27,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
         isInteractable = true;
     }
 
-    public void Interact(PlayerInteractor player)
+    public virtual void Interact(PlayerInteractor player)
     {
         SetOpen(!isOpen);
         if (isBloodiedDoor) TasksEvents.OnItemInteract?.Invoke(ItemName.BloodiedDoor);
@@ -51,7 +51,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
         SetOpen(false);
     }
 
-    void SetOpen(bool shouldOpen)
+    public virtual void SetOpen(bool shouldOpen)
     {
         isOpen = shouldOpen;
         StopAllCoroutines();
@@ -59,7 +59,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
         Debug.Log("Door rotating. isOpen = " + isOpen);
     }
 
-    System.Collections.IEnumerator RotateDoor()
+    protected System.Collections.IEnumerator RotateDoor()
     {
         Debug.Log("Rotating door");
         Quaternion target = isOpen ? openRot : closedRot;

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Talk
+  m_Name: E1_Talk_3
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Oh hey. I heard you moved in here
+  Text: So let me know if you ever need anything
   TriggeringEvent: 0
-  Next: {fileID: 11400000, guid: 4aed0a6fa5b68499d83f03920beeb26f, type: 2}
+  Next: {fileID: 11400000, guid: 1fd360edc49c04d0d8333d32305ea3e4, type: 2}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: 
+  SpeakerName: Jeremy

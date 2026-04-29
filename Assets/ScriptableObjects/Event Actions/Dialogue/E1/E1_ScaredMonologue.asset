@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_End
+  m_Name: E1_ScaredMonologue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  Text: Um.. What is wrong with the lights??
   TriggeringEvent: 0
-  Text: I love to help so I'm going to leave my number here in case you need it for
-    an emergency
   Next: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  speaker: 1
-  AllowClickToNextNode: 1
+  SpeakerName: You

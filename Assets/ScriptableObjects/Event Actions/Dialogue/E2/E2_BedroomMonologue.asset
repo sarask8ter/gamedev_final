@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E1_Ignore 2
+  m_Name: E2_BedroomMonologue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  Text: Brr....
   TriggeringEvent: 0
-  Text: Sorry. Don't mind me actually. You must be busy
-  Next: {fileID: 11400000, guid: ccab24d14a8ea48809b28579b835c3db, type: 2}
+  Next: {fileID: 11400000, guid: c1ad0e79246d3462f9d1c3bad05686b4, type: 2}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  speaker: 1
-  AllowClickToNextNode: 1
+  SpeakerName: 
