@@ -3,10 +3,9 @@ using UnityEngine;
 public class RoomDoor : DoorPivot
 {
     [SerializeField] ItemName roomItem;
-    bool isOpen;
     bool hasCountedVisit;
 
-    protected override void SetOpen(bool shouldOpen)
+    public override void SetOpen(bool shouldOpen)
     {
         bool firstOpen = !isOpen && shouldOpen;
 
