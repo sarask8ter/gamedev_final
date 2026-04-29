@@ -27,5 +27,6 @@ public enum ProgressEvent
     CorpseJumpscareDialogue,
     MoveCameraToNeighborAndBody,
     NeighborConfrontation,
+    NeighborAttack,
     NeighborDeath,
 }
