@@ -16,14 +16,14 @@ public class EventsSetup : MonoBehaviour
         }
 
         // Start Game.
-        CoroutineHelper.Delay(startDelay, () => StartCoroutine(FadeInGameStart()));
+        // CoroutineHelper.Delay(startDelay, () => StartCoroutine(FadeInGameStart()));
     }
 
-    IEnumerator FadeInGameStart()
-    {
-        PlayerStateManager.State = PlayerState.NoInput;
-        yield return ScreenFader.FadeIn(fadeDuration);
-        PlayerStateManager.State = PlayerState.Normal;
-        ProgressManager.CompleteEvent(ProgressEvent.GameStart);
-    }
+    // IEnumerator FadeInGameStart()
+    // {
+    //     PlayerStateManager.State = PlayerState.NoInput;
+    //     yield return ScreenFader.FadeIn(fadeDuration);
+    //     PlayerStateManager.State = PlayerState.Normal;
+    //     ProgressManager.CompleteEvent(ProgressEvent.GameStart);
+    // }
 }

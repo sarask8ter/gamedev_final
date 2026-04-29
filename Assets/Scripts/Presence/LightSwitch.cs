@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class LightSwitch : MonoBehaviour, IInteractable
 {
     public Light lightSource;
     private bool isOn = true;
+    private bool isFlickering;
 
     public bool IsInteractable => true;
 
@@ -20,20 +22,27 @@ public class LightSwitch : MonoBehaviour, IInteractable
 
     public void Flicker(float duration)
     {
+        if (isFlickering) return;
         StartCoroutine(FlickerRoutine(duration));
     }
 
-    private System.Collections.IEnumerator FlickerRoutine(float duration)
+    private IEnumerator FlickerRoutine(float duration)
     {
-        float time = 0f;
+        isFlickering = true;
 
-        while (time < duration)
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
             lightSource.enabled = !lightSource.enabled;
-            yield return new WaitForSeconds(Random.Range(0.05f, 0.2f));
-            time += Time.deltaTime;
+
+            float delay = Random.Range(0.05f, 0.2f);
+            yield return new WaitForSeconds(delay);
+
+            elapsed += delay;
         }
 
         lightSource.enabled = true;
+        isFlickering = false;
     }
 }
