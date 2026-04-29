@@ -121,14 +121,14 @@ public class E1_NeighborEvent : MonoBehaviour
 
     IEnumerator PostNeighborCleanup()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         if (didTalk)
         {
             yield return StartCoroutine(HauntSequence());
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
         yield return StartCoroutine(PizzaSequence());
     }
@@ -141,7 +141,7 @@ public class E1_NeighborEvent : MonoBehaviour
             Debug.Log("Flicker lights");
         }
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.5f);
 
         PlayerSpeaker ps = player.GetComponent<PlayerSpeaker>();
 
@@ -160,6 +160,10 @@ public class E1_NeighborEvent : MonoBehaviour
         {
             ps.StartDialogue(pizzaMonologue, "You");
             yield return new WaitUntil(() => PlayerStateManager.State == PlayerState.Normal);
+
+            Debug.Log("Monologue finished");
         }
+        
+        ProgressManager.CompleteEvent(ProgressEvent.DoorKnock);
     }
 }

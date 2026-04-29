@@ -7,10 +7,12 @@ public class EventsSetup : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(tasks.Length);
         // Set up tasks.
         foreach (var task in tasks)
         {
             ProgressManager.SubscribeToStart(task.TriggeringEvent, () => task.StartTask());
+            Debug.Log(task.name);
         }
 
         // Start Game.

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09f15384e1ba4e6ca5473df3610d91e, type: 3}
   m_Name: PickUpPizzaBox
   m_EditorClassIdentifier: Assembly-CSharp::InteractWithItemTask
-  TriggeringEvent: 12
+  TriggeringEvent: 11
   description: Get some pizza
   progressText: 
   id: 5

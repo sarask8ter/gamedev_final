@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09f15384e1ba4e6ca5473df3610d91e, type: 3}
   m_Name: EnterBedroom
   m_EditorClassIdentifier: Assembly-CSharp::InteractWithItemTask
-  TriggeringEvent: 13
+  TriggeringEvent: 12
   description: Go to the master bedroom
   progressText: 
   id: 6
   progressCompletionDelay: 1
-  item: 4
+  item: 6

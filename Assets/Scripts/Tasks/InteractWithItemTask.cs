@@ -7,6 +7,9 @@ public class InteractWithItemTask : Task
 
     protected override void PreStartTask()
     {
+        Debug.Log($"Subscribing task {name} instance {GetInstanceID()}");
+
+        TasksEvents.OnItemInteract -= HandleProgress;
         TasksEvents.OnItemInteract += HandleProgress;
     }
 
@@ -18,12 +21,16 @@ public class InteractWithItemTask : Task
     protected void HandleProgress(ItemName placedItem)
     {
         if (placedItem != item) return;
+
+        Debug.Log("Pizza task progressing");
+
+        TasksEvents.OnItemInteract -= HandleProgress;
         TasksEvents.OnTaskProgress?.Invoke(CompileTaskData());
         CompleteTask();
     }
 
-    void OnDisable()
-    {
-        TasksEvents.OnItemInteract -= HandleProgress;
-    }
+    // void OnDisable()
+    // {
+    //     TasksEvents.OnItemInteract -= HandleProgress;
+    // }
 }
