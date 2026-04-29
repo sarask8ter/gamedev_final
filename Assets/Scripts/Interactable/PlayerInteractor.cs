@@ -13,7 +13,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private string pickedUpLayerName;
     public string PickedUpLayerName => pickedUpLayerName;
 
-    private PickableItem heldItem;
+    [SerializeField] private PickableItem heldItem;
     private InputAction interactAction;
     private static PlayerInteractor _instance;
 
@@ -38,13 +38,19 @@ public class PlayerInteractor : MonoBehaviour
     // Returns true if successfully discarded item, false otherwise.
     bool _DiscardItem(ItemName item)
     {
+        if (heldItem == null) {
+            Debug.LogError("Trying to discard nothing");
+            return false;
+        }
+
         if (item != heldItem.Item)
         {
             Debug.LogError("Discarding: " + heldItem + " expected: " + heldItem.Item);
             return false;
         }
-        if (heldItem == null) return false;
-        Destroy(heldItem);
+
+        Debug.Log("Destroying " + heldItem.Item);
+        Destroy(heldItem.gameObject);
         heldItem = null;
         return true;
     }
@@ -52,11 +58,13 @@ public class PlayerInteractor : MonoBehaviour
     // Returns true if holding nothing originally, and now picked up item, false otherwise.
     public bool PickUpItem(PickableItem item)
     {
-        Debug.Log("Trying to pick up: " + item.name + " | Currently holding: " + heldItem);
-
-        if (heldItem != null) return false;
+        if (heldItem != null) {
+            Debug.Log("Trying to pick up: " + item.name + " | Currently holding: " + heldItem);
+            return false;
+        }
 
         heldItem = item;
+        Debug.Log("Picked up " + item);
         return true;
     }
 
@@ -71,12 +79,6 @@ public class PlayerInteractor : MonoBehaviour
             _instance = this;
             interactAction = InputSystem.actions.FindAction("Interact");
         }
-    }
-
-    void Start()
-    {
-        // Don't allow held item to preserve between events.
-        ProgressManager.OnProgressEventCompleted += (_) => { if (heldItem != null) _DiscardItem(heldItem.Item); };
     }
 
     void Update()
