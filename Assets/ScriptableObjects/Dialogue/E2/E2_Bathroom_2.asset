@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: E2_Bathroom_1
+  m_Name: E2_Bathroom_2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: WHAT THE ACTUAL FUCK
+  Text: "This house feels unsafe to stay in, I CAN\u2019T STAY HERE"
   TriggeringEvent: 0
-  Next: {fileID: 11400000, guid: 4f3cb505f294b455d9bd5670a739e8ee, type: 2}
+  Next: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5

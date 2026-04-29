@@ -20,8 +20,19 @@ public class SpiritController : MonoBehaviour
     public DoorPivot[] doors;
     public Cabinet[] cabinets;
 
+    [Header("Pizza Haunting")]
+    [SerializeField] float minObjectDelay = 6f;
+    [SerializeField] float maxObjectDelay = 15f;
+
+    bool poltergeistActive;
+
     void Start()
     {
+        ProgressManager.SubscribeToStart(
+            ProgressEvent.PizzaBox,
+            StartPizzaHaunting
+        );
+
         if (playRandomEvents)
         {
             InvokeRepeating(nameof(DoRandomEvent), randomEventStartDelay, randomEventRepeatDelay);
@@ -105,5 +116,46 @@ public class SpiritController : MonoBehaviour
         }
 
         obj.position = original;
+    }
+
+    void StartPizzaHaunting()
+    {
+        if (poltergeistActive) return;
+
+        poltergeistActive = true;
+
+        Debug.Log("Pizza haunting started");
+
+        StartCoroutine(PoltergeistRoutine());
+    }
+
+    IEnumerator PoltergeistRoutine()
+    {
+        while (poltergeistActive)
+        {
+            yield return new WaitForSeconds(
+                Random.Range(minObjectDelay, maxObjectDelay)
+            );
+
+            TriggerRandomDisturbance();
+        }
+    }
+
+    void TriggerRandomDisturbance()
+    {
+        int r = Random.Range(0,2);
+
+        if (r == 0)
+        {
+            KnockCabinet(); 
+        }
+        if (r == 1)
+        {
+            ShakeObject();
+        }
+        else
+        {
+            FlickerLights();
+        }
     }
 }
