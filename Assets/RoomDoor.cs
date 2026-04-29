@@ -58,6 +58,11 @@ public class RoomDoor : MonoBehaviour, IInteractable
             if (monologue != null)
                 StartCoroutine(RoomSequence());
         }
+
+        if (firstOpen && roomItem == ItemName.BathroomDoor)
+        {
+            FindObjectOfType<SpiritController>()?.EndBathroomSequence();
+        }
     }
 
     IEnumerator RoomSequence()

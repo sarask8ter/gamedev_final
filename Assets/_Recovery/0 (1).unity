@@ -3047,6 +3047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e088edcc2c8054902ac6b6f465a32328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpiritController
+  playRandomEvents: 1
+  randomEventStartDelay: 5
+  randomEventRepeatDelay: 10
   lights:
   - {fileID: 6639082648946083910}
   - {fileID: 5264096126067966662}
@@ -3058,10 +3061,6 @@ MonoBehaviour:
   - {fileID: 2025192322}
   doors:
   - {fileID: 1950818960}
-  - {fileID: 8150179616970273035}
-  - {fileID: 7265119793851944765}
-  - {fileID: 8146849547750284065}
-  - {fileID: 8719936587116213015}
   cabinets:
   - {fileID: 87593938}
   - {fileID: 6818205138865850142}
@@ -3073,28 +3072,15 @@ MonoBehaviour:
   - {fileID: 9139418206311978036}
   - {fileID: 7451570620719775357}
   - {fileID: 7817182855575534647}
-  - {fileID: 7817182855575534647}
-  - {fileID: 5828900218799351365}
   minObjectDelay: 2
   maxObjectDelay: 6
-  whisperAudio: {fileID: 0}
-  whisperClip: {fileID: 8300000, guid: 9b087184c077c4c56b439f6b7548bbb9, type: 3}
   player: {fileID: 8997996947019722064}
   bathroom: {fileID: 1967208089}
+  whisperClip: {fileID: 8300000, guid: 9b087184c077c4c56b439f6b7548bbb9, type: 3}
   maxWhisperDistance: 7
+  whisperAudio: {fileID: 0}
   breathingAudio: {fileID: 0}
-  breathingClip: {fileID: 8300000, guid: 24ec73ba5ddf14ea99a5361013299830, type: 3}
-  kitchenCabinets:
-  - {fileID: 87593938}
-  - {fileID: 6818205138865850142}
-  - {fileID: 8611016393124167233}
-  - {fileID: 5601942239856594049}
-  - {fileID: 8387502160170372081}
-  - {fileID: 4724187477606871473}
-  - {fileID: 8072038849437581234}
-  - {fileID: 9139418206311978036}
-  - {fileID: 7451570620719775357}
-  - {fileID: 7817182855575534647}
+  kitchenCabinets: []
   kitchenLights: []
 --- !u!4 &1240238782
 Transform:
@@ -3941,7 +3927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1644187448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4959,7 +4945,7 @@ GameObject:
   - component: {fileID: 1967208088}
   - component: {fileID: 1967208087}
   m_Layer: 0
-  m_Name: ScaryWriting
+  m_Name: Scary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14834,8 +14820,6 @@ GameObject:
   - component: {fileID: 3356405367273907054}
   - component: {fileID: 7982764767229091209}
   - component: {fileID: 7462151245434943546}
-  - component: {fileID: 7982764767229091211}
-  - component: {fileID: 7982764767229091210}
   m_Layer: 0
   m_Name: Control_02
   m_TagString: Untagged
@@ -19946,7 +19930,6 @@ GameObject:
   - component: {fileID: 2394568450256702784}
   - component: {fileID: 7265119793851944764}
   - component: {fileID: 7265119793851944765}
-  - component: {fileID: 7265119793851944766}
   m_Layer: 9
   m_Name: Refrigerator_Door.001
   m_TagString: Untagged
@@ -38685,8 +38668,6 @@ GameObject:
   - component: {fileID: 4010128190153248153}
   - component: {fileID: 4943466475416442277}
   - component: {fileID: 8811126707818623959}
-  - component: {fileID: 8811126707818623961}
-  - component: {fileID: 8811126707818623960}
   m_Layer: 0
   m_Name: Alarm_clock.001
   m_TagString: Untagged
@@ -51660,8 +51641,6 @@ GameObject:
   - component: {fileID: 5537416491674321827}
   - component: {fileID: 6864238441005807978}
   - component: {fileID: 1536471078463930887}
-  - component: {fileID: 6864238441005807980}
-  - component: {fileID: 6864238441005807979}
   m_Layer: 0
   m_Name: Books_005
   m_TagString: Untagged
@@ -54577,7 +54556,7 @@ GameObject:
   - component: {fileID: 9132277118088703018}
   - component: {fileID: 2939968258106779565}
   - component: {fileID: 9132277118088703019}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Door_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62663,7 +62642,6 @@ GameObject:
   - component: {fileID: 109341200583946685}
   - component: {fileID: 8150179616970273034}
   - component: {fileID: 8150179616970273035}
-  - component: {fileID: 8150179616970273036}
   m_Layer: 9
   m_Name: Refrigerator_Door_01.001
   m_TagString: Untagged
@@ -69821,39 +69799,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4834407308956084698}
   m_Mesh: {fileID: 7525962931675398309, guid: 3076b4e428b994cd88e0fd5c5a46268c, type: 3}
---- !u!114 &6864238441005807979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4834407308956084698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6b377cdd2f04db58fe497524d20033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cabinet
---- !u!65 &6864238441005807980
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4834407308956084698}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.011508791, y: 0.017021473, z: 0.0025909217}
-  m_Center: {x: 0.000000014960351, y: -0.0006790647, z: 0.00013994238}
 --- !u!4 &6865652631539745024
 Transform:
   m_ObjectHideFlags: 0
@@ -71043,8 +70988,6 @@ GameObject:
   - component: {fileID: 9078787535188331060}
   - component: {fileID: 3742565166263417332}
   - component: {fileID: 2102055699286716831}
-  - component: {fileID: 9078787535188331062}
-  - component: {fileID: 9078787535188331061}
   m_Layer: 0
   m_Name: Phone_01
   m_TagString: Untagged
@@ -73882,28 +73825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   openAngle: 90
   speed: 2
---- !u!64 &7265119793851944766
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457923994338494495}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2183436257818587704, guid: 3076b4e428b994cd88e0fd5c5a46268c, type: 3}
 --- !u!33 &7267789773945024484
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80113,39 +80034,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918467181528173206}
   m_Mesh: {fileID: -4728817815765264938, guid: 3076b4e428b994cd88e0fd5c5a46268c, type: 3}
---- !u!114 &7982764767229091210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918467181528173206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6b377cdd2f04db58fe497524d20033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cabinet
---- !u!65 &7982764767229091211
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918467181528173206}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.025234137, y: 0.08420893, z: 0.0074014226}
-  m_Center: {x: 0.000106805455, y: -0.000533823, z: 7.1827383e-10}
 --- !u!33 &7983793990398155116
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -82329,28 +82217,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   openAngle: 90
   speed: 2
---- !u!64 &8150179616970273036
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6157239675024924776}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8835939451607618176, guid: 3076b4e428b994cd88e0fd5c5a46268c, type: 3}
 --- !u!4 &8152015292502964571
 Transform:
   m_ObjectHideFlags: 0
@@ -88818,39 +88684,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8811126707818623960
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3488799052302534453}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.010514371, y: 0.0053928825, z: 0.0050621573}
-  m_Center: {x: 0.00000001490891, y: -0.00018563343, z: 0.00009371281}
---- !u!114 &8811126707818623961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3488799052302534453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6b377cdd2f04db58fe497524d20033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cabinet
 --- !u!1 &8812116524207919274
 GameObject:
   m_ObjectHideFlags: 0
@@ -90221,8 +90054,6 @@ GameObject:
   - component: {fileID: 8133309328208879771}
   - component: {fileID: 8663302873591718968}
   - component: {fileID: 1105574653860930547}
-  - component: {fileID: 8971731402559454801}
-  - component: {fileID: 8971731402559454800}
   m_Layer: 0
   m_Name: Books_003
   m_TagString: Untagged
@@ -90230,39 +90061,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &8971731402559454800
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8971731402559454799}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.011508789, y: 0.01702147, z: 0.0025909182}
-  m_Center: {x: 0.0000000074382376, y: -0.0006790944, z: 0.00013988269}
---- !u!114 &8971731402559454801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8971731402559454799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6b377cdd2f04db58fe497524d20033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cabinet
 --- !u!1 &8972813835463788769
 GameObject:
   m_ObjectHideFlags: 0
@@ -91391,39 +91189,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450652530007143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9078787535188331061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6981079624784510495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6b377cdd2f04db58fe497524d20033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cabinet
---- !u!65 &9078787535188331062
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6981079624784510495}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0109992325, y: 0.006836533, z: 0.004100003}
-  m_Center: {x: 0.00043382385, y: -0.00020224502, z: 0.00033768642}
 --- !u!4 &9081379631322096598
 Transform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E2_BedroomMonologue_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Why do I suddenly feel cold here??
+  Text: And where is this sound coming from??
   TriggeringEvent: 0
   Next: {fileID: 11400000, guid: 98144c72bf7ed43178f96b005486224f, type: 2}
   Choices: []
