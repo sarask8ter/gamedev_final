@@ -26,11 +26,6 @@ public class PickableItem : MonoBehaviour, IInteractable
         MoveAndChangePhysicsMethods.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
         isInteractable = false;
         TasksEvents.OnItemInteract?.Invoke(item);
-
-        // if(item == ItemName.PizzaBox)
-        // {
-        //     TasksEvents.OnItemInteract?.Invoke(item);
-        // }
     }
 
     public void Drop(Transform dropPoint)
