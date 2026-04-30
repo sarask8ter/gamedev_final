@@ -954,7 +954,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2060916811}
+  m_Father: {fileID: 1295946897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &87733443
 GameObject:
@@ -3327,6 +3327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Phone
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5267,53 +5271,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9061663197687297423, guid: a0bb03ccddeda489094fc7ac607dd55f, type: 3}
   m_PrefabInstance: {fileID: 2132310182}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1204837920
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1204837922}
-  - component: {fileID: 1204837921}
-  m_Layer: 0
-  m_Name: E2 Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1204837921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204837920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2512f0ad3e3ce492ca472b47eecbec9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::E2
-  spirit: {fileID: 1240238781}
-  lights:
-  - {fileID: 0}
---- !u!4 &1204837922
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204837920}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39528, y: 2.02081, z: 0.79704}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1213871248
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,6 +5483,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 35.816, y: -143.302, z: -0.055}
+--- !u!1 &1295946896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1295946897}
+  m_Layer: 0
+  m_Name: Example Spirit Object Interactions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1295946897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295946896}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2025192326}
+  - {fileID: 1950818961}
+  - {fileID: 87593943}
+  m_Father: {fileID: 2060916811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298556341
 GameObject:
   m_ObjectHideFlags: 0
@@ -7692,11 +7683,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You are a woman moving into an AirBnB, but everything is not as it seems...
+  m_text: 'You are a woman moving into an AirBnB, but not everything is as it seems...
 
 
-    <i>*
-    Click anywhere to begin *</i>'
+    <b>*
+    Click anywhere to begin *</b>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9675,7 +9666,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1860277718}
-  m_Father: {fileID: 2060916811}
+  m_Father: {fileID: 1295946897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1969031788
 PrefabInstance:
@@ -9862,7 +9853,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1770283412}
-  m_Father: {fileID: 2060916811}
+  m_Father: {fileID: 1295946897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2025192327
 BoxCollider:
@@ -10180,9 +10171,7 @@ Transform:
   - {fileID: 1868349785}
   - {fileID: 1332989808}
   - {fileID: 1202250503}
-  - {fileID: 2025192326}
-  - {fileID: 1950818961}
-  - {fileID: 87593943}
+  - {fileID: 1295946897}
   - {fileID: 684352164}
   - {fileID: 1466991190}
   - {fileID: 1298556342}
@@ -15120,6 +15109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NeighborAnimation
   powerTransferVFX: {fileID: 2065325467}
+  deathEndingDelay: 3
 --- !u!1 &2119371547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -15979,4 +15969,3 @@ SceneRoots:
   - {fileID: 2060916811}
   - {fileID: 1553103755}
   - {fileID: 159354270}
-  - {fileID: 1204837922}
