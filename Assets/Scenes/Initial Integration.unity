@@ -3382,7 +3382,7 @@ MonoBehaviour:
     - Click: Advance dialogue and select options
 
     - Click and
-    drag: Rotate inspectd objects
+    drag: Rotate inspected objects
 
     - Esc: Exit inspect mode'
   m_isRightToLeft: 0
