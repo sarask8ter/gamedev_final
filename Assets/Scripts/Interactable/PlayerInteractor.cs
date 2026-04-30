@@ -101,7 +101,7 @@ public class PlayerInteractor : MonoBehaviour
 
             if (interactable != null)
             {
-                Debug.Log("Found interactable");
+                Debug.Log("Found interactable " + interactable + " can interact? " + interactable.IsInteractable);
 
                 if (interactable.IsInteractable)
                 {

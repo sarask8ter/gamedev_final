@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5047f0c09772e4e5592a504f2931204d, type: 3}
-  m_Name: TeleportNeighborToBathroom
+  m_Name: TeleportNeighborOnGetOut
   m_EditorClassIdentifier: Assembly-CSharp::TeleportNeighborToBathroom
-  TriggeringEvent: 22
-  toBathroom: 1
+  TriggeringEvent: 37
+  toBathroom: 0

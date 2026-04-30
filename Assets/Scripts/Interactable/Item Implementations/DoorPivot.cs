@@ -29,6 +29,12 @@ public class DoorPivot : MonoBehaviour, IInteractable
         isInteractable = true;
     }
 
+    public void Lock()
+    {
+        isInteractable = false;
+    }
+
+
     public virtual void Interact(PlayerInteractor player)
     {
         SetOpen(!isOpen);
@@ -61,7 +67,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
         Debug.Log("Door rotating. isOpen = " + isOpen);
     }
 
-    protected IEnumerator RotateDoor()
+    protected virtual IEnumerator RotateDoor()
     {
         Debug.Log("Rotating door");
         Quaternion target = isOpen ? openRot : closedRot;
