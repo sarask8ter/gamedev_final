@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class CurrentTaskUI : MonoBehaviour
     [SerializeField] private float taskStayTime;
     [SerializeField] private GameObject tasksHeader;
     [SerializeField] private GameObject currentTask;
+    [SerializeField] private ProgressEvent[] noStrikethroughEvents;
     private TextMeshProUGUI currentTaskText;
 
     void Awake()
@@ -45,7 +47,26 @@ public class CurrentTaskUI : MonoBehaviour
 
     void CompleteTask(TaskData task)
     {
-        StartCoroutine(AnimateStrikethroughThenHide(task.Description + " ", task.Progress));
+        if (noStrikethroughEvents.Contains(task.TriggeringEvent))
+        {
+            StartCoroutine(HideWithoutStrikethrough());
+            return;
+        }
+
+        StartCoroutine(
+            AnimateStrikethroughThenHide(
+                task.Description + " ",
+                task.Progress
+            )
+        );
+    }
+
+    IEnumerator HideWithoutStrikethrough()
+    {
+        yield return new WaitForSeconds(taskStayTime);
+
+        tasksHeader.SetActive(false);
+        currentTask.SetActive(false);
     }
 
     void SetTaskText(string beginning, string bolded)

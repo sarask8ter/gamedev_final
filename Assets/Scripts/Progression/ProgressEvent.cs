@@ -16,6 +16,7 @@ public enum ProgressEvent
     TeaReady,
     StayTheNightDialogue,
     StayTheNightDecision,
+    // ==============
     // Events that only happen if investigating blood/clues.
     GoToSleep,
     SeeBlood,
@@ -29,4 +30,16 @@ public enum ProgressEvent
     NeighborConfrontation,
     NeighborAttack,
     NeighborDeath,
+    // ===================
+    CloseDoor,
+    ExploreHouse,
+    GetPizza,
+    EnterBedroom,
+    LightsFlicker,
+    BedroomMonologue,
+    PlacePizza,
+    EnterBathroom,
+    BathroomMonologue,
+    GetOut,
+    SeeNeighbor,
 }
