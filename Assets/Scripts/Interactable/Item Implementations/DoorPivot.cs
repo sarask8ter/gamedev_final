@@ -16,11 +16,15 @@ public class DoorPivot : MonoBehaviour, IInteractable
     private Quaternion closedRot;
     private Quaternion openRot;
 
-    protected virtual void Start()
+    void Start()
     {
         closedRot = transform.rotation;
         openRot = Quaternion.Euler(0, openAngle, 0);
+        PostStart();
+    }
 
+    protected virtual void PostStart()
+    {
         ProgressManager.SubscribeToStart(unlockEvent, Unlock);
     }
 
@@ -29,16 +33,10 @@ public class DoorPivot : MonoBehaviour, IInteractable
         isInteractable = true;
     }
 
-    public void Lock()
-    {
-        isInteractable = false;
-    }
-
-
     public virtual void Interact(PlayerInteractor player)
     {
-        SetOpen(!isOpen);
         if (itemForTask != ItemName.None) TasksEvents.OnItemInteract?.Invoke(itemForTask);
+        SetOpen(!isOpen);
         if (singleTimeInteract) isInteractable = false;
     }
 
@@ -65,9 +63,12 @@ public class DoorPivot : MonoBehaviour, IInteractable
         StopAllCoroutines();
         StartCoroutine(RotateDoor());
         Debug.Log("Door rotating. isOpen = " + isOpen);
+        PostOpenOrClose(shouldOpen);
     }
 
-    protected virtual IEnumerator RotateDoor()
+    protected virtual void PostOpenOrClose(bool shouldOpen) {}
+
+    IEnumerator RotateDoor()
     {
         Debug.Log("Rotating door");
         Quaternion target = isOpen ? openRot : closedRot;

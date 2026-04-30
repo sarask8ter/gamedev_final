@@ -16,11 +16,11 @@ public class ProgressManager : MonoBehaviour
     private Dictionary<ProgressEvent, Action> endListeners = new();
     private static ProgressManager _instance;
 
-    public static bool HasCompleted(ProgressEvent evt)
+    public static bool HasCompleted(ProgressEvent evt, bool includeCurrentEvt = false)
     {
         var idx = Array.IndexOf(_instance.sequence, evt);
         if (idx < 0) return false;
-        return _instance.currEvtIdx < idx;
+        return includeCurrentEvt ?  _instance.currEvtIdx >= idx : _instance.currEvtIdx > idx;
     }
 
     public static void SubscribeToStart(ProgressEvent evt, Action callback)
