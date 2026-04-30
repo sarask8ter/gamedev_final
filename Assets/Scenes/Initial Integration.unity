@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.4
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: df6b2c524cc844805a960f150a673850, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1957,6 +1957,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9c56c73dc653431293f96cce6a681be, type: 2}
   - {fileID: 11400000, guid: 267bb1510a8f948ce861316c39fcc4af, type: 2}
   - {fileID: 11400000, guid: c91ee186b1ceb49d5a77cb6044bc1318, type: 2}
+  - {fileID: 11400000, guid: c5bc0ba67d5284d438bc705d62350174, type: 2}
 --- !u!114 &235080520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2331,7 +2332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0
@@ -2342,8 +2343,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 1
-  m_Color: {r: 0.9433962, g: 0.91848826, b: 0.7698469, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5459,6 +5460,7 @@ MonoBehaviour:
   speed: 2
   singleTimeInteract: 0
   itemForTask: 6
+  doorPivotSFX: {fileID: 0}
   closeDoorTask: 28
 --- !u!1 &1400745851
 GameObject:
@@ -5640,6 +5642,7 @@ MonoBehaviour:
   speed: 2
   singleTimeInteract: 0
   itemForTask: 10
+  doorPivotSFX: {fileID: 0}
 --- !u!1 &1466991189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7097,6 +7100,7 @@ MonoBehaviour:
   speed: 2
   singleTimeInteract: 0
   itemForTask: 0
+  doorPivotSFX: {fileID: 6264464234462829957, guid: 38a30e1970b4a4f3ebae117eba5fb70a, type: 3}
   roomItem: 8
 --- !u!1 &1579643382 stripped
 GameObject:
@@ -7956,7 +7960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 0200000003000000040000000500000006000000070000001c0000001d0000000100000008000000200000001e0000001f00000021000000220000002300000024000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  sequence: 0200000003000000040000000500000006000000070000001c0000001d0000000100000008000000200000001e0000001f0000002100000022000000230000002400000000000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -9051,6 +9055,7 @@ MonoBehaviour:
   speed: 2
   singleTimeInteract: 0
   itemForTask: 0
+  doorPivotSFX: {fileID: 0}
 --- !u!4 &1950818961
 Transform:
   m_ObjectHideFlags: 0
