@@ -35,6 +35,20 @@ public class PlayerInteractor : MonoBehaviour
 
     public static bool DiscardItem(ItemName item) { return _instance._DiscardItem(item); }
 
+    public static IInteractable RaycastInteractable()
+    {
+        return _instance._RaycastInteractable();
+    }
+
+    IInteractable _RaycastInteractable()
+    {
+        if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, raycastDist, interactableMask))
+            return null;
+        Debug.Log("Hit: " + hit.collider.name);
+        var interactable = hit.collider.GetComponentInParent<IInteractable>();
+        return interactable;
+    }
+
     // Returns true if successfully discarded item, false otherwise.
     bool _DiscardItem(ItemName item)
     {
@@ -92,22 +106,16 @@ public class PlayerInteractor : MonoBehaviour
     void TryInteract()
     {
         Debug.DrawLine(cam.transform.position, cam.transform.position + cam.transform.forward * raycastDist, Color.red, 1f);
+        var interactable = _RaycastInteractable();
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, raycastDist, interactableMask))
+        if (interactable != null)
         {
-            Debug.Log("Hit: " + hit.collider.name);
+            Debug.Log("Found interactable " + interactable + " can interact? " + interactable.IsInteractable);
 
-            var interactable = hit.collider.GetComponentInParent<IInteractable>();
-
-            if (interactable != null)
+            if (interactable.IsInteractable)
             {
-                Debug.Log("Found interactable " + interactable + " can interact? " + interactable.IsInteractable);
-
-                if (interactable.IsInteractable)
-                {
-                    Debug.Log("Interacting");
-                    interactable.Interact(this);
-                }
+                Debug.Log("Interacting");
+                interactable.Interact(this);
             }
         }
     }

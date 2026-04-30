@@ -3992,6 +3992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835692097}
   - component: {fileID: 835692096}
+  - component: {fileID: 835692098}
   m_Layer: 0
   m_Name: PlayerInteractor
   m_TagString: Untagged
@@ -4034,6 +4035,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 624499558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &835692098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835692095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfeede50da5843bfafc14a4a75f8b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeUIOnInteractableHover
+  hoverElement: {fileID: 1370791666}
+  showHoverStates: 0200000001000000
 --- !u!1001 &841099795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5861,6 +5876,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropZone
   item: 7
   dropPoint: {fileID: 1348217102}
+--- !u!1 &1370791666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1370791667}
+  - component: {fileID: 1370791669}
+  - component: {fileID: 1370791668}
+  m_Layer: 5
+  m_Name: CrosshairOnHover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1370791667
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370791666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1644187451}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1370791668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370791666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6f3bc582075474b31957059ea87ae40d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1370791669
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370791666}
+  m_CullTransparentMesh: 1
 --- !u!1 &1384652074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5886,7 +5976,7 @@ Transform:
   m_GameObject: {fileID: 1384652074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.334, y: 0.7, z: 1}
+  m_LocalPosition: {x: 0.334, y: 0.7, z: 1.503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7533,30 +7623,6 @@ MonoBehaviour:
   - {fileID: 1250511831}
   - {fileID: 855055258}
   hidePlayer: 1
---- !u!1 &1568996686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3121442298699806816, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
-  m_PrefabInstance: {fileID: 7536896023145381650}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1568996689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568996686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9abb67f6b8f8645e09db58a2dbc4ab7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomDoor
-  unlockEvent: 31
-  openAngle: 90
-  speed: 2
-  singleTimeInteract: 0
-  itemForTask: 0
-  doorPivotSFX: {fileID: 6264464234462829957, guid: 38a30e1970b4a4f3ebae117eba5fb70a, type: 3}
-  roomItem: 8
 --- !u!1 &1579643382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
@@ -7862,6 +7928,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1930875590}
+  - {fileID: 1370791667}
   - {fileID: 1339749265}
   - {fileID: 1492858861}
   - {fileID: 852787195}
@@ -8556,7 +8623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 010000000200000003000000040000000500000006000000070000001c0000001d00000008000000200000001e0000001f000000210000002200000023000000240000002500000026000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  sequence: 0200000003000000040000000500000006000000070000001c0000001d00000008000000200000001e0000001f000000210000002200000023000000240000002500000026000000090000000a0000000b000000010000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -15835,6 +15902,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1120939226985974491, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: itemForTask
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120939226985974491, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: unlockEvent
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120939226985974491, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: doorPivotSFX
+      value: 
+      objectReference: {fileID: 6264464234462829957, guid: 38a30e1970b4a4f3ebae117eba5fb70a, type: 3}
     - target: {fileID: 2101047982674033386, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_Name
       value: Neighborhood - Player's House
@@ -15873,7 +15952,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4584474209826484672, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
-    - {fileID: 1120939226985974491, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -15889,9 +15967,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2459918593993683743, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1439851277}
-    - targetCorrespondingSourceObject: {fileID: 3121442298699806816, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1568996689}
     - targetCorrespondingSourceObject: {fileID: 8607059581434911735, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 804186706}
