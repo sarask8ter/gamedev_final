@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de858cabb166743cabb1ccb1b184b69a, type: 3}
-  m_Name: PlaySoundOnDoorKnock
-  m_EditorClassIdentifier: Assembly-CSharp::PlaySoundOnEvent
+  m_Script: {fileID: 11500000, guid: 5f42bd2aa3bfa41a2ac8ffa09a357389, type: 3}
+  m_Name: DoorKnock
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPrefab
   TriggeringEvent: 8
-  clip: {fileID: 8300000, guid: 7df9d07bcfbcf454fb0c6042a08b255d, type: 3}
-  volume: 3
-  pitch: 1
+  prefab: {fileID: 6264464234462829957, guid: d26ef0a4ed6e94f23a85f3f471537ccc, type: 3}
+  spawnOnPlayer: 0
