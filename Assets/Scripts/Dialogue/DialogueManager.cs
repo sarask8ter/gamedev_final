@@ -82,6 +82,8 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        if (currentNode.IsEndingDialogue) isEndingDialogue = true;
+
         DialogueUIController.SetNPCInfo(currentNode.speaker.GetName());
 
         if (currentNode.TriggeringEvent != ProgressEvent.None) lastNodeEvent = currentNode.TriggeringEvent;
