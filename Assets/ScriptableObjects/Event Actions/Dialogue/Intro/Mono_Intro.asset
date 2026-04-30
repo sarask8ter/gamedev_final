@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: Mono_Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  TriggeringEvent: 2
   Text: Oh wow looks like a decent place for the $69 I paid, and the neighborhood
     isn't too shabby.
-  TriggeringEvent: 2
   Next: {fileID: 11400000, guid: e80b32fefc9a54692a13b36c9db5c319, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
-  AutoProgress: 1
+  AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: You
+  speaker: 0
+  AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1
