@@ -42,4 +42,7 @@ public enum ProgressEvent
     BathroomMonologue,
     GetOut,
     SeeNeighbor,
+    // ONLY for death by tea ending
+    DrinkTea,
+    // =====
 }
