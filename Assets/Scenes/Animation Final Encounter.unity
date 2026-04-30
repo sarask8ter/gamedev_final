@@ -3237,6 +3237,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   pickedUpLayerName: PickedUpItem
+  hoverMarkerSize: 14
+  expandedMarkerSize: 42
+  hoverExpandSpeed: 10
 --- !u!4 &835692097
 Transform:
   m_ObjectHideFlags: 0
