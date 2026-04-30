@@ -20,6 +20,8 @@ public class InteractWithItemTask : Task
 
     protected void HandleProgress(ItemName placedItem)
     {
+        Debug.Log($"Received: {placedItem} expecting {item}");
+        
         if (placedItem != item) return;
 
         Debug.Log("Pizza task progressing");

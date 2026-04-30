@@ -8,4 +8,5 @@ public enum ItemName
     PizzaBox,
     BedroomDoor,
     BathroomDoor,
+    FrontDoor,
 }

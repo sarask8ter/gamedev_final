@@ -50,6 +50,9 @@ public class SpiritController : MonoBehaviour
     [SerializeField] private Cabinet[] kitchenCabinets;
     [SerializeField] private LightSwitch[] kitchenLights;
 
+    Coroutine poltergeistRoutine;
+    Coroutine whisperRoutine;
+
     void Start()
     {
         ProgressManager.SubscribeToStart(ProgressEvent.PizzaBox, () =>
@@ -66,6 +69,7 @@ public class SpiritController : MonoBehaviour
         ProgressManager.SubscribeToStart(ProgressEvent.EnterBathroom, () =>
         {
             SetState(HauntState.Bathroom);
+            StartBathroomHaunting();
         });
     }
 
@@ -164,6 +168,13 @@ public class SpiritController : MonoBehaviour
     void StartPizzaHaunting()
     {
         if (poltergeistActive) return;
+
+        if (poltergeistRoutine != null)
+            StopCoroutine(poltergeistRoutine);
+
+        if (whisperRoutine != null)
+            StopCoroutine(whisperRoutine);
+
         poltergeistActive = true;
 
         if (whisperAudio == null)
@@ -174,12 +185,10 @@ public class SpiritController : MonoBehaviour
         whisperAudio.spatialBlend = 1f;
         whisperAudio.playOnAwake = false;
 
-        Debug.Log("Pizza haunting started");
-
-        StartCoroutine(PoltergeistRoutine());
+        poltergeistRoutine = StartCoroutine(PoltergeistRoutine());
+        whisperRoutine = StartCoroutine(WhisperRoutine());
 
         whisperAudio.Play();
-        StartCoroutine(WhisperRoutine());
     }
 
     void StartBathroomHaunting()
@@ -220,6 +229,10 @@ public class SpiritController : MonoBehaviour
 
     IEnumerator WhisperRoutine()
     {
+        if (player == null || bathroom == null) yield break;
+    
+        if (whisperAudio == null) yield break;
+
         while (poltergeistActive)
         {
             float dist = Vector3.Distance(player.position, bathroom.position);
@@ -227,7 +240,12 @@ public class SpiritController : MonoBehaviour
             float t = 1f - Mathf.Clamp01(dist / maxWhisperDistance);
 
             float targetVolume = Mathf.Lerp(0.05f, 1f, t);
-            whisperAudio.volume = Mathf.Lerp(whisperAudio.volume, targetVolume, Time.deltaTime * 3f);
+
+            whisperAudio.volume = Mathf.Lerp(
+                whisperAudio.volume,
+                targetVolume,
+                Time.deltaTime * 3f
+            );
 
             whisperAudio.pitch = 0.9f + (t * 0.3f);
 
@@ -264,6 +282,12 @@ public class SpiritController : MonoBehaviour
 
         poltergeistActive = false;
 
+        if (poltergeistRoutine != null)
+            StopCoroutine(poltergeistRoutine);
+
+        if (whisperRoutine != null)
+            StopCoroutine(whisperRoutine);
+
         StartCoroutine(BreathingRoutine());
     }
 
@@ -291,12 +315,17 @@ public class SpiritController : MonoBehaviour
 
         float t = 0f;
 
-        while (currentState == HauntState.PostBathroom)
+        float maxDuration = 20f;
+
+        while (currentState == HauntState.PostBathroom && maxDuration > 0f)
         {
             t += Time.deltaTime;
+            maxDuration -= Time.deltaTime;
 
             float intensity = Mathf.Lerp(0.5f, 0.05f, t / 20f);
             breathingAudio.volume = intensity;
+
+            yield return null;
         }
 
         breathingAudio.Stop();

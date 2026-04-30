@@ -7,6 +7,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
 
     [SerializeField] private float openAngle;
     [SerializeField] private float speed;
+    [SerializeField] private ItemName doorItem = ItemName.Door;
 
     private bool moveInBoxesStarted;
     private bool closeDoorTaskActive;
@@ -14,6 +15,8 @@ public class DoorPivot : MonoBehaviour, IInteractable
 
     private Quaternion closedRot;
     private Quaternion openRot;
+
+    public bool IsOpen => isOpen;
 
     void Start()
     {
@@ -64,10 +67,16 @@ public class DoorPivot : MonoBehaviour, IInteractable
 
         transform.rotation = target;
 
-        // ONLY notify systems, NOT ProgressManager
         if (!isOpen)
         {
+            Debug.Log("Door closed → firing Door");
             TasksEvents.OnItemInteract?.Invoke(ItemName.Door);
+        }
+
+        if (isOpen)
+        {
+            Debug.Log("Door opened → firing " + doorItem);
+            TasksEvents.OnItemInteract?.Invoke(doorItem);
         }
     }
 

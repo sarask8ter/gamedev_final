@@ -14,4 +14,5 @@ public enum ProgressEvent
     PizzaBox,
     EnterBedroom,
     EnterBathroom,
+    GetOut,
 }

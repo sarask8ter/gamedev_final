@@ -88,4 +88,12 @@ public class PlayerInteractor : MonoBehaviour
             }
         }
     }
+
+    public void ForceDrop()
+    {
+        if (heldItem == null) return;
+
+        heldItem.Drop(holdingPoint);
+        heldItem = null;
+    }
 }

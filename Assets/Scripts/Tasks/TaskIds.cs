@@ -8,4 +8,5 @@ public enum TaskId
     GetPizza,
     EnterBedroom,
     EnterBathroom,
+    GetOut,
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Cabinet : MonoBehaviour
 {
     private Rigidbody rb;
+    private bool isKnocked;
 
     void Start()
     {
@@ -17,23 +18,18 @@ public class Cabinet : MonoBehaviour
 
     public void KnockOver()
     {
+        if (isKnocked) return;
+        isKnocked = true;
+
         rb.isKinematic = false;
 
-        Vector3 dir =
-        new Vector3(
+        Vector3 dir = new Vector3(
             Random.Range(-1f,1f),
             .3f,
             Random.Range(-1f,1f)
         );
 
-        rb.AddForce(
-            dir.normalized * 6f,
-            ForceMode.Impulse
-        );
-
-        rb.AddTorque(
-        Random.insideUnitSphere * 8f,
-        ForceMode.Impulse
-        );
+        rb.maxAngularVelocity = 10f;
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5f);
     }
 }

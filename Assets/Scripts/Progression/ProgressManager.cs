@@ -13,6 +13,7 @@ public class ProgressManager : MonoBehaviour
     private Dictionary<ProgressEvent, Action> startListeners = new();
     private Dictionary<ProgressEvent, Action> endListeners = new();
     private static ProgressManager _instance;
+    public static ProgressManager Instance => _instance;
 
     public static void SubscribeToStart(ProgressEvent evt, Action callback)
     {
@@ -63,6 +64,17 @@ public class ProgressManager : MonoBehaviour
         else
         {
             _instance = this;
+        }
+    }
+
+    public ProgressEvent CurrentEvent
+    {
+        get
+        {
+            if (currEvtIdx < 0 || currEvtIdx >= sequence.Length)
+                return ProgressEvent.None;
+
+            return sequence[currEvtIdx];
         }
     }
 

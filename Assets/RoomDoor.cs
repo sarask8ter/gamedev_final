@@ -10,6 +10,7 @@ public class RoomDoor : MonoBehaviour, IInteractable
     [SerializeField] ItemName roomItem;
     [SerializeField] private DialogueNode monologue;
     [SerializeField] private PlayerSpeaker player;
+    [SerializeField] private SpiritController spirit;
 
     bool unlocked;
     bool isOpen;
@@ -18,7 +19,9 @@ public class RoomDoor : MonoBehaviour, IInteractable
     Quaternion closedRot;
     Quaternion openRot;
 
+    public bool IsOpen => isOpen;
     public bool IsInteractable => unlocked;
+    private PlayerInteractor playerInteractor;
 
     void Start()
     {
@@ -33,6 +36,9 @@ public class RoomDoor : MonoBehaviour, IInteractable
             unlockEvent,
             ()=> unlocked = true
         );
+
+        spirit = FindObjectOfType<SpiritController>();
+        playerInteractor = FindObjectOfType<PlayerInteractor>();
     }
 
     public void Interact(PlayerInteractor player)
@@ -49,20 +55,28 @@ public class RoomDoor : MonoBehaviour, IInteractable
         StopAllCoroutines();
         StartCoroutine(RotateDoor());
 
-        if (firstOpen && !hasCountedVisit)
-        {
-            hasCountedVisit = true;
+    if (firstOpen && !hasCountedVisit)
+    {
+        hasCountedVisit = true;
 
+        if (roomItem != ItemName.FrontDoor)
             TasksEvents.OnItemInteract?.Invoke(roomItem);
-
-            if (monologue != null)
-                StartCoroutine(RoomSequence());
-        }
+        
+        if (monologue != null)
+            StartCoroutine(RoomSequence());
+    }
 
         if (firstOpen && roomItem == ItemName.BathroomDoor)
         {
             FindObjectOfType<SpiritController>()?.EndBathroomSequence();
+            StartCoroutine(DropWithDelay());
         }
+    }
+
+    IEnumerator DropWithDelay()
+    {
+        yield return new WaitForSeconds(0.15f);
+        playerInteractor?.ForceDrop();
     }
 
     IEnumerator RoomSequence()
