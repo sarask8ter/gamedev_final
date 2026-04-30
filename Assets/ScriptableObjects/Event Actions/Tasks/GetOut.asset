@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5047f0c09772e4e5592a504f2931204d, type: 3}
-  m_Name: TeleportNeighborToBathroom
-  m_EditorClassIdentifier: Assembly-CSharp::TeleportNeighborToBathroom
-  TriggeringEvent: 22
-  toBathroom: 1
+  m_Script: {fileID: 11500000, guid: c09f15384e1ba4e6ca5473df3610d91e, type: 3}
+  m_Name: GetOut
+  m_EditorClassIdentifier: Assembly-CSharp::InteractWithItemTask
+  TriggeringEvent: 37
+  description: GET OUT
+  progressText: 
+  progressCompletionDelay: 0
+  item: 6

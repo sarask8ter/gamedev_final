@@ -4,41 +4,45 @@ using System.Collections;
 public class MainDoor : DoorPivot
 {
     [SerializeField] private ProgressEvent closeDoorTask;
-    private bool closeDoorTaskActive;
+    [SerializeField] private ProgressEvent getOutTask;
+    private bool allowClosing;
+    private bool allowOpening;
 
     protected override void Start()
     {
         base.Start();
-        ProgressManager.SubscribeToStart(closeDoorTask, () => closeDoorTaskActive = true);
-    }
+        ProgressManager.SubscribeToStart(closeDoorTask, () => {
+            allowClosing = true;
+            allowOpening = false;
+        });
 
+        ProgressManager.SubscribeToStart(unlockEvent, () => allowOpening = true);
+        ProgressManager.SubscribeToStart(getOutTask, () => allowOpening = true);
+
+        // If we are past unlock event, then set isInteractable.
+        if (ProgressManager.HasCompleted(unlockEvent)) {
+            Unlock();
+            if (!ProgressManager.HasCompleted(closeDoorTask)) allowOpening = true;
+        }
+    }
     public override void Interact(PlayerInteractor player = null)
-    {
+    {   
         if (isOpen)
         {
-            if (!closeDoorTaskActive) return;
+            // Don't allow closing until close door task is activated.
+            if (!allowClosing) return;
             SetOpen(false);
         }
         else
         {
+            if (!allowOpening) return;
             SetOpen(true);
         }
     }
 
-    public override void SetOpen(bool shouldOpen)
+    protected override IEnumerator RotateDoor()
     {
-        isOpen = shouldOpen;
-        StopAllCoroutines();
-        StartCoroutine(RotateDoorAndNotify());
-    }
-
-    IEnumerator RotateDoorAndNotify()
-    {
-        yield return RotateDoor();
-        // ONLY notify systems, NOT ProgressManager
-        if (!isOpen)
-        {
-            TasksEvents.OnItemInteract?.Invoke(ItemName.HouseDoor);
-        }
+        TasksEvents.OnItemInteract?.Invoke(ItemName.HouseDoor);
+        yield return base.RotateDoor();
     }
 }
