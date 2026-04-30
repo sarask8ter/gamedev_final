@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E2_BedroomMonologue_2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: Maybe I'll take a hot shower before I get in bed
   TriggeringEvent: 0
-  Next: {fileID: 0}
+  Text: And what is that noise??
+  Next: {fileID: 11400000, guid: 98144c72bf7ed43178f96b005486224f, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: 
+  speaker: 0
+  AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1

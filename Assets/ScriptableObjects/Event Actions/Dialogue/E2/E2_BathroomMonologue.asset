@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E2_BathroomMonologue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  TriggeringEvent: 0
+  TriggeringEvent: 36
   Text: WHAT THE ACTUAL FUCK
   Next: {fileID: 11400000, guid: 43b839e12d2cf49a99fded6202075357, type: 2}
   NextIfFoundEvidence: {fileID: 0}

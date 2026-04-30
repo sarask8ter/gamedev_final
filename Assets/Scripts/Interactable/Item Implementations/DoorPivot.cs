@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DoorPivot : MonoBehaviour, IInteractable
 {
@@ -9,6 +10,7 @@ public class DoorPivot : MonoBehaviour, IInteractable
     [SerializeField] private float speed;
     [SerializeField] private bool singleTimeInteract;
     [SerializeField] private ItemName itemForTask;
+    [SerializeField] private GameObject doorPivotSFX;
 
     protected bool isOpen;
     private Quaternion closedRot;
@@ -59,10 +61,12 @@ public class DoorPivot : MonoBehaviour, IInteractable
         Debug.Log("Door rotating. isOpen = " + isOpen);
     }
 
-    protected System.Collections.IEnumerator RotateDoor()
+    protected IEnumerator RotateDoor()
     {
         Debug.Log("Rotating door");
         Quaternion target = isOpen ? openRot : closedRot;
+
+        if (doorPivotSFX != null) Instantiate(doorPivotSFX);
 
         while (Quaternion.Angle(transform.rotation, target) > 0.1f)
         {

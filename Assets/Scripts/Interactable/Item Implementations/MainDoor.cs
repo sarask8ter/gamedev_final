@@ -25,7 +25,7 @@ public class MainDoor : DoorPivot
         }
     }
 
-    public override void  SetOpen(bool shouldOpen)
+    public override void SetOpen(bool shouldOpen)
     {
         isOpen = shouldOpen;
         StopAllCoroutines();
