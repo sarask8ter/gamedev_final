@@ -32,7 +32,7 @@ public class PlaceItemTask : Task
 
     void UpdateProgressText()
     {
-       progressText = "(" + count + "/" + targetCount + ")";  
+       progressText = (targetCount > 1) ? "(" + count + "/" + targetCount + ")" : "";  
     }
 
     void OnDisable()

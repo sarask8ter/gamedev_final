@@ -9,7 +9,7 @@ public class EventsSetup : MonoBehaviour
         // Set up tasks.
         foreach (var eventAction in eventActions)
         {
-            ProgressManager.SubscribeToStart(eventAction.TriggeringEvent, () => eventAction.OnEventStart());
+            ProgressManager.SubscribeToStart(eventAction.TriggeringEvent, eventAction.OnEventStart);
         }
     }
 }

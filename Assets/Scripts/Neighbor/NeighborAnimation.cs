@@ -4,9 +4,7 @@ using UnityEngine;
 public class NeighborAnimation : MonoBehaviour
 {
     [SerializeField] private ParticleSystem powerTransferVFX;
-    [SerializeField] private Ending endingOnDeath = Ending.SolveCase;
-    
-    [SerializeField] private float deathEndingDelay = 3f;
+    [SerializeField] private float deathEndingDelay;
 
 
     private Animator animator;
@@ -65,7 +63,6 @@ public class NeighborAnimation : MonoBehaviour
     private IEnumerator EndSceneAfterDelay()
     {
         yield return new WaitForSeconds(deathEndingDelay);
-        EndingState.ChosenEnding = endingOnDeath;
         TriggerEnd.End();
     }
 }
