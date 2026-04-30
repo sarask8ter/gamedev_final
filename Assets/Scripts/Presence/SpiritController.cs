@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum SpiritEventType
@@ -59,12 +60,18 @@ public class SpiritController : MonoBehaviour
 
     void FlickerLights()
     {
+        StartCoroutine(FlickerSequence());
+    }
+
+
+    IEnumerator FlickerSequence()
+    {
         foreach (var light in lights)
         {
             light.Flicker(2f);
+            yield return new WaitForSeconds(0.25f);
         }
     }
-
     void SlamDoor()
     {
         if (doors == null || doors.Length == 0) return;

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
+  m_Name: E2_BedroomMonologue_2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  TriggeringEvent: 0
+  Text: And what is that noise??
+  Next: {fileID: 11400000, guid: 98144c72bf7ed43178f96b005486224f, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
+  Choices: []
+  AutoProgress: 0
+  AutoDelay: 1.5
+  speaker: 0
+  AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1
