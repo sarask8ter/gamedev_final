@@ -15,8 +15,11 @@ MonoBehaviour:
   TriggeringEvent: 0
   Text: '*cough* What is going on?!'
   Next: {fileID: 11400000, guid: 3f38af3635e604ce0b1ba930f7cc8b30, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
   speaker: 0
   AllowClickToNextNode: 1
+  IsEndingDialogue: 1
+  ChangePlayerState: 1
