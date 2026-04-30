@@ -38,5 +38,6 @@ public enum ProgressEvent
     LightsFlicker,
     BedroomMonologue,
     PlacePizza,
+    EnterBathroom,
     BathroomMonologue,
 }

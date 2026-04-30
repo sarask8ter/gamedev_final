@@ -9,4 +9,6 @@ public enum ItemName
     HouseDoor,
     PizzaBox,
     BedroomDoor,
+    None,
+    BathroomDoor,
 }
