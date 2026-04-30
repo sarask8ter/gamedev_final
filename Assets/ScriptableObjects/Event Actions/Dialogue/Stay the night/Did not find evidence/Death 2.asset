@@ -20,3 +20,4 @@ MonoBehaviour:
   AutoDelay: 1.5
   speaker: 1
   AllowClickToNextNode: 1
+  IsEndingDialogue: 1
