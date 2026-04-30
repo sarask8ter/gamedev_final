@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TeleportNeighborToBathroom
   m_EditorClassIdentifier: Assembly-CSharp::TeleportNeighborToBathroom
   TriggeringEvent: 22
+  toBathroom: 1
