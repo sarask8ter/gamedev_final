@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
+  m_Name: E1_Start
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  TriggeringEvent: 0
+  Text: "Hey\u2026 just checking, you got in okay "
+  Next: {fileID: 0}
+  NextIfFoundEvidence: {fileID: 0}
+  Choices:
+  - Text: Talk to him
+    NextNode: {fileID: 11400000, guid: ffab4dc37e0894bc594e014bd9eb17a4, type: 2}
+    OnChooseChoice:
+    - {fileID: 11400000, guid: 207fdcfc3b77c4796b87072840001db4, type: 2}
+    - {fileID: 11400000, guid: e50f734a74d384c06adbdb3d0a7abb90, type: 2}
+  - Text: Ignore
+    NextNode: {fileID: 11400000, guid: 57bd030b63c5040cb8c826c9219ef316, type: 2}
+    OnChooseChoice: []
+  AutoProgress: 0
+  AutoDelay: 1.5
+  speaker: 2
+  AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1

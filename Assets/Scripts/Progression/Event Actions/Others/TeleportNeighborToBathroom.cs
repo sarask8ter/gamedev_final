@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TeleportNeighborToBathroom", menuName = "Event Actions/Others/Teleport Neighbor to Bathroom")]
+[CreateAssetMenu(fileName = "TeleportNeighbor", menuName = "Event Actions/Others/Teleport Neighbor")]
 public class TeleportNeighborToBathroom : EventAction
 {
+    [SerializeField] private bool toBathroom;
     public override void OnEventStart()
     {
-        MovementHelper.MoveToPoint(GameState.Neighbor, GameState.NeighborBathroomTeleportPoint, false);
+        MovementHelper.MoveToPoint(GameState.Neighbor, toBathroom ? GameState.NeighborBathroomTeleportPoint : GameState.NeighborGetOutTeleportPoint, false);
     }
 }

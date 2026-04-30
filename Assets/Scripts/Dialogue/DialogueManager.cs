@@ -59,7 +59,6 @@ public class DialogueManager : MonoBehaviour
             CoroutineHelper.Cancel(autoProgressCoroutine);
             autoProgressCoroutine = null;
         }
-        CancelInvoke();
     }
 
     public static void StartDialogue(DialogueNode node, bool lockCursor = true, bool changePlayerState = true)
