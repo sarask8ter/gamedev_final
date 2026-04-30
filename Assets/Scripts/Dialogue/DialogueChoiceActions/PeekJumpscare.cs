@@ -17,14 +17,28 @@ public class PeekJumpscare : DialogueChoiceAction
     {
         var neighbor = GameState.Neighbor;
         var neighborTeleportPoint = GameState.NeighborPeekTeleportPoint;
+        neighbor.transform.rotation = neighborTeleportPoint.rotation;
 
         // Move neighbor slightly away (away from player/camera direction)
         Vector3 jumpOffset = -neighbor.transform.right.normalized * 6f;
         neighbor.transform.position += jumpOffset;
 
-        yield return new WaitForSeconds(2f);
+        yield return MoveIn(neighbor, neighborTeleportPoint.position, 1f);
+    }
 
-        // Snap back to original spawn position
-        MovementHelper.MoveToPoint(neighbor, neighborTeleportPoint, false);
+    IEnumerator MoveIn(GameObject neighbor, Vector3 target, float time)
+    {
+        Vector3 start = neighbor.transform.position;
+        float elapsed = 0f;
+
+        while (elapsed < time)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / time;
+            neighbor.transform.position = Vector3.Lerp(start, target, t);
+            yield return null;
+        }
+
+        neighbor.transform.position = target;
     }
 }

@@ -40,4 +40,6 @@ public enum ProgressEvent
     PlacePizza,
     EnterBathroom,
     BathroomMonologue,
+    GetOut,
+    SeeNeighbor,
 }

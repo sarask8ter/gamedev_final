@@ -24,6 +24,9 @@ public class GameState : MonoBehaviour
     public static Transform NeighborTeaTeleportPoint => _instance.neighborTeaTeleportPoint;
     [SerializeField] private Transform neighborBathroomTeleportPoint;
     public static Transform NeighborBathroomTeleportPoint => _instance.neighborBathroomTeleportPoint;
+    [SerializeField] private Transform neighborGetOutTeleportPoint;
+    public static Transform NeighborGetOutTeleportPoint => _instance.neighborGetOutTeleportPoint;
+
 
     [Header("Others")]
     [SerializeField] private DoorPivot frontDoor;
