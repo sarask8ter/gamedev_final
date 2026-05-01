@@ -21,6 +21,7 @@ public class MovableItem : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
+        ItemAudio.Instance.PlayPickup(transform.position);
         MovementHelper.MoveToPoint(gameObject, isMoved ? originalLocation : movedLocation, false);
         isMoved = !isMoved;
         TasksEvents.OnItemInteract?.Invoke(item);

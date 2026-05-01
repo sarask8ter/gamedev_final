@@ -15,15 +15,18 @@ public class PickableItem : MonoBehaviour, IInteractable
 
     private string oldLayerName;
     private Transform oldParent;
+    private ItemAudio itemAudio;
 
     void Start()
     {
+        itemAudio = GetComponent<ItemAudio>();
         ProgressManager.SubscribeToStart(unlockEvent, () => isInteractable = true);
     }
 
     public void Interact(PlayerInteractor player)
     {
         if (!player.PickUpItem(this)) return;
+        ItemAudio.Instance.PlayPickup(transform.position);
         oldLayerName = LayerMask.LayerToName(gameObject.layer);
         oldParent = transform.parent;
         MovementHelper.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
@@ -35,6 +38,7 @@ public class PickableItem : MonoBehaviour, IInteractable
 
     public void Drop(Transform dropPoint)
     {
+        ItemAudio.Instance.PlayDrop(transform.position);
         if (oldLayerName == "" ) 
         {
             Debug.LogError("Did not interact previously with object before dropping");

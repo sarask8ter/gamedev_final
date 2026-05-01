@@ -10,6 +10,7 @@ public class DisappearableItem : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
+        ItemAudio.Instance.PlayPickup(transform.position);
         TasksEvents.OnItemInteract?.Invoke(item);
         gameObject.SetActive(false);
     }

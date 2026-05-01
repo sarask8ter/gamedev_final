@@ -9015,8 +9015,9 @@ GameObject:
   - component: {fileID: 1723517298}
   - component: {fileID: 1723517297}
   - component: {fileID: 1723517296}
+  - component: {fileID: 1723517299}
   m_Layer: 0
-  m_Name: MusicManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9146,6 +9147,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1723517299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723517295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fc01c31c761490687e0e9a1bed4665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemAudio
+  pickupClip: {fileID: 8300000, guid: 707085b65982140e0af560b0a19af34d, type: 3}
+  dropClip: {fileID: 8300000, guid: 1d24271fba819426988bb00ec8b0aa6e, type: 3}
 --- !u!108 &1728703693 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 7453097794444874666, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}

@@ -16,6 +16,7 @@ public class RedirectInteraction : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
+        ItemAudio.Instance.PlayPickup(transform.position);
         interactable.Interact(player);
         if (singleTimeInteract) MovementHelper.MoveToDefaultLayer(gameObject);
     }

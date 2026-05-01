@@ -12,6 +12,7 @@ public class Inspectable : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
+        ItemAudio.Instance.PlayPickup(transform.position);
         var inspectClone = Instantiate(inspectPrefab != null ? inspectPrefab : gameObject);
         inspectClone.transform.localScale *= inspectScale;
         PlayerInspector.BeginInspection(inspectClone);
