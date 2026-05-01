@@ -22,12 +22,12 @@ public class PlayerInteractor : MonoBehaviour
     // Returns true if successfully dropped item, false otherwise.
     public bool DropHeldItem(ItemName dropItem, Transform dropPoint)
     {
+        if (heldItem == null) return false;
         if (dropItem != heldItem.Item)
         {
             Debug.LogError("Dropping: " + heldItem + " expected: " + dropItem);
             return false;
         }
-        if (heldItem == null) return false;
         heldItem.Drop(dropPoint);
         heldItem = null;
         return true;
