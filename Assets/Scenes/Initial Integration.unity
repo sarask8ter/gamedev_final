@@ -17511,6 +17511,10 @@ PrefabInstance:
       propertyPath: doorPivotSFX
       value: 
       objectReference: {fileID: 6264464234462829957, guid: 38a30e1970b4a4f3ebae117eba5fb70a, type: 3}
+    - target: {fileID: 1120939226985974491, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: singleTimeInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2101047982674033386, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_Name
       value: Neighborhood - Player's House
