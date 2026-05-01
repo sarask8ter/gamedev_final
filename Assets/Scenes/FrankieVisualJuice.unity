@@ -9341,6 +9341,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2420224769922335019, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 2739359350195938635, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9445,6 +9449,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10.597
       objectReference: {fileID: 0}
+    - target: {fileID: 7047864775421710288, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 7063553402490995427, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -16313,6 +16321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Neighborhood - Player's House
       objectReference: {fileID: 0}
+    - target: {fileID: 2420224769922335019, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 2467019276950560304, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -16347,6 +16359,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6883163777271937087, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
+    - target: {fileID: 7047864775421710288, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 8342471082656220717, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
