@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_Talk_0
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: Oh hey. I heard you moved in here
+  Text: Oh hey. I heard you moved in here!
   Next: {fileID: 11400000, guid: 4aed0a6fa5b68499d83f03920beeb26f, type: 2}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: E1_Talk_2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: "Not many people stay long\u2026 place can feel weird"
-  Next: {fileID: 11400000, guid: 6469bb80d206641638837a478d88ab91, type: 2}
+  Text: So let me know if you ever need anything.
+  Next: {fileID: 11400000, guid: 1fd360edc49c04d0d8333d32305ea3e4, type: 2}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0

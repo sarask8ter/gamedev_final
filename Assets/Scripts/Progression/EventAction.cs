@@ -10,7 +10,7 @@ public abstract class EventAction : MonoBehaviour, IEventListener
     }
 
     public abstract void OnEventStart();
-
+    
     protected void CompleteEvent()
     {
         ProgressManager.CompleteEvent(TriggeringEvent);

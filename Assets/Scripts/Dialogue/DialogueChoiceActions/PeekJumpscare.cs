@@ -1,22 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DialogueChoice - Peek Jumpscare", menuName = "Dialogue/Choice Actions/Peek Jumpscare")]
 public class PeekJumpscare : DialogueChoiceAction
 {
+    [SerializeField] private GameObject neighbor;
+    [SerializeField] private Transform neighborTeleportPoint;
+    [SerializeField] private PlayerMover player;
+    [SerializeField] private Transform playerPeekTeleportPoint;
+    [SerializeField] private DoorPivot frontDoor;
 
-    public override void Execute()
+    protected override void Execute()
     {
-        MovementHelper.MovePlayer(GameState.PlayerPeekTeleportPoint);
-        GameState.FrontDoor.SetOpen(true);
+        player.MovePlayer(playerPeekTeleportPoint);
+        frontDoor.SetOpen(true);
         CoroutineHelper.StartCoroutineHelper(Jumpscare());
     }
 
-    
     IEnumerator Jumpscare()
     {
-        var neighbor = GameState.Neighbor;
-        var neighborTeleportPoint = GameState.NeighborPeekTeleportPoint;
         neighbor.transform.rotation = neighborTeleportPoint.rotation;
 
         // Move neighbor slightly away (away from player/camera direction)

@@ -12,16 +12,12 @@ public class Tea : MonoBehaviour, IInteractable
 
     void Start()
     {
-        ProgressManager.SubscribeToStart(ProgressEvent.DrinkTea, () =>
+        ProgressManager.SubscribeToStart(ProgressEvent.StayTheNightDecision, () =>
         {
            if (IsInteractable)
             {
                 // So death by tea ending was chosen.
                 drinkTeaTask.OnEventStart();
-            }
-            else
-            {
-                ProgressManager.CompleteEvent(ProgressEvent.DrinkTea);
             }
         });
     }
