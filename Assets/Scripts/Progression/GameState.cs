@@ -5,7 +5,7 @@ public class GameState : MonoBehaviour
 
     [Header("Evidence")]
     public static bool TalkedToNeighbor;
-    public static bool FoundEvidence = true;
+    public static bool FoundEvidence;
 
     private static GameState _instance;
     void Awake()
