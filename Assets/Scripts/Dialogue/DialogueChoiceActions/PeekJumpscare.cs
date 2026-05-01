@@ -13,7 +13,7 @@ public class PeekJumpscare : DialogueChoiceAction
     {
         player.MovePlayer(playerPeekTeleportPoint);
         frontDoor.SetOpen(true);
-        CoroutineHelper.StartCoroutineHelper(Jumpscare());
+        StartCoroutine(Jumpscare());
     }
 
     IEnumerator Jumpscare()

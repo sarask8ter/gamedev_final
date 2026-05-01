@@ -11,12 +11,6 @@ public class MoveObject : EventAction
     public override void OnEventStart()
     {
         MovementHelper.MoveToPoint(obj, moveToPoint, false);
-        if (completeAfterMove) CoroutineHelper.StartCoroutineHelper(DelayThenCompleteEvent());
-    }
-
-    IEnumerator DelayThenCompleteEvent()
-    {
-        yield return new WaitForSeconds(completeDelay);
-        CompleteEvent();
+        if (completeAfterMove) CoroutineHelper.Delay(completeDelay, CompleteEvent);
     }
 }

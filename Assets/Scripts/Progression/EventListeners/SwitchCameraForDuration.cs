@@ -9,12 +9,6 @@ public class SwitchCameraForDuration : EventAction
     public override void OnEventStart()
     {
         CinemachineCameraSwitcher.SwitchToNewCam(cam);
-        CoroutineHelper.StartCoroutineHelper(DelayThenCompleteEvent());
-    }
-
-    IEnumerator DelayThenCompleteEvent()
-    {
-        yield return new WaitForSeconds(duration);
-        CompleteEvent();
+        CoroutineHelper.Delay(duration, CompleteEvent);
     }
 }
