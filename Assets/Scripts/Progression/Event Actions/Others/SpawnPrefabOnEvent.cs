@@ -8,6 +8,15 @@ public class SpawnPrefab : EventAction
 
     public override void OnEventStart()
     {
-        Instantiate(prefab, spawnOnPlayer ? GameState.Player.transform : null);
+        GameObject obj;
+
+        if (spawnOnPlayer)
+        {
+            obj = Instantiate(prefab, GameState.Player.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            obj = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        }
     }
 }
