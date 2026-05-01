@@ -32,29 +32,41 @@ public class LightSwitch : MonoBehaviour, IInteractable
     private IEnumerator FlickerRoutine(float duration)
     {
         isFlickering = true;
+
         PlayFlickerSound();
+
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            foreach (var lightSource in lightSources) lightSource.enabled = !lightSource.enabled;
+            foreach (var lightSource in lightSources)
+            {
+                lightSource.enabled = !lightSource.enabled;
+            }
+
             float delay = Random.Range(0.05f, 0.2f);
             yield return new WaitForSeconds(delay);
-
             elapsed += delay;
         }
 
-        foreach (var lightSource in lightSources) lightSource.enabled = true;
-        isFlickering = false;
+        foreach (var lightSource in lightSources)
+        {
+            lightSource.enabled = true;
+        }
+
         StopFlickerSound();
+        isFlickering = false;
     }
 
     void PlayFlickerSound()
     {
+        Debug.Log("Playing flicker sound");
+
         if (audioSource == null || flickerClips.Length == 0) return;
 
+        if (audioSource.isPlaying) return; 
+
         audioSource.clip = flickerClips[Random.Range(0, flickerClips.Length)];
-        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.loop = true;
         audioSource.Play();
     }
