@@ -2185,6 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CommitToLeave
   choices: 0400000005000000
+  leaveTask: {fileID: 11400000, guid: 6bc7d8695845b44a4be2a693f0c23057, type: 2}
   stairBlocker: {fileID: 1227952082}
   neighborDoor: {fileID: 1945797685}
 --- !u!114 &269778776

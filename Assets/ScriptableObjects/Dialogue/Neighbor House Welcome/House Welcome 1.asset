@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: House Welcome 1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: Feel free to take a look around downstairs. Please DON'T go upstairs.
+  Text: Please DON'T go upstairs. It isn't ready for guests yet, but I will clean
+    that up soon.
   Next: {fileID: 11400000, guid: b66cf4cf137844eeebe62e7d1412f9b6, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
   speaker: 1
   AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1

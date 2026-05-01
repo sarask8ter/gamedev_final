@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
-  m_Name: House Welcome
+  m_Name: House Welcome 0
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 10
   Text: 'Welcome to my house! Get comfortable, I''ll make us some tea.

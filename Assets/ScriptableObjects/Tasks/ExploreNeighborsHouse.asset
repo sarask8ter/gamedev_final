@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExploreNeighborsHouse
   m_EditorClassIdentifier: Assembly-CSharp::TimedTask
   TriggeringEvent: 11
-  description: Explore the house or wait for tea
-  progressText: (0)
+  description: Explore the house and wait for tea
+  progressText: (38)
   progressCompletionDelay: 1
   totalTime: 40
