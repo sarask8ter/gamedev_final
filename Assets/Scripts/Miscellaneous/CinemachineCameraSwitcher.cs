@@ -10,7 +10,6 @@ public enum GameCamera
 public class CinemachineCameraSwitcher : MonoBehaviour
 {
     [SerializeField] private GameObject[] allCams;
-    [SerializeField] private bool hidePlayer;
 
     private static CinemachineCameraSwitcher _instance;
 
@@ -40,6 +39,5 @@ public class CinemachineCameraSwitcher : MonoBehaviour
             var cam = allCams[i];
             if (cam != null) cam.SetActive(i == idx);
         }
-        if (hidePlayer) GameState.Player.SetActive(false);
     }
 }
