@@ -22,4 +22,4 @@ MonoBehaviour:
   speaker: 1
   AllowClickToNextNode: 1
   IsEndingDialogue: 0
-  ChangePlayerState: 0
+  ChangePlayerState: 1
