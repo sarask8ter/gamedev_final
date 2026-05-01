@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EventColliderTrigger : MonoBehaviour
+public class EventColliderCompleter : MonoBehaviour
 {
     [SerializeField] private ProgressEvent progressEvent;
     void OnTriggerEnter(Collider other)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EventsSetup : MonoBehaviour
 {
-    [SerializeField] private EventAction[] eventActions;
+    [SerializeField] private EventActionScriptable[] eventActions;
 
     void Start()
     {

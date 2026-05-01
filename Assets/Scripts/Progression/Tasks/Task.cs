@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Dummy Task", menuName = "Event Actions/Tasks/Dummy")]
-public class Task : EventAction
+public class Task : EventActionScriptable
 {
     [SerializeField] protected string description;
     [SerializeField] protected string progressText;
