@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentNode == null) return;
 
-        if (currentNode.AllowClickToNextNode && isDialogueActive && nextLineAction.WasPressedThisFrame())
+        if (PlayerStateManager.State != PlayerState.NoInput && currentNode.AllowClickToNextNode && isDialogueActive && nextLineAction.WasPressedThisFrame())
         {
             if (isTyping)
             {
