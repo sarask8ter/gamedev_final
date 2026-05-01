@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_EndConvo
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: Okay thank you Jeremy
+  Text: Okay, thank you Jeremy.
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []

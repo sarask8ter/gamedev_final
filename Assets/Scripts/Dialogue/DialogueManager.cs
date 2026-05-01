@@ -146,7 +146,7 @@ public class DialogueManager : MonoBehaviour
     void HandleChoice(DialogueChoice choice)
     {
         // 1. run gameplay logic
-        foreach (var action in choice.OnChooseChoice) action.Execute();
+        DialogueChoiceManager.SelectChoice(choice.Id);
 
         // 2. move dialogue forward
         currentNode = choice.NextNode;

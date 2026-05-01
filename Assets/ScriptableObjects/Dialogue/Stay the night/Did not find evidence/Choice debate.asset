@@ -18,14 +18,11 @@ MonoBehaviour:
   NextIfFoundEvidence: {fileID: 0}
   Choices:
   - Text: ...fetch some things from my house first.
+    Id: 4
     NextNode: {fileID: 11400000, guid: 47e799ff4b46341fbb9fab18a7a4b130, type: 2}
-    OnChooseChoice:
-    - {fileID: 11400000, guid: af0e2dc664fb54a97b81a9fc11bbe4db, type: 2}
-    - {fileID: 11400000, guid: 7980c29908d5f410f8d9799b9fa255e6, type: 2}
   - Text: ...drink this tea first, thank you.
+    Id: 3
     NextNode: {fileID: 0}
-    OnChooseChoice:
-    - {fileID: 11400000, guid: a9c475d87215a4684abbab9daca94120, type: 2}
   AutoProgress: 0
   AutoDelay: 1.5
   speaker: 0

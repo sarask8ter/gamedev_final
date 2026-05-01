@@ -1,14 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DialogueChoice - Commit to Leave", menuName = "Dialogue/Choice Actions/Commit to Leave")]
 public class CommitToLeave : DialogueChoiceAction
 {
-    public override void Execute()
+    [SerializeField] private GameObject stairBlocker;
+    [SerializeField] private DoorPivot neighborDoor;
+    protected override void Execute()
     {
         // Block going upstairs.
-        GameState.StairBlocker.SetActive(true);
+        stairBlocker.SetActive(true);
 
         // Unlock door.
-        GameState.NeighborDoor.Unlock();
+        neighborDoor.Unlock();
     }
 }

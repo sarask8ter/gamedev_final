@@ -50,7 +50,9 @@ public class FadeAndActivateAndMoveObjects : EventAction
     {
         foreach (var (obj, point) in objsToMoveDict)
         {
-            if (obj == GameState.Player) MovementHelper.MovePlayer(point);
+            // Is this the player?
+            var playerMover = obj.GetComponent<PlayerMover>();
+            if (playerMover != null) playerMover.MovePlayer(point);
             else MovementHelper.MoveToPoint(obj, point, false);
         }
     }

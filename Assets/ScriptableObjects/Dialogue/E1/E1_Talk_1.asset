@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_Talk_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: I'm Jeremy by the way
+  Text: "Not many people stay long\u2026the place can feel weird."
   Next: {fileID: 11400000, guid: 05f4d183b4d7344478a942e7a4bc19ae, type: 2}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
