@@ -2072,7 +2072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventsSetup
   eventActions:
-  - {fileID: 11400000, guid: 4691a659e01254b78a37ef224a9eca34, type: 2}
   - {fileID: 11400000, guid: 4ee5469a767d64b498c6040abab480d4, type: 2}
   - {fileID: 11400000, guid: 79617c124330c4656b1b78d819f90aaf, type: 2}
   - {fileID: 11400000, guid: 22b1b9f30aa2c4e7bbb27a4b679832a5, type: 2}
@@ -9044,7 +9043,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c66678be6d28642fcad4ffdb66878918, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3cad10695122b442095cc0bca302e777, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
