@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     private bool changePlayerState;
     private bool isEndingDialogue;
     private Coroutine autoProgressCoroutine;
+    private Action callbackOnEndDialogue;
 
     public static void CancelDialogue()
     {
@@ -61,9 +63,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public static void StartDialogue(DialogueNode node, bool lockCursor = true, bool changePlayerState = true)
+    public static void StartDialogue(DialogueNode node, bool lockCursor = true, bool changePlayerState = true, Action callbackOnEndDialogue = null)
     {
         _instance.isDialogueActive = true;
+        _instance.callbackOnEndDialogue = callbackOnEndDialogue;
         _instance.lastNodeEvent = ProgressEvent.None;
         _instance.currentNode = node;
         DialogueUIController.StartDialogue(lockCursor);
@@ -188,5 +191,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (makeProgress && lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
         if (isEndingDialogue) TriggerEnd.End();
+
+        callbackOnEndDialogue?.Invoke();
     }
 }

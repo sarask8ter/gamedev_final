@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class E1_NeighborEvent : MonoBehaviour
+public class FlickerLights : MonoBehaviour
 {
     [SerializeField] private MainDoor frontDoor;
     [SerializeField] private SpiritController spiritController;
@@ -25,10 +25,10 @@ public class E1_NeighborEvent : MonoBehaviour
             spiritController.TriggerEvent(SpiritEventType.FlickerLights);
             Debug.Log("Flicker lights");
             yield return new WaitForSeconds(0.5f);
-            DialogueManager.StartDialogue(lightsFlickerReaction);
-            yield return new WaitUntil(() => PlayerStateManager.State == PlayerState.Normal);
+            DialogueManager.StartDialogue(lightsFlickerReaction, true, true, () =>
+            {
+                ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
+            });
         }
-
-        ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
     }
 }
