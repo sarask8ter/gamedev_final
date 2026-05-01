@@ -28,7 +28,7 @@ public class Task : EventActionScriptable
     {
         PreCompleteTask();
         TasksEvents.OnTaskComplete?.Invoke(CompileTaskData());
-        if (progressCompletionDelay > 0) CoroutineHelper.Delay(progressCompletionDelay, () => CompleteEvent());
+        if (progressCompletionDelay > 0) CoroutineHelper.Delay(progressCompletionDelay, CompleteEvent);
         else CompleteEvent();
     }
 

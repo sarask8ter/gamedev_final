@@ -28,7 +28,7 @@ public class FadeAndActivateAndMoveObjects : EventAction
 
     public override void OnEventStart()
     {
-        CoroutineHelper.StartCoroutineHelper(FadeAndTeleport());
+        StartCoroutine(FadeAndTeleport());
     }
 
     IEnumerator FadeAndTeleport()

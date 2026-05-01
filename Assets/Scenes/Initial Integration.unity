@@ -768,8 +768,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.009723386, y: 0.009723454, z: 0.0021253722}
-  m_Center: {x: -0.00045568633, y: 0.00000075332997, z: -0.00083978643}
+  m_Size: {x: 0.009723386, y: 0.009723454, z: 0.0075257635}
+  m_Center: {x: -0.00045568633, y: 0.0000007533241, z: 0.0018604121}
 --- !u!1 &83676358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 70e68f2c5bb334236801af063192e7d2, type: 3}
@@ -1951,7 +1951,7 @@ GameObject:
   - component: {fileID: 235080519}
   - component: {fileID: 235080520}
   m_Layer: 0
-  m_Name: EventsSetup
+  m_Name: TasksSetup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1985,31 +1985,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventsSetup
   eventActions:
-  - {fileID: 11400000, guid: 4ee5469a767d64b498c6040abab480d4, type: 2}
-  - {fileID: 11400000, guid: 79617c124330c4656b1b78d819f90aaf, type: 2}
-  - {fileID: 11400000, guid: 22b1b9f30aa2c4e7bbb27a4b679832a5, type: 2}
-  - {fileID: 11400000, guid: 26593917fd733426c88e73063e24b774, type: 2}
   - {fileID: 11400000, guid: 32191c383923a4251b7ab76eea1875fd, type: 2}
   - {fileID: 11400000, guid: 5334496a81f2c41dba6a7fe4b20a9b6f, type: 2}
   - {fileID: 11400000, guid: f2a42394a86004ca984ee43fdf398650, type: 2}
-  - {fileID: 11400000, guid: 0239f0965205e4a979a520314cd26306, type: 2}
   - {fileID: 11400000, guid: c19d0e7c2eb8f4ab48941918292f225d, type: 2}
-  - {fileID: 11400000, guid: f041bb54d24e64971946dc4b9681c8f3, type: 2}
-  - {fileID: 11400000, guid: 3f14afd623b984db9a577e39c4ec72d1, type: 2}
   - {fileID: 11400000, guid: 3d9c31107a2654676b554d96fb893c65, type: 2}
-  - {fileID: 11400000, guid: 7f2cd8562ba4446d7b90b3b63b27ec41, type: 2}
   - {fileID: 11400000, guid: d6326a6a3e640428ea2f44b2137e0c53, type: 2}
   - {fileID: 11400000, guid: 2815f0de8ed8c4147a1fbf84ba01c012, type: 2}
-  - {fileID: 11400000, guid: 123d6237b6336444496d7a9b7a2e19ba, type: 2}
-  - {fileID: 11400000, guid: 5bd3c16c07ea04627823edb1135bc2d0, type: 2}
   - {fileID: 11400000, guid: 57ce7c135cea44253aa487428a064a0d, type: 2}
   - {fileID: 11400000, guid: 46044b086f93a4647a4482b749ddcfb4, type: 2}
   - {fileID: 11400000, guid: 90caabfe9643a46d8be21ea766d79366, type: 2}
   - {fileID: 11400000, guid: 840630d44e4f14be2ae932406419b65b, type: 2}
   - {fileID: 11400000, guid: 4f70313b265b1484884953fc4da03c3d, type: 2}
-  - {fileID: 11400000, guid: b9c56c73dc653431293f96cce6a681be, type: 2}
   - {fileID: 11400000, guid: 267bb1510a8f948ce861316c39fcc4af, type: 2}
-  - {fileID: 11400000, guid: c91ee186b1ceb49d5a77cb6044bc1318, type: 2}
   - {fileID: 11400000, guid: c3274c4f3abaf43a19674f647178bfbb, type: 2}
 --- !u!114 &235080520
 MonoBehaviour:
@@ -3951,6 +3939,7 @@ Transform:
   - {fileID: 1854420356}
   - {fileID: 1655219520}
   - {fileID: 235080518}
+  - {fileID: 1960595095}
   - {fileID: 1732466614}
   - {fileID: 1563065242}
   - {fileID: 548982499}
@@ -9574,7 +9563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 020000000300000004000000050000000600000001000000070000001c0000001d00000008000000200000001e0000001f000000210000002200000023000000240000002500000026000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  sequence: 0200000003000000040000000500000006000000070000001c0000001d0000000100000008000000200000001e0000001f000000210000002200000023000000240000002500000026000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
@@ -10937,6 +10926,76 @@ Transform:
   - {fileID: 1860277718}
   m_Father: {fileID: 1295946897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1960595094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1960595095}
+  - component: {fileID: 1960595097}
+  - component: {fileID: 1960595096}
+  m_Layer: 0
+  m_Name: DialogueOnEventSetup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1960595095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960595094}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.48161, y: -8.40191, z: 2.92851}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 624499558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1960595096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960595094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caee2e1a7e3264110b9813dcb4a06457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TasksEvents
+--- !u!114 &1960595097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960595094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e9027347deb450184bab729ebda2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventsSetup
+  eventActions:
+  - {fileID: 11400000, guid: 4ee5469a767d64b498c6040abab480d4, type: 2}
+  - {fileID: 11400000, guid: 79617c124330c4656b1b78d819f90aaf, type: 2}
+  - {fileID: 11400000, guid: 22b1b9f30aa2c4e7bbb27a4b679832a5, type: 2}
+  - {fileID: 11400000, guid: 26593917fd733426c88e73063e24b774, type: 2}
+  - {fileID: 11400000, guid: 0239f0965205e4a979a520314cd26306, type: 2}
+  - {fileID: 11400000, guid: f041bb54d24e64971946dc4b9681c8f3, type: 2}
+  - {fileID: 11400000, guid: 3f14afd623b984db9a577e39c4ec72d1, type: 2}
+  - {fileID: 11400000, guid: 7f2cd8562ba4446d7b90b3b63b27ec41, type: 2}
+  - {fileID: 11400000, guid: 123d6237b6336444496d7a9b7a2e19ba, type: 2}
+  - {fileID: 11400000, guid: 5bd3c16c07ea04627823edb1135bc2d0, type: 2}
+  - {fileID: 11400000, guid: b9c56c73dc653431293f96cce6a681be, type: 2}
+  - {fileID: 11400000, guid: c91ee186b1ceb49d5a77cb6044bc1318, type: 2}
 --- !u!1 &1968768667
 GameObject:
   m_ObjectHideFlags: 0

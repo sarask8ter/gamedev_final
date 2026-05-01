@@ -29,6 +29,9 @@ public class FlickerLights : MonoBehaviour
             {
                 ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
             });
+        } else
+        {
+            ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
         }
     }
 }
