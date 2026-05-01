@@ -9361,6 +9361,50 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0033953958
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.003930332
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0008980846
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00020316243
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0039925873
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0077583045
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.457
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760509060835028810, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.889
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929067927466011667, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 4033101133867084011, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9421,6 +9465,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6340624475181632188, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 6598465439598460726, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -16333,6 +16381,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
+    - target: {fileID: 3929067927466011667, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 4067703046869408249, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -16353,6 +16405,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6340624475181632188, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7bd7baaf15d429ba28cb0e02aff708, type: 2}
     - target: {fileID: 6597045134997867646, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: m_Convex
       value: 0
