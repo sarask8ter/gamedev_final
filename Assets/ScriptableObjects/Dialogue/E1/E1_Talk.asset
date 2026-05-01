@@ -19,7 +19,7 @@ MonoBehaviour:
   Choices: []
   AutoProgress: 1
   AutoDelay: 2
-  speaker: 2
+  speaker: 0
   AllowClickToNextNode: 0
   IsEndingDialogue: 0
   ChangePlayerState: 1
