@@ -14,6 +14,9 @@ public class DialogueManager : MonoBehaviour
     private bool isEndingDialogue;
     private Coroutine autoProgressCoroutine;
 
+    [SerializeField] private AudioSource typingAudioSource;
+    [SerializeField] private AudioClip[] typingClips;
+
     public static void CancelDialogue()
     {
         if (_instance == null) return;
@@ -53,6 +56,8 @@ public class DialogueManager : MonoBehaviour
     void StopNode()
     {
         StopAllCoroutines();
+        StopTypingSound();
+
         if (autoProgressCoroutine != null)
         {
             // Owned by CoroutineHelper so need to manually cancel.
@@ -98,11 +103,15 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
         DialogueUIController.SetDialogueText("");
 
+        PlayTypingSound();
+
         for (int i = 0; i < line.Length; i++)
         {
             DialogueUIController.SetDialogueText(line.Substring(0, i + 1));
             yield return new WaitForSeconds(0.02f);
         }
+
+        StopTypingSound();
 
         CompleteLine();
     }
@@ -170,6 +179,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue(bool makeProgress)
     {
         StopNode();
+        StopTypingSound();
 
         currentNode = null;
         isDialogueActive = false;
@@ -188,5 +198,22 @@ public class DialogueManager : MonoBehaviour
         }
         if (makeProgress && lastNodeEvent != ProgressEvent.None) ProgressManager.CompleteEvent(lastNodeEvent);
         if (isEndingDialogue) TriggerEnd.End();
+    }
+
+    void PlayTypingSound()
+    {
+        if (typingAudioSource == null || typingClips.Length == 0) return;
+
+        typingAudioSource.clip = typingClips[Random.Range(0, typingClips.Length)];
+        typingAudioSource.loop = true;
+        typingAudioSource.pitch = Random.Range(0.9f, 1.1f);
+        typingAudioSource.Play();
+    }
+
+    void StopTypingSound()
+    {
+        if (typingAudioSource == null) return;
+
+        typingAudioSource.Stop();
     }
 }
