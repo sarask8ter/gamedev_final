@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WaitThenComplete", menuName = "Event Actions/Others/Wait Then Complete")]
 public class WaitThenComplete : EventAction
 {
     [SerializeField] private float duration;

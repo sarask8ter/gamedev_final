@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogueNode", menuName = "Dialogue/Node")]
-public class DialogueNode : EventAction
+public class DialogueNode : EventActionScriptable
 {
     [TextArea]
     public string Text;

@@ -1,13 +1,8 @@
 using UnityEngine;
 
-public abstract class EventAction : MonoBehaviour, IEventListener
+public abstract class EventActionScriptable : ScriptableObject, IEventListener
 {
     public ProgressEvent TriggeringEvent;
-
-    void Start()
-    {
-        ProgressManager.SubscribeToStart(TriggeringEvent, OnEventStart);
-    }
 
     public abstract void OnEventStart();
 

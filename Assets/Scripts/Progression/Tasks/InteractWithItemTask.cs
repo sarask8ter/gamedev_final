@@ -15,9 +15,9 @@ public class InteractWithItemTask : Task
         TasksEvents.OnItemInteract -= HandleProgress;
     }
 
-    protected void HandleProgress(ItemName placedItem)
+    protected void HandleProgress(ItemName interactedItem)
     {
-        if (placedItem != item) return;
+        if (interactedItem != item) return;
         TasksEvents.OnTaskProgress?.Invoke(CompileTaskData());
         CompleteTask();
     }

@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class DialogueColliderTrigger : MonoBehaviour
+public class DialogueColliderTrigger : EventAction
 {
     [SerializeField] private DialogueNode dialogue;
-    [SerializeField] private ProgressEvent unlockEvent;
     private bool unlocked;
 
-    void Start()
+    public override void OnEventStart()
     {
-        ProgressManager.SubscribeToStart(unlockEvent, () => unlocked = true);
+        unlocked = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -16,11 +15,8 @@ public class DialogueColliderTrigger : MonoBehaviour
         if (unlocked && other.gameObject.CompareTag("Player"))
         {
             DialogueManager.StartDialogue(dialogue);
-            PostTrigger();
             unlocked = false;
             gameObject.SetActive(false);
         }
     }
-
-    protected virtual void PostTrigger() {}
 }
