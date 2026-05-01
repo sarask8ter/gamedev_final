@@ -1380,27 +1380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14697ef32f3e04988b025ab0911bc1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueContext
-  player: {fileID: 2119371547}
-  playerPeekTeleportPoint: {fileID: 210644906}
-  playerAtNeighborHouseInitialTeleportPoint: {fileID: 874855554}
-  playerTeaTeleportPoint: {fileID: 1184343610}
-  neighbor: {fileID: 2109881767}
-  neighborPeekTeleportPoint: {fileID: 1384652075}
-  neighborAtNeighborHouseInitialTeleportPoint: {fileID: 844580185}
-  neighborTeaTeleportPoint: {fileID: 163401038}
-  neighborBathroomTeleportPoint: {fileID: 261192437}
-  neighborGetOutTeleportPoint: {fileID: 1022519864}
-  frontDoor: {fileID: 1395222400}
-  objectsToActivateAtTeaReady:
-  - {fileID: 1422737450}
-  - {fileID: 549748261}
-  - {fileID: 1913905616}
-  - {fileID: 1500738131}
-  - {fileID: 139204209}
-  neighborDoor: {fileID: 1945797685}
-  stairBlocker: {fileID: 1227952082}
-  corpse: {fileID: 735641956}
-  corpseUprightPoint: {fileID: 1400745852}
 --- !u!4 &150747164
 Transform:
   m_ObjectHideFlags: 0
@@ -8195,7 +8174,6 @@ MonoBehaviour:
   - {fileID: 1584296233}
   - {fileID: 1250511831}
   - {fileID: 855055258}
-  hidePlayer: 1
 --- !u!1 &1579643382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
@@ -9196,7 +9174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   startDelay: 0.75
-  sequence: 0200000003000000040000000500000006000000070000001c0000001d0000000100000008000000200000001e0000001f000000210000002200000023000000240000002500000026000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  sequence: 010000000200000003000000040000000500000006000000070000001c0000001d00000008000000200000001e0000001f000000210000002200000023000000240000002500000026000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
 --- !u!1 &1661750084
 GameObject:
   m_ObjectHideFlags: 0
