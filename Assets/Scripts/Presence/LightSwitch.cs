@@ -9,6 +9,9 @@ public class LightSwitch : MonoBehaviour, IInteractable
 
     public bool IsInteractable => true;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] flickerClips;
+
     public void Interact(PlayerInteractor player)
     {
         ToggleLight();
@@ -29,13 +32,12 @@ public class LightSwitch : MonoBehaviour, IInteractable
     private IEnumerator FlickerRoutine(float duration)
     {
         isFlickering = true;
-
+        PlayFlickerSound();
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
             foreach (var lightSource in lightSources) lightSource.enabled = !lightSource.enabled;
-
             float delay = Random.Range(0.05f, 0.2f);
             yield return new WaitForSeconds(delay);
 
@@ -44,5 +46,24 @@ public class LightSwitch : MonoBehaviour, IInteractable
 
         foreach (var lightSource in lightSources) lightSource.enabled = true;
         isFlickering = false;
+        StopFlickerSound();
+    }
+
+    void PlayFlickerSound()
+    {
+        if (audioSource == null || flickerClips.Length == 0) return;
+
+        audioSource.clip = flickerClips[Random.Range(0, flickerClips.Length)];
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+
+    void StopFlickerSound()
+    {
+        if (audioSource == null) return;
+
+        audioSource.Stop();
+        audioSource.loop = false;
     }
 }

@@ -15,7 +15,6 @@ public class DialogueManager : MonoBehaviour
     private Coroutine autoProgressCoroutine;
 
     [SerializeField] private AudioSource typingAudioSource;
-    [SerializeField] private AudioClip[] typingClips;
 
     public static void CancelDialogue()
     {
@@ -202,11 +201,10 @@ public class DialogueManager : MonoBehaviour
 
     void PlayTypingSound()
     {
-        if (typingAudioSource == null || typingClips.Length == 0) return;
+        if (typingAudioSource == null) return;
 
-        typingAudioSource.clip = typingClips[Random.Range(0, typingClips.Length)];
         typingAudioSource.loop = true;
-        typingAudioSource.pitch = Random.Range(0.9f, 1.1f);
+        typingAudioSource.pitch = Random.Range(0.95f, 1.05f);
         typingAudioSource.Play();
     }
 
