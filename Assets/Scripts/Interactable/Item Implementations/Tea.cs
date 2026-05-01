@@ -24,6 +24,7 @@ public class Tea : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteractor player)
     {
+        ItemAudio.Instance.PlayPickup(transform.position);
         MovementHelper.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
         StartCoroutine(DieSequence());
     }
