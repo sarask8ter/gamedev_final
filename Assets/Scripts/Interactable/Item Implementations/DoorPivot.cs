@@ -10,7 +10,8 @@ public class DoorPivot : MonoBehaviour, IInteractable
     [SerializeField] private float speed;
     [SerializeField] private bool singleTimeInteract;
     [SerializeField] private ItemName itemForTask;
-    [SerializeField] private GameObject doorPivotSFX;
+    [SerializeField] private GameObject openSFX;
+    [SerializeField] private GameObject closeSFX;
 
     protected bool isOpen;
     private Quaternion closedRot;
@@ -73,7 +74,14 @@ public class DoorPivot : MonoBehaviour, IInteractable
         Debug.Log("Rotating door");
         Quaternion target = isOpen ? openRot : closedRot;
 
-        if (doorPivotSFX != null) Instantiate(doorPivotSFX);
+        if (isOpen && openSFX != null)
+        {
+            Instantiate(openSFX, transform.position, Quaternion.identity);
+        }
+        else if (!isOpen && closeSFX != null)
+        {
+            Instantiate(closeSFX, transform.position, Quaternion.identity);
+        }
 
         while (Quaternion.Angle(transform.rotation, target) > 0.1f)
         {

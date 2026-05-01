@@ -1,19 +1,19 @@
-using UnityEngine;
+// using UnityEngine;
 
-public class RoomDoor : DoorPivot
-{
-    [SerializeField] ItemName roomItem;
-    bool hasCountedVisit;
+// public class RoomDoor : DoorPivot
+// {
+//     [SerializeField] ItemName roomItem;
+//     bool hasCountedVisit;
 
-    protected override void PostOpenOrClose(bool shouldOpen)
-    {
-        bool firstOpen = !isOpen && shouldOpen;
+//     protected override void PostOpenOrClose(bool shouldOpen)
+//     {
+//         bool firstOpen = !isOpen && shouldOpen;
 
-        if(firstOpen && !hasCountedVisit)
-        {
-            hasCountedVisit = true;
+//         if(firstOpen && !hasCountedVisit)
+//         {
+//             hasCountedVisit = true;
 
-            TasksEvents.OnItemInteract?.Invoke(roomItem);
-        }
-    }
-}
+//             TasksEvents.OnItemInteract?.Invoke(roomItem);
+//         }
+//     }
+// }
