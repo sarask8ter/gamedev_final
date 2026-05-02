@@ -13,7 +13,6 @@ public class PlayerInspector : MonoBehaviour
     private GameObject inspectedItem;
     private InputAction cancelAction;
     private InputAction lookAction;
-    private InputAction clickAction;
 
     private static PlayerInspector _instance;
     private bool isEndingInspection;
@@ -29,7 +28,6 @@ public class PlayerInspector : MonoBehaviour
             _instance = this;
             cancelAction = InputSystem.actions.FindAction("Cancel");
             lookAction = InputSystem.actions.FindAction("Look");
-            clickAction = InputSystem.actions.FindAction("Click");
         }
     }
 
@@ -54,7 +52,7 @@ public class PlayerInspector : MonoBehaviour
         if (PlayerStateManager.State == PlayerState.Inspecting)
         {
             if (cancelAction.WasPressedThisFrame()) EndInspection();
-            else if ((PlayerStateManager.State != PlayerState.NoInput) && (PlayerStateManager.State != PlayerState.Pause) && clickAction.IsPressed()) RotateInspectedObj();
+            else if ((PlayerStateManager.State != PlayerState.NoInput) && (PlayerStateManager.State != PlayerState.Pause)) RotateInspectedObj();
         }
     }
 

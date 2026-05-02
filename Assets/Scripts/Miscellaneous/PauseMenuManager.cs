@@ -12,7 +12,7 @@ public class PauseMenuManager : MonoBehaviour
     void Awake()
     {
         if (backgroundMusic != null) backgroundMusic.ignoreListenerPause = true;
-        cancelAction = InputSystem.actions.FindAction("Interact");
+        cancelAction = InputSystem.actions.FindAction("Cancel");
     }
 
     void Update()
