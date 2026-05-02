@@ -1443,27 +1443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14697ef32f3e04988b025ab0911bc1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueContext
-  player: {fileID: 2119371547}
-  playerPeekTeleportPoint: {fileID: 210644906}
-  playerAtNeighborHouseInitialTeleportPoint: {fileID: 874855554}
-  playerTeaTeleportPoint: {fileID: 1184343610}
-  neighbor: {fileID: 2109881767}
-  neighborPeekTeleportPoint: {fileID: 1384652075}
-  neighborAtNeighborHouseInitialTeleportPoint: {fileID: 844580185}
-  neighborTeaTeleportPoint: {fileID: 163401038}
-  neighborBathroomTeleportPoint: {fileID: 261192437}
-  neighborGetOutTeleportPoint: {fileID: 1022519864}
-  frontDoor: {fileID: 1395222400}
-  objectsToActivateAtTeaReady:
-  - {fileID: 1422737450}
-  - {fileID: 549748261}
-  - {fileID: 1913905616}
-  - {fileID: 1500738131}
-  - {fileID: 139204209}
-  neighborDoor: {fileID: 1945797685}
-  stairBlocker: {fileID: 1227952082}
-  corpse: {fileID: 735641956}
-  corpseUprightPoint: {fileID: 1400745852}
 --- !u!4 &150747164
 Transform:
   m_ObjectHideFlags: 0
@@ -2598,8 +2577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e053e62af3a432db4bc7c97ef6e0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueColliderTrigger
+  TriggeringEvent: 0
   dialogue: {fileID: 11400000, guid: 8c3569caa263c41a2828f6c5d8d28d61, type: 2}
-  unlockEvent: 37
 --- !u!65 &400627292
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3479,11 +3458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntroScreen
   introPanel: {fileID: 87733448}
   fadeDuration: 1
---- !u!1 &549748261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c39422fd2330b4e799c3dd9252e00ccd, type: 3}
-  m_PrefabInstance: {fileID: 552520309}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &549748262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c39422fd2330b4e799c3dd9252e00ccd, type: 3}
@@ -4380,11 +4354,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735497032}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &735641956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -7657966619581158213, guid: 70e68f2c5bb334236801af063192e7d2, type: 3}
-  m_PrefabInstance: {fileID: 1550050683}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &736333068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5265729715370414568, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
@@ -5455,8 +5424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e053e62af3a432db4bc7c97ef6e0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueColliderTrigger
+  TriggeringEvent: 0
   dialogue: {fileID: 11400000, guid: 8f69053d894084cfda572ff99ed911d6, type: 2}
-  unlockEvent: 19
 --- !u!1 &844580184
 GameObject:
   m_ObjectHideFlags: 0
@@ -6586,8 +6555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e053e62af3a432db4bc7c97ef6e0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueColliderTrigger
+  TriggeringEvent: 0
   dialogue: {fileID: 11400000, guid: 8c3569caa263c41a2828f6c5d8d28d61, type: 2}
-  unlockEvent: 37
 --- !u!65 &1298556344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7558,11 +7527,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492858860}
   m_CullTransparentMesh: 1
---- !u!1 &1500738131 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ee2bfc9ede4fc4a408b37fbaaade0847, type: 3}
-  m_PrefabInstance: {fileID: 785429358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1500738132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee2bfc9ede4fc4a408b37fbaaade0847, type: 3}
@@ -8713,7 +8677,6 @@ MonoBehaviour:
   - {fileID: 1584296233}
   - {fileID: 1250511831}
   - {fileID: 855055258}
-  hidePlayer: 1
 --- !u!1 &1579643382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa850d1a4f3d2414f9ac35204c7d43e7, type: 3}
@@ -11050,11 +11013,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5472521831072694726, guid: b136bca60dc5e42a1b72b5e9fb5a7f2f, type: 3}
   m_PrefabInstance: {fileID: 1969031788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1913905616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ee2bfc9ede4fc4a408b37fbaaade0847, type: 3}
-  m_PrefabInstance: {fileID: 1927552051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1913905617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee2bfc9ede4fc4a408b37fbaaade0847, type: 3}
@@ -11212,17 +11170,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930875589}
   m_CullTransparentMesh: 1
---- !u!114 &1945797685 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4584474209826484672, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
-  m_PrefabInstance: {fileID: 1799309189}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f99d1c5f15d974ac88afaa83e0e57856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
 --- !u!1 &1950818959
 GameObject:
   m_ObjectHideFlags: 0
@@ -11412,7 +11359,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84e9fa70e65514354b945d0a38cefabc, type: 2}
+  - {fileID: 2100000, guid: 60586a367adcf49e4b1e7cdebbd91774, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16941,11 +16888,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NeighborAnimation
   powerTransferVFX: {fileID: 2065325467}
   deathEndingDelay: 3
---- !u!1 &2119371547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-  m_PrefabInstance: {fileID: 210145726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2132310182
 PrefabInstance:
   m_ObjectHideFlags: 0
