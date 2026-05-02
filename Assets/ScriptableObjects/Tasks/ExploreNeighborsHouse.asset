@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExploreNeighborsHouse
   m_EditorClassIdentifier: Assembly-CSharp::TimedTask
   TriggeringEvent: 11
-  description: Explore downstairs (as requested) OR upstairs (disobey Jeremy)
+  description: Stay downstairs (as requested) OR upstairs (disobey Jeremy)
   progressText: (56)
   progressCompletionDelay: 1
   totalTime: 60
