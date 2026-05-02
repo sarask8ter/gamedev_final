@@ -17,8 +17,9 @@ MonoBehaviour:
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
-  AutoProgress: 1
+  AutoProgress: 0
   AutoDelay: 1.5
   speaker: 0
-  AllowClickToNextNode: 0
+  AllowClickToNextNode: 1
   IsEndingDialogue: 0
+  ChangePlayerState: 1
