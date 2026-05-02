@@ -85870,12 +85870,13 @@ GameObject:
   - component: {fileID: 531929681434481983}
   - component: {fileID: 640573630513128807}
   - component: {fileID: 4181187774357643314}
+  - component: {fileID: 1179648313862087782}
   m_Layer: 0
   m_Name: grass_soil_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &531929681434481983
 Transform:
@@ -85951,6 +85952,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1179648313862087782
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011091261931007268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4225714138814434529, guid: 3076b4e428b994cd88e0fd5c5a46268c, type: 3}
 --- !u!1 &9012545831093671357
 GameObject:
   m_ObjectHideFlags: 0
