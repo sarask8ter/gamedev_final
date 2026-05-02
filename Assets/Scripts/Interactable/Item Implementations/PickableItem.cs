@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider))]
 public class PickableItem : MonoBehaviour, IInteractable
@@ -26,7 +27,7 @@ public class PickableItem : MonoBehaviour, IInteractable
     public void Interact(PlayerInteractor player)
     {
         if (!player.PickUpItem(this)) return;
-        Instantiate(pickupSFX);
+        if (pickupSFX != null) Instantiate(pickupSFX);
         oldLayerName = LayerMask.LayerToName(gameObject.layer);
         oldParent = transform.parent;
         MovementHelper.MoveAndDisable(gameObject, player.PickedUpLayerName, player.HoldingPoint, true);
@@ -43,7 +44,7 @@ public class PickableItem : MonoBehaviour, IInteractable
             Debug.LogError("Did not interact previously with object before dropping");
             return;
         }
-        Instantiate(placeSFX);
+       if (placeSFX != null) Instantiate(placeSFX);
         transform.SetParent(oldParent);
         MovementHelper.MoveAndEnable(gameObject, oldLayerName, dropPoint, false);
     }

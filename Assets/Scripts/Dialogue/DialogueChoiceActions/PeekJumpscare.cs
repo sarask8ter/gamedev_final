@@ -8,6 +8,7 @@ public class PeekJumpscare : DialogueChoiceAction
     [SerializeField] private PlayerMover player;
     [SerializeField] private Transform playerPeekTeleportPoint;
     [SerializeField] private DoorPivot frontDoor;
+    [SerializeField] private GameObject moveSFX;
 
     protected override void Execute()
     {
@@ -25,6 +26,7 @@ public class PeekJumpscare : DialogueChoiceAction
         neighbor.transform.position += jumpOffset;
 
         yield return MoveIn(neighbor, neighborTeleportPoint.position, 1f);
+        Instantiate(moveSFX);
     }
 
     IEnumerator MoveIn(GameObject neighbor, Vector3 target, float time)
