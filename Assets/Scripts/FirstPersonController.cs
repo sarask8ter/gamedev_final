@@ -212,6 +212,11 @@ namespace StarterAssets
 
 		private void JumpAndGravity()
 		{
+			if (PlayerStateManager.State != PlayerState.Normal)
+			{
+				_input.jump = false; // discard jump pressed during dialogue.
+			}
+
 			if (Grounded)
 			{
 				// reset the fall timeout timer
