@@ -5,6 +5,7 @@ using System;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private GameObject singleCharSFX;
     private DialogueNode currentNode;
     private ProgressEvent lastNodeEvent;
     private bool isTyping;
@@ -104,6 +105,7 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < line.Length; i++)
         {
             DialogueUIController.SetDialogueText(line.Substring(0, i + 1));
+            Instantiate(singleCharSFX);
             yield return new WaitForSeconds(0.02f);
         }
 

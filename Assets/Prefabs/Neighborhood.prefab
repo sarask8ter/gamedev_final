@@ -1480,10 +1480,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   unlockEvent: 11
   openAngle: -90
-  speed: 2
+  speed: 4
   singleTimeInteract: 0
   itemForTask: 9
   doorPivotSFX: {fileID: 0}
+  onlyOpenSFX: {fileID: 6264464234462829957, guid: 50a82081a2b1e4ed1b81d3c138e3a697, type: 3}
+  onlyCloseSFX: {fileID: 6264464234462829957, guid: d10ebfd11f4a747ae91c4f3c7b267c9d, type: 3}
 --- !u!65 &5365622250212151631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6003,10 +6005,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   unlockEvent: 11
   openAngle: 90
-  speed: 2
+  speed: 4
   singleTimeInteract: 0
   itemForTask: 9
   doorPivotSFX: {fileID: 0}
+  onlyOpenSFX: {fileID: 6264464234462829957, guid: 50a82081a2b1e4ed1b81d3c138e3a697, type: 3}
+  onlyCloseSFX: {fileID: 6264464234462829957, guid: d10ebfd11f4a747ae91c4f3c7b267c9d, type: 3}
 --- !u!65 &2325446376366111566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32112,10 +32116,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   unlockEvent: 11
   openAngle: 90
-  speed: 2
+  speed: 4
   singleTimeInteract: 0
   itemForTask: 9
   doorPivotSFX: {fileID: 0}
+  onlyOpenSFX: {fileID: 6264464234462829957, guid: 50a82081a2b1e4ed1b81d3c138e3a697, type: 3}
+  onlyCloseSFX: {fileID: 6264464234462829957, guid: d10ebfd11f4a747ae91c4f3c7b267c9d, type: 3}
 --- !u!65 &6051442788863558279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67119,10 +67125,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   unlockEvent: 11
   openAngle: 90
-  speed: 2
+  speed: 4
   singleTimeInteract: 0
   itemForTask: 9
   doorPivotSFX: {fileID: 0}
+  onlyOpenSFX: {fileID: 6264464234462829957, guid: 50a82081a2b1e4ed1b81d3c138e3a697, type: 3}
+  onlyCloseSFX: {fileID: 6264464234462829957, guid: d10ebfd11f4a747ae91c4f3c7b267c9d, type: 3}
 --- !u!65 &8378979933499404594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68486,10 +68494,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorPivot
   unlockEvent: 11
   openAngle: 90
-  speed: 2
+  speed: 4
   singleTimeInteract: 0
   itemForTask: 9
   doorPivotSFX: {fileID: 0}
+  onlyOpenSFX: {fileID: 6264464234462829957, guid: 50a82081a2b1e4ed1b81d3c138e3a697, type: 3}
+  onlyCloseSFX: {fileID: 6264464234462829957, guid: d10ebfd11f4a747ae91c4f3c7b267c9d, type: 3}
 --- !u!1 &7322723382166300357
 GameObject:
   m_ObjectHideFlags: 0
@@ -85191,10 +85201,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Door
   unlockEvent: 7
   openAngle: 90
-  speed: 2
+  speed: 4
   singleTimeInteract: 0
   itemForTask: 9
   doorPivotSFX: {fileID: 0}
+  onlyOpenSFX: {fileID: 6264464234462829957, guid: 50a82081a2b1e4ed1b81d3c138e3a697, type: 3}
+  onlyCloseSFX: {fileID: 6264464234462829957, guid: d10ebfd11f4a747ae91c4f3c7b267c9d, type: 3}
 --- !u!65 &5824876265610242544
 BoxCollider:
   m_ObjectHideFlags: 0

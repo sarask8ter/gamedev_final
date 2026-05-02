@@ -8,6 +8,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
     private bool isFlickering;
 
     public bool IsInteractable => true;
+    [SerializeField] private AudioSource flickerSFX;
 
     public void Interact(PlayerInteractor player)
     {
@@ -30,6 +31,12 @@ public class LightSwitch : MonoBehaviour, IInteractable
     {
         isFlickering = true;
 
+        if (flickerSFX != null) 
+        {
+            flickerSFX.Play();
+            Debug.Log("Played flicker SFX");
+        }
+
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -44,5 +51,7 @@ public class LightSwitch : MonoBehaviour, IInteractable
 
         foreach (var lightSource in lightSources) lightSource.enabled = true;
         isFlickering = false;
+
+        if (flickerSFX != null) flickerSFX.Stop();
     }
 }
