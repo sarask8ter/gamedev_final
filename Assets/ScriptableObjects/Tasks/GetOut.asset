@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GetOut
   m_EditorClassIdentifier: Assembly-CSharp::InteractWithItemTask
   TriggeringEvent: 37
-  description: GET OUT
+  description: GET OUT OF THE HOUSE
   progressText: 
   progressCompletionDelay: 0
   item: 6
