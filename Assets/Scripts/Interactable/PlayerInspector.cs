@@ -54,7 +54,7 @@ public class PlayerInspector : MonoBehaviour
         if (PlayerStateManager.State == PlayerState.Inspecting)
         {
             if (cancelAction.WasPressedThisFrame()) EndInspection();
-            else if (PlayerStateManager.State != PlayerState.NoInput && clickAction.IsPressed()) RotateInspectedObj();
+            else if ((PlayerStateManager.State != PlayerState.NoInput) && (PlayerStateManager.State != PlayerState.Pause) && clickAction.IsPressed()) RotateInspectedObj();
         }
     }
 

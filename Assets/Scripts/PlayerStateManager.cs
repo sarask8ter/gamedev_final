@@ -7,6 +7,7 @@ public enum PlayerState
     Normal,
     Inspecting,
     Dialogue,
+    Pause,
 }
 
 public class PlayerStateManager : MonoBehaviour

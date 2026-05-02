@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentNode == null) return;
 
-        if (PlayerStateManager.State != PlayerState.NoInput && currentNode.AllowClickToNextNode && isDialogueActive && nextLineAction.WasPressedThisFrame())
+        if (PlayerStateManager.State != PlayerState.Pause && currentNode.AllowClickToNextNode && isDialogueActive && nextLineAction.WasPressedThisFrame())
         {
             if (isTyping)
             {
@@ -63,13 +63,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public static void StartDialogue(DialogueNode node, bool lockCursor = true, bool changePlayerState = true, Action callbackOnEndDialogue = null)
+    public static void StartDialogue(DialogueNode node, bool unlockCursor = true, bool changePlayerState = true, Action callbackOnEndDialogue = null)
     {
         _instance.isDialogueActive = true;
         _instance.callbackOnEndDialogue = callbackOnEndDialogue;
         _instance.lastNodeEvent = ProgressEvent.None;
         _instance.currentNode = node;
-        DialogueUIController.StartDialogue(lockCursor);
+        DialogueUIController.StartDialogue(unlockCursor);
         _instance.changePlayerState = changePlayerState;
         _instance.isEndingDialogue = node.IsEndingDialogue;
         if (changePlayerState) PlayerStateManager.State = PlayerState.Dialogue;

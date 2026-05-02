@@ -12,7 +12,7 @@ public class PauseMenuManager : MonoBehaviour
     void Awake()
     {
         if (backgroundMusic != null) backgroundMusic.ignoreListenerPause = true;
-        cancelAction = InputSystem.actions.FindAction("Cancel");
+        cancelAction = InputSystem.actions.FindAction("Interact");
     }
 
     void Update()
@@ -22,15 +22,19 @@ public class PauseMenuManager : MonoBehaviour
             && cancelAction.WasPressedThisFrame()
             && ProgressManager.HasCompleted(ProgressEvent.GameStart))
         {
-            PauseOrUnpause(!paused);
+            PauseOrUnpause();
         }
     }
 
-    void PauseOrUnpause(bool doPause)
+    public void PauseOrUnpause()
     {
+        var doPause = !paused;
+
         if (doPause) {
             oldState = PlayerStateManager.State;
-            PlayerStateManager.State = PlayerState.NoInput;
+            PlayerStateManager.State = PlayerState.Pause;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         paused = doPause;
@@ -38,6 +42,13 @@ public class PauseMenuManager : MonoBehaviour
         AudioListener.pause = doPause;
         pauseUI.SetActive(doPause);
 
-        if (!doPause) PlayerStateManager.State = oldState;
+        if (!doPause) {
+            PlayerStateManager.State = oldState;
+            if (oldState != PlayerState.Dialogue)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
     }
 }
