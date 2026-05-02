@@ -93,7 +93,7 @@ public class SpiritController : MonoBehaviour
         StartCoroutine(Shake(obj));
     }
 
-    System.Collections.IEnumerator Shake(Transform obj)
+    IEnumerator Shake(Transform obj)
     {
         Vector3 original = obj.position;
 
