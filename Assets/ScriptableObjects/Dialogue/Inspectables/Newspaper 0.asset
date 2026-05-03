@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Newspaper 0
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: This article talks about missing woman around town? What happened?
+  Text: This article talks about missing women around town? What happened?
   Next: {fileID: 11400000, guid: 90530908c51cd46eeafc7213cbad0615, type: 2}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
