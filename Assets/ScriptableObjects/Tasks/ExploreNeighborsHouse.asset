@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Explore downstairs (as requested) OR upstairs (disobey Jeremy)
   progressText: (0)
   progressCompletionDelay: 1
-  totalTime: 5
+  totalTime: 60

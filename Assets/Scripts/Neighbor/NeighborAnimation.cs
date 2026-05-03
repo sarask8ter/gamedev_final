@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Rendering.BuiltIn.ShaderGraph;
 using UnityEngine;
 
 public class NeighborAnimation : MonoBehaviour
