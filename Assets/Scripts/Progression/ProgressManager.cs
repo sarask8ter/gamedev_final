@@ -54,7 +54,10 @@ public class ProgressManager : MonoBehaviour
         }
 
         onProgressEventCompleted?.Invoke(evt);
-        if (endListeners.TryGetValue(evt, out var callback)) callback?.Invoke();
+        if (endListeners.TryGetValue(evt, out var callback)) {
+            Debug.Log("Invoking end listeners for " + evt + callback);
+            callback?.Invoke();
+        }
 
         startListeners.Remove(evt);
         endListeners.Remove(evt);
