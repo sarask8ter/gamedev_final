@@ -12,26 +12,27 @@ public class FlickerLights : MonoBehaviour
     {
         ProgressManager.SubscribeToStart(ProgressEvent.LightsFlicker, () =>
         {
-            if (frontDoor != null) frontDoor.SetOpen(false);
-            StartCoroutine(HauntSequence());
+            if (GameState.TalkedToNeighbor) 
+            {
+                if (frontDoor != null) frontDoor.SetOpen(false);
+                StartCoroutine(HauntSequence());
+            }
+            else
+            {
+                ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
+            }
         });
     }
 
     IEnumerator HauntSequence()
     {
-        if (GameState.TalkedToNeighbor)
-        {
-            yield return new WaitForSeconds(flickerDelay);
-            spiritController.TriggerEvent(SpiritEventType.FlickerLights);
-            Debug.Log("Flicker lights");
-            yield return new WaitForSeconds(0.5f);
-            DialogueManager.StartDialogue(lightsFlickerReaction, true, true, () =>
-            {
-                ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
-            });
-        } else
+        yield return new WaitForSeconds(flickerDelay);
+        spiritController.TriggerEvent(SpiritEventType.FlickerLights);
+        Debug.Log("Flicker lights");
+        yield return new WaitForSeconds(0.5f);
+        DialogueManager.StartDialogue(lightsFlickerReaction, true, true, () =>
         {
             ProgressManager.CompleteEvent(ProgressEvent.LightsFlicker);
-        }
+        });
     }
 }
