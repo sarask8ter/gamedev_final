@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a967c3167665494db7b0fec212ebf24, type: 3}
   m_Name: E2_Monologue_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
-  Text: "I\u2019ll unpack later"
   TriggeringEvent: 0
+  Text: "I\u2019ll unpack later."
   Next: {fileID: 11400000, guid: 13e5408b39256430bb0a4973765316c3, type: 2}
+  NextIfFoundEvidence: {fileID: 0}
   Choices: []
   AutoProgress: 0
   AutoDelay: 1.5
-  SpeakerName: 
+  speaker: 0
+  AllowClickToNextNode: 1
+  IsEndingDialogue: 0
+  ChangePlayerState: 1

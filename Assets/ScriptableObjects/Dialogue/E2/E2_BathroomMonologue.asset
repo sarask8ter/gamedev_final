@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E2_BathroomMonologue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 36
-  Text: WHAT THE ACTUAL FUCK
+  Text: WHAT THE ACTUAL FUCK!!
   Next: {fileID: 11400000, guid: 43b839e12d2cf49a99fded6202075357, type: 2}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []

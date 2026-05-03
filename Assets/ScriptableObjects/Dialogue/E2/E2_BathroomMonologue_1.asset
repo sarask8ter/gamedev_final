@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E2_BathroomMonologue_1
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: This house feels unsafe to stay in, I CAN'T STAY HERE
+  Text: This house feels unsafe to stay in, I CAN'T STAY HERE!
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
