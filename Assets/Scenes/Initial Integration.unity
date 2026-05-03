@@ -755,6 +755,7 @@ MonoBehaviour:
   moveToPoint: {fileID: 1022519864}
   completeAfterMove: 0
   completeDelay: 0
+  moveSFX: {fileID: 0}
 --- !u!1 &58126717
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,8 +840,8 @@ MonoBehaviour:
   useLocalRotationOverride: 1
   localRotationOverride: {x: -90, y: 0, z: 90}
   itemForTask: 1
-  pickupSFX: {fileID: 0}
-  placeSFX: {fileID: 0}
+  pickupSFX: {fileID: 6264464234462829957, guid: 59810a532cacc4c87ad9bcf1d8032ff7, type: 3}
+  placeSFX: {fileID: 6264464234462829957, guid: 3c627671acf24481e902f31cbb8ceb7d, type: 3}
 --- !u!65 &65546676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4747,7 +4748,7 @@ MonoBehaviour:
   useLocalRotationOverride: 1
   localRotationOverride: {x: 0, y: 70, z: 80}
   itemForTask: 1
-  pickupSFX: {fileID: 0}
+  pickupSFX: {fileID: 6264464234462829957, guid: baeaeab9b7fe84dbf955702310324132, type: 3}
   placeSFX: {fileID: 0}
 --- !u!65 &756290678
 BoxCollider:
@@ -5075,6 +5076,7 @@ MonoBehaviour:
   moveToPoint: {fileID: 261192437}
   completeAfterMove: 0
   completeDelay: 0
+  moveSFX: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -7321,6 +7323,7 @@ MonoBehaviour:
   moveToPoint: {fileID: 1400745852}
   completeAfterMove: 1
   completeDelay: 1
+  moveSFX: {fileID: 6264464234462829957, guid: 593159f04bdfb4d4baf22805baaf1b2f, type: 3}
 --- !u!1 &1295946896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10081,7 +10084,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_SizeDelta: {x: 1000, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609578955
 MonoBehaviour:
@@ -10107,7 +10110,10 @@ MonoBehaviour:
 
 
     <b>*
-    Click anywhere to begin *</b>'
+    Click anywhere to begin *</b>
+
+
+    (Headphones Recommended)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12065,6 +12071,10 @@ PrefabInstance:
       propertyPath: unlockEvent
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 5506544195305838269, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
+      propertyPath: doorPivotSFX
+      value: 
+      objectReference: {fileID: 6264464234462829957, guid: 30b39aaaf34c4480e94aa5dc8567a5bf, type: 3}
     - target: {fileID: 5506544195305838269, guid: 342ca3e4b842d4fe0befbdc7de3e73a2, type: 3}
       propertyPath: isBloodiedDoor
       value: 1
@@ -18944,6 +18954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NeighborAnimation
   powerTransferVFX: {fileID: 2065325467}
   deathEndingDelay: 3
+  powerTransferSFX: {fileID: 6264464234462829957, guid: 93ef9bd8a0a3e4b87aad9e62b751c536, type: 3}
+  deathSFX: {fileID: 6264464234462829957, guid: 4e8ee5545300c4ad19f8471f7693b8bd, type: 3}
 --- !u!1 &2119371547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
