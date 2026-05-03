@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cleaning Supplies
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: Some stains are header to get out than others.
+  Text: Some stains are harder to get out than others.
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []
