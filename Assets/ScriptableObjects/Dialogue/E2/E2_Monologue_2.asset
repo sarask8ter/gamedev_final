@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
   Text: "I\u2019m really tired so I\u2019m gonna get some free pizza that the host
-    left me and chill in bed"
+    left me and chill in bed."
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []

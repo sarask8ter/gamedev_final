@@ -34,7 +34,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             _instance = this;
-            nextLineAction = InputSystem.actions.FindAction("Click");
+            nextLineAction = InputSystem.actions.FindAction("ClickWithSpace");
         }
     }
 

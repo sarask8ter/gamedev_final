@@ -1,10 +1,13 @@
 using System.Collections;
+using UnityEditor.Rendering.BuiltIn.ShaderGraph;
 using UnityEngine;
 
 public class NeighborAnimation : MonoBehaviour
 {
     [SerializeField] private ParticleSystem powerTransferVFX;
     [SerializeField] private float deathEndingDelay;
+    [SerializeField] private GameObject powerTransferSFX;
+    [SerializeField] private GameObject deathSFX;
 
 
     private Animator animator;
@@ -41,6 +44,7 @@ public class NeighborAnimation : MonoBehaviour
             {
                 
                 powerTransferVFX.Play();
+                if (powerTransferSFX != null) Instantiate(powerTransferSFX);
                 Debug.Log($"NeighborAnimation: VFX played");
             }
             else
@@ -58,6 +62,7 @@ public class NeighborAnimation : MonoBehaviour
     public void PlayDeath()
     {
         animator.SetTrigger(DeathTrigger);
+        if (deathSFX != null) Instantiate(deathSFX);
     }
 
     private IEnumerator EndSceneAfterDelay()

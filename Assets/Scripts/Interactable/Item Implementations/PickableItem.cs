@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider))]
-public class PickableItem : MonoBehaviour, IInteractable
+public class PickableItem : InteractableAfterEvent, IInteractable
 {
-    [SerializeField] private ProgressEvent unlockEvent;
     [SerializeField] private ItemName item;
     [SerializeField] private bool useLocalRotationOverride;
     [SerializeField] private Vector3 localRotationOverride;
@@ -13,18 +11,12 @@ public class PickableItem : MonoBehaviour, IInteractable
     [SerializeField] private GameObject placeSFX;
     public ItemName Item => item;
 
-    private bool isInteractable;
-    public bool IsInteractable => isInteractable && !PlayerInteractor.IsHoldingItem;
+    public override bool IsInteractable => isInteractable && !PlayerInteractor.IsHoldingItem;
 
     private string oldLayerName;
     private Transform oldParent;
 
-    void Start()
-    {
-        ProgressManager.SubscribeToStart(unlockEvent, () => isInteractable = true);
-    }
-
-    public void Interact(PlayerInteractor player)
+    public override void Interact(PlayerInteractor player)
     {
         if (!player.PickUpItem(this)) return;
         if (pickupSFX != null) Instantiate(pickupSFX);

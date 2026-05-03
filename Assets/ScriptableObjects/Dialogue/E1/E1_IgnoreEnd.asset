@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_IgnoreEnd
   m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
   TriggeringEvent: 0
-  Text: Anyway let me get the free pizza that the host left me and chill in bed
+  Text: Anyway let me get the free pizza that the host left me and chill in bed.
   Next: {fileID: 0}
   NextIfFoundEvidence: {fileID: 0}
   Choices: []

@@ -1,25 +1,15 @@
 using UnityEngine;
 
-public class MovableItem : MonoBehaviour, IInteractable
+public class MovableItem : InteractableAfterEvent, IInteractable
 {
-    private bool isInteractable;
-    public bool IsInteractable => isInteractable;
     [SerializeField] private ItemName item;
-    [SerializeField] private ProgressEvent unlockEvent;
-
     [SerializeField] private Transform originalLocation;
     [SerializeField] private Transform movedLocation;
     [SerializeField] private bool singleTimeInteract;
 
     private bool isMoved;
 
-    void Start()
-    {
-        ProgressManager.SubscribeToStart(unlockEvent, () => isInteractable = true);
-        // ProgressManager.SubscribeToEnd(unlockEvent, () => isInteractable = false);
-    }
-
-    public void Interact(PlayerInteractor player)
+    public override void Interact(PlayerInteractor player)
     {
         MovementHelper.MoveToPoint(gameObject, isMoved ? originalLocation : movedLocation, false);
         isMoved = !isMoved;
