@@ -16,7 +16,10 @@ public class FadeOutAudioOnEvent : MonoBehaviour
 
     void Start()
     {
-        ProgressManager.SubscribeToEnd(fadeEvent, () => StartCoroutine(FadeOutCoroutine()));
+        ProgressManager.SubscribeToEnd(fadeEvent, () => {
+            if (this == null || !gameObject.activeInHierarchy) return;
+            StartCoroutine(FadeOutCoroutine());
+        });
     }
 
     private IEnumerator FadeOutCoroutine()
